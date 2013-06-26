@@ -10,7 +10,7 @@ group :production do
 end
 
 group :development, :test do
-  gem 'mysql2'
+  gem 'pg'
 end
 
 # Gems used only for assets and not required
@@ -26,6 +26,9 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'therubyracer'
+gem "less-rails"
+gem "twitter-bootstrap-rails"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
