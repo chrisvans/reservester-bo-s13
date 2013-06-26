@@ -11,6 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20130626205556) do
+
+  create_table "restaurants", :force => true do |t|
+    t.string   "restaurant"
+    t.string   "description"
+    t.string   "street1"
+    t.string   "street2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "country"
+    t.string   "phonenumber"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
 end
