@@ -10,7 +10,8 @@ group :production do
 end
 
 group :development, :test do
- gem 'mysql2'
+ gem 'pg'
+ gem 'rspec-rails', '2.11.0'
 end
 
 # Gems used only for assets and not required
