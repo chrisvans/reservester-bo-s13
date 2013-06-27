@@ -1,0 +1,23 @@
+<p>
+  <strong><%= @restaurant.restaurant %></strong>
+</p>
+ 
+<p>
+  <%= @restaurant.description %>
+</p>
+
+<p>
+  <%= @restaurant.street1 %>
+  <%= @restaurant.street2 %>
+  <%= @restaurant.city %>
+  <%= @restaurant.state %>
+  <%= @restaurant.zipcode %>
+  <%= @restaurant.country %>
+</p>
+
+<p>
+  <strong> Call </strong>
+  <%= @restaurant.phonenumber %>
+</p>
+
+<%= link_to 'Back', restaurants_path %>
