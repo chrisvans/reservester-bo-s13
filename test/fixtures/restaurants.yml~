@@ -3,9 +3,11 @@
 one:
   name: MyString
   description: MyText
-  address: MyString
+  address: MyText
+  phone: MyString
 
 two:
   name: MyString
   description: MyText
-  address: MyString
+  address: MyText
+  phone: MyString
