@@ -12,12 +12,12 @@
 
   <p>
   	<%= f.label :"Street Address 1" %><br>
-  	<%= f.text_field :"Street Address 1"%><br>
+  	<%= f.text_field :street1%><br>
   </p>
  
   <p>
   	<%= f.label :"Street Address 2" %><br>
-  	<%= f.text_field :"Street Address 2"%><br>
+  	<%= f.text_field :street2 %><br>
   </p>
 
   <p>
@@ -42,10 +42,12 @@
 
   <p>
   	<%= f.label :"Phone number" %><br>
-  	<%= f.text_field :"Phone number" %><br>
+  	<%= f.text_field :phonenumber %><br>
   </p> 
 
   <p>
     <%= f.submit %>
   </p>
 <% end %>
+
+<%= link_to 'Back', restaurants_path %>
