@@ -2,13 +2,27 @@
 <html>
 <head>
   <title>Reservester</title>
+  <!--[if lt IE 9]>
+  	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device=width, initial-scale=1.0">
 </head>
 <body style="background: #EEEEEE;">
 <div class="navbar navbar-fixed-top">
-
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="#">Reservester</a>
+			<div class="nav=collapse">
+				<ul class="nav">
+					<li><%= link_to "Add Restaurant", new_restaurant_path %></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
 <div class="container">
 	
 	<div class="row">
@@ -18,10 +32,9 @@
 		<div class="span3"></div>
 			
 			<h2> About Us </h2>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tristique in justo quis luctus. Sed risus nulla, consectetur eget bibendum sed, laoreet at nisi. Cras imperdiet rhoncus tortor, eget aliquet arcu. Donec congue non enim quis mattis. Cras a eros at lectus venenatis hendrerit et ut quam. Mauris aliquam eros sit amet leo lobortis sollicitudin. Ut sit amet aliquam lectus. Morbi vehicula suscipit magna vel feugiat. Proin feugiat sapien at mollis malesuada. Donec cursus pulvinar justo vel congue. Proin vitae nunc enim. 
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tristique in justo quis luctus. Sed risus nulla, consectetur eget bibendum sed, laoreet at nisi. Cras imperdiet rhoncus tortor, eget aliquet arcu. Donec congue non enim quis mattis.
 	</div>
 
-</div>
 </div>
 
 </body>
