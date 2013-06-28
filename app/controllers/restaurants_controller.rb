@@ -4,7 +4,7 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-
+    @restaurant = Restaurant.find(params[:id])
   end
 
   def create
@@ -26,6 +26,11 @@ class RestaurantsController < ApplicationController
 
   def show
   	@restaurant = Restaurant.find(params[:id])
+
+    respond_to do |format|
+      format.html #show.html.erb
+      format.json { render :json => @restaurant }
+    end
   end
 
   def index
@@ -34,6 +39,22 @@ class RestaurantsController < ApplicationController
     respond_to do |format|
       format.html #index.html.erb
       format.json { render :json => @restaurants }
+    end
+  end
+
+  def update
+    @restaurant = Restaurant.find(params[:id])
+
+    respond_to do |format|
+      if @restaurant.update_attributes(params[:restaurant])
+        format.html { redirect_to(@restaurant,
+                      :notice => 'Post was successfully update.') }
+        format.json { head :no_content }
+      else
+        format.html { render :action => "edit" }
+        format.json { render :json => @restaurant.errors,
+                      :status => :unprocessable_entity}
+      end
     end
   end
   
