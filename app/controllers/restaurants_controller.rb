@@ -3,5 +3,6 @@ class RestaurantsController < ApplicationController
   end
 
   def create
+  	render text: params[:restaurant].inspect
   end
 end
