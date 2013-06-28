@@ -23,7 +23,7 @@ class RestaurantsControllerTest < ActionController::TestCase
 	end
 
 	test "should show restaurant" do
-		get :show, id: @restaurant
+		get :show, id: @restaurant.id
 		assert_response :success
 	end
 
@@ -34,18 +34,18 @@ class RestaurantsControllerTest < ActionController::TestCase
 	end
 
 	test "should get edit" do
-		get :edit, id: @restaurant
+		get :edit, id: @restaurant.id
 		assert_response :success
 	end
 
 	test "should update restaurant" do
-		puts :update, id: @restaurant, restaurant: {  }
+		puts :update, id: @restaurant.id, restaurant: {  }
 		assert_redirected_to restaurant_path(assigns(:restaurant))
 	end
 
 	test "should destroy restaurant" do
 		assert_difference('Restaurant.count', -1) do
-			delete :destroy, id: @restaurant
+			delete :destroy, id: @restaurant.id
 		end
 
 		assert_redirected_to restaurant_path
