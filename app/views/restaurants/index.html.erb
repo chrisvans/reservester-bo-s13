@@ -9,6 +9,7 @@
 		<th>Description</th>
 		<th>Address</th>
 		<th>Phone Number</th>
+		<th>Image</th>
 	</tr>
 
 	<% @restaurants.each do |restaurant| %>
@@ -17,6 +18,7 @@
 		<td><%= restaurant.description %></td>
 		<td><%= restaurant.address %></td>
 		<td><%= restaurant.phone_number %></td>
+		<td><%= image_tag restaurant.image_url(:thumbnail).to_s if restaurant.image? %></td>
 	</tr>
 	<% end %>
 </table>
