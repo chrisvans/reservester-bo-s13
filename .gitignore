@@ -14,3 +14,7 @@
 /log/*.log
 /tmp
 .env
+
+# Ignore AWS Keys.
+
+/config/initializers/app_environment_variables.rb

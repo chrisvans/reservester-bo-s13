@@ -5,13 +5,13 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :production do
-  gem 'pg'
-end
 
-group :development, :test do
-  gem 'mysql2'
-end
+gem 'pg'
+
+
+# group :development, :test do
+#   gem 'mysql2'
+# end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -28,11 +28,13 @@ group :assets do
 end
 
 gem 'carrierwave'
-
+gem 'less-rails'
+gem 'therubyracer'
 gem 'jquery-rails'
 
 gem 'mini_magick'
 gem 'fog', '~> 1.3.1'
+gem 'rmagick'
 
 gem 'dotenv-rails'
 
