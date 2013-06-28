@@ -10,7 +10,7 @@ group :production do
 end
 
 group :development, :test do
-  gem 'mysql2'
+  gem 'pg'
 end
 
 # Gems used only for assets and not required
@@ -35,6 +35,8 @@ gem 'mini_magick'
 gem 'fog', '~> 1.3.1'
 
 gem 'dotenv-rails'
+
+gem 'therubyracer'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

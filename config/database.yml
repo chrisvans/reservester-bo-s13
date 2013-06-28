@@ -1,16 +1,15 @@
 development:
-  adapter: mysql2
-  database: reservester_development
-  username: root
-  password: 
+  adapter: postgresql
+  database: reserveDB_dev
+  username: brad
+  password: secret
   pool: 5
   timeout: 5000
 
 test:
-  adapter: mysql2
-  database: reservester_test
-  username: root
-  password: 
+  adapter: postgresql
+  database: reserveDB_test
+  username: brad
+  password: secret
   pool: 5
   timeout: 5000
-
