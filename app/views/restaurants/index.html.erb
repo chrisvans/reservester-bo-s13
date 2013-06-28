@@ -1,17 +1,21 @@
 <h1>Listing Restaurants</h1>
 
-<% link_to 'Add a Restaurant',new_restaurant_path %>
+<%= link_to 'Add a Restaurant',new_restaurant_path %>
 
 <table>
   <tr>
-    <th>Title</th>
-    <th>Text</th>
+    <th>Restaurant</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
  
   <% @restaurants.each do |post| %>
     <tr>
       <td><%= post.restaurant %></td>
       <td><%= post.description %></td>
+      <td><%= link_to 'Show', restaurant_path(post) %></td>
+      <td><%= link_to 'Edit', edit_restaurant_path(post) %></td>
     </tr>
   <% end %>
 </table>

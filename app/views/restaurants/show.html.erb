@@ -1,6 +1,4 @@
-<p>
-  <strong><%= @restaurant.restaurant %></strong>
-</p>
+<h1><%= @restaurant.restaurant %></h1>
  
 <p>
   <%= @restaurant.description %>
@@ -19,5 +17,6 @@
   <strong> Call </strong>
   <%= @restaurant.phonenumber %>
 </p>
-
+<%= link_to 'Edit', edit_restaurant_path %>
+<%= link_to 'Destroy', @restaurant, :confirm => 'Are you sure?', :method => :delete %>
 <%= link_to 'Back', restaurants_path %>
