@@ -1,33 +1,57 @@
-<%= form_for @restaurant, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @restaurant, :html => { :multipart => true, :class => 'form-horizontal' } do |f| %>
+
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
+
     <div class="controls">
       <%= f.text_field :name, :class => 'text_field' %>
     </div>
+
   </div>
+
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
+
     <div class="controls">
       <%= f.text_area :description, :class => 'text_area' %>
     </div>
+
   </div>
+
   <div class="control-group">
     <%= f.label :address, :class => 'control-label' %>
+
     <div class="controls">
       <%= f.text_area :address, :class => 'text_area' %>
     </div>
+
   </div>
+
   <div class="control-group">
     <%= f.label :phone, :class => 'control-label' %>
+
     <div class="controls">
       <%= f.text_field :phone, :class => 'text_field' %>
     </div>
+
   </div>
+
   <div class="control-group">
     <%= f.label :photo, :class => 'control-label' %>
+
     <div class="controls">
       <%= f.file_field :photo, :class => 'text_field' %>
     </div>
+
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="restaurant_attachment"> PDF Attachment </label>
+
+    <div class="controls">
+      <%= f.file_field :pdf, :class => 'text_field' %>
+    </div>
+
   </div>
 
   <div class="form-actions">
@@ -35,4 +59,5 @@
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 restaurants_path, :class => 'btn' %>
   </div>
+
 <% end %>
