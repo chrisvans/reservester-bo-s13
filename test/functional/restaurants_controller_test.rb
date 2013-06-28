@@ -1,13 +1,17 @@
 require 'test_helper'
 
 class RestaurantsControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
-    assert_response :success
+
+  def setup
+    @restaurant = restaurants(:one)
   end
 
-  test "should get show" do
-    get :show
+  def teardown
+    @restaurant = nil
+  end
+
+  test "should get index" do
+    get :index
     assert_response :success
   end
 
@@ -16,24 +20,39 @@ class RestaurantsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get create" do
-    get :create
-    assert_response :success
+  test "should create restaurant" do
+    assert_difference('Restaurant.count') do
+      post :create, :restaurant => { :name => 'h', :address => 'h', :description => 'h', :phone_number => '1' }
+    end
+    assert_redirected_to restaurant_path(assigns(:restaurant))
+  end
+
+  test "should destroy restaurant" do
+    assert_difference('Restaurant.count', -1) do
+      delete :destroy, :id => @restaurant.id
+    end
+    assert_redirected_to restaurants_path
   end
 
   test "should get edit" do
-    get :edit
+    get :edit, :id => @restaurant.id
     assert_response :success
   end
 
-  test "should get update" do
-    get :update
+  test "should update restaurant" do
+    put :update, :id => @restaurant.id, :restaurant => { }
+    assert_redirected_to restaurant_path(assigns(:restaurant))
+  end
+
+  test "should show restaurant" do
+    get :show, :id => @restaurant.id
     assert_response :success
   end
 
-  test "should get destroy" do
-    get :destroy
-    assert_response :success
+  test "should raise RecordNotFound when not found" do
+    assert_raises(ActiveRecord::RecordNotFound) do
+      get :show, :id => -1
+    end
   end
 
 end
