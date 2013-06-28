@@ -15,6 +15,9 @@
       <th>
         Uploaded File
       </th>
+      <th>
+        Location
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -38,6 +41,8 @@
         <td>
         <a href="<%= restaurant.pdf %>">Download PDF of Menu</a>
         </td>
+
+        <td><img src='https://maps.googleapis.com/maps/api/staticmap?center=<%= restaurant.geocode[0].to_s %>,<%= restaurant.geocode[1].to_s %>&zoom=19&size=400x400&sensor=false' alt="Location" ></td>
       </tr>
     <% end %>
   </tbody>
