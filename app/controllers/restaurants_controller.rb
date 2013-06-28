@@ -24,19 +24,14 @@ class RestaurantsController < ApplicationController
 	def create
 		@restaurant = Restaurant.new(params[:restaurant])
 
-		#Had to remove the API here, it made
-		#the app look for a create template.
-
-		#respond_to do |format|
-    	#	format.html  # new.html.erb
-    	#	format.json  { render :json => @restaurant }
-  		#end
-
-		if @restaurant.save
-			redirect_to @restaurant
-		else
-			render 'new'
-		end
+		respond_to do |format|
+			if @restaurant.save
+    		format.html  {redirect_to(@restaurant, :notice => 'Restaurant was successfully created.') }
+    		format.json  { render :json => @restaurant }
+    		else
+    			render 'new'
+    		end
+    	end
 	end
 
 	def edit
