@@ -1,5 +1,8 @@
 Reservester::Application.routes.draw do
+  
+
   resources :restaurants
+    root :to => "restaurants#index"
 
 
   # The priority is based upon order of creation:

@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Reservester::Application.config.secret_token = '566c32695bbc915ad8579bc3320e7723c671cc6bfdbe1f126722e96f83b2fe9e95e71e47c97e87edb6b1061a0944a793af43b2da1757e1fe8b1dc2e034129faa'
+Reservester::Application.config.secret_token = '2371f1e709d2c7a46d4658825f69257a7010e988bb383c08d38d2595294f13f020d4f1cebb99fbb5144d45799b411025a39d8974893511468ca39b710023c18f'

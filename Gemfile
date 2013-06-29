@@ -1,16 +1,22 @@
 source 'https://rubygems.org'
 
+
 gem 'rails', '3.2.13'
+gem 'sqlite3'
+gem 'paperclip'
+
+
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :production do
-  gem 'pg'
+  gem 'sqlite3'
 end
 
 group :development, :test do
-  gem 'mysql2'
+  gem 'sqlite3'
 end
 
 # Gems used only for assets and not required
@@ -28,11 +34,15 @@ group :assets do
 end
 
 gem 'carrierwave'
+gem 'fog', '~> 1.3.1'
 
+gem 'less-rails'
+
+
+gem 'therubyracer'
 gem 'jquery-rails'
 
 gem 'mini_magick'
-gem 'fog', '~> 1.3.1'
 
 gem 'dotenv-rails'
 
