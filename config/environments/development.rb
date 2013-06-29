@@ -34,4 +34,9 @@ Reservester::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  ENV["AWS_ACCESS_KEY_ID"] = "AKIAJS6IJK3Q2TEDGM5A"
+  ENV["AWS_SECRET_ACCESS_KEY"] = "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"
+  ENV["AWS_S3_BUCKET"]  =  "reservester-dlo83"
+
 end
