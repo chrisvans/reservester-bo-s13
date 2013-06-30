@@ -14,8 +14,7 @@ class DeviseCreateOwners < ActiveRecord::Migration
 
       t.timestamps
     end
-
-    add_index :owners, :email,                :unique => true
+    add_index :owners, :name,:email,                :unique => true
     add_index :owners, :reset_password_token, :unique => true
     # add_index :owners, :confirmation_token,   :unique => true
     # add_index :owners, :unlock_token,         :unique => true
