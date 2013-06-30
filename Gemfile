@@ -1,17 +1,26 @@
 source 'https://rubygems.org'
 
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
+
 gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :production do
-  gem 'pg'
+group :development, :test do
+	gem 'sqlite3'
 end
 
-group :development, :test do
-  gem 'mysql2'
+group :production do
+	gem 'pg'
 end
+
+gem 'mini_magick'
+gem "rmagick"
+gem "carrierwave"
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,19 +31,10 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
-  gem 'twitter-bootstrap-rails'
-
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'carrierwave'
-
 gem 'jquery-rails'
-
-gem 'mini_magick'
-gem 'fog', '~> 1.3.1'
-
-gem 'dotenv-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

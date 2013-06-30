@@ -1,44 +1,55 @@
 class RestaurantsController < ApplicationController
-  def index
-    @restaurants = Restaurant.all
-  end
 
-  def show
-    @restaurant = Restaurant.find(params[:id])
-  end
+	http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show, :new, :create]
 
-  def new
-    @restaurant = Restaurant.new
-  end
+	def new
+		@rest = Restaurant.new
+	end
 
-  def edit
-    @restaurant = Restaurant.find(params[:id])
-  end
+	def destroy
+		@rest = Restaurant.find(params[:id])
+		@rest.destroy
 
-  def create
-    @restaurant = Restaurant.new(params[:restaurant])
+		redirect_to restaurants_path
+	end
 
-    if @restaurant.save
-      redirect_to @restaurant, notice: 'Restaurant was successfully created.'
-    else
-      render action: "new"
-    end
-  end
+	def edit
+		@rest = Restaurant.find(params[:id])
+	end
 
-  def update
-    @restaurant = Restaurant.find(params[:id])
+	def show
+		@rest = Restaurant.find(params[:id])
+		@image = ImageUploader.new
+	end
 
-    if @restaurant.update_attributes(params[:restaurant])
-      redirect_to @restaurant, notice: 'Restaurant was successfully updated.'
-    else
-      render action: "edit"
-    end
-  end
 
-  def destroy
-    @restaurant = Restaurant.find(params[:id])
-    @restaurant.destroy
+	def create
+		@rest = Restaurant.new(params[:restaurant])
 
-    redirect_to restaurants_url
-  end
+		if @rest.save
+			redirect_to @rest
+		else
+			render 'new'
+		end
+	end
+
+	def index
+		@rest = Restaurant.all
+	end 
+
+	def update
+		@rest = Restaurant.find(params[:id])
+		if @rest.update_attributes(params[:restaurant])
+			redirect_to @rest
+		else
+			render 'edit'
+		end
+	end
+
+	# private
+	# 	def post_params
+	# 		params.require(:post).permit(:name, :description, :address, :phone_number)
+	# 	end
+
+
 end

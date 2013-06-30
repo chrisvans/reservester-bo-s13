@@ -1,54 +1,41 @@
-<%= form_for(@restaurant) do |f| %>
-  <% if @restaurant.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
-
-      <ul>
-      <% @restaurant.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= form_for @rest do |f| %>
+  <% if @rest.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@rest.errors.count, "error") %> prohibited
+      this rest from being saved:</h2>
+    <ul>
+    <% @rest.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
   <% end %>
+ <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </p>
 
-  <div class="control-group">
-    <%= f.label :name %>
-    <div class="controls">
-      <%= f.text_field :name %>
-    </div>
-  </div>
+  <p>
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </p>
 
-  <div class="control-group">
-    <%= f.label :description %>
-    <div class="controls">
-      <%= f.text_area :description %>
-    </div>
-  </div>
+  <p>
+    <%= f.label :phone_number %><br>
+    <%= f.text_field :phone_number %>
+  </p>
 
-  <div class="control-group">
-    <%= f.label :address%>
-    <div class="controls">
-      <%= f.text_area :address %>
-    </div>
-  </div>
+  <p>
+    <%= f.label :image, "or image URL" %><br />
+    <%= f.file_field :image %>
+  </p>
 
-  <div class="control-group">
-    <%= f.label :phone %>
-    <div class="controls">
-      <%= f.text_field :phone %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :photo %>
-    <div class="controls">
-      <%= image_tag(@restaurant.photo_url) if @restaurant.photo? %>
-      <%= f.file_field :photo %>
-      <%= f.hidden_field :photo_cache %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.submit :class => 'btn' %>
-  </div>
+  <p>
+    <%= f.submit %>
+  </p>
 <% end %>

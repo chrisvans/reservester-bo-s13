@@ -1,17 +1,28 @@
-<p id="notice"><%= notice %></p>
+<p>
+  <strong>Title:</strong>
+  <%= @rest.name %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= @rest.description %>
+</p>
 
-<h1><%= @restaurant.name %></h1>
-<p><%= @restaurant.description %></p>
+<p>
+  <strong>Address:</strong>
+  <%= @rest.address %>
+</p>
 
-<%= image_tag @restaurant.photo.masthead.url if @restaurant.photo? %>
+<p>
+  <strong>Phone Number:</strong>
+  <%= @rest.phone_number %>
+</p>
 
-<dl>
-  <dt>Phone</dt>
-  <dd><%= @restaurant.phone %></dd>
-  <dt>Address</dt>
-  <dd><%= @restaurant.address %></dd>
-</dl>
+<p>
+  <strong>Photo:</strong>
+  <%= image_tag @rest.image_url(:masthead) if @rest.image? %>
+</p>
 
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Destroy', restaurant_path(@restaurant), :method => :delete, :confirm => 'Are you sure that you want to delete this restaurant?' %> |
-<%= link_to 'Back', restaurants_path %>
+
+<%= link_to "back", restaurants_path %>
+| <%= link_to 'Edit', edit_restaurant_path(@rest) %>
