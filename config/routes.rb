@@ -1,8 +1,11 @@
 Reservester::Application.routes.draw do
   
 
+  devise_for :owners
+
   resources :restaurants
     root :to => "restaurants#index"
+    get 'logout' => 'devise/sessions#destroy'
 
 
   # The priority is based upon order of creation:
