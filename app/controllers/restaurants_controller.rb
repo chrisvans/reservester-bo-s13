@@ -3,7 +3,7 @@ class RestaurantsController < ApplicationController
 	http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show, :new, :create]
 
 	def new
-		@rest = Restaurant.new
+		@restaurant = Restaurant.new
 	end
 
 	def destroy
@@ -18,7 +18,7 @@ class RestaurantsController < ApplicationController
 	end
 
 	def show
-		@rest = Restaurant.find(params[:id])
+		@restaurant = Restaurant.find(params[:id])
 		@image = ImageUploader.new
 	end
 

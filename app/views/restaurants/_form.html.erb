@@ -1,41 +1,38 @@
-<%= form_for @rest do |f| %>
-  <% if @rest.errors.any? %>
-  <div id="errorExplanation">
-    <h2><%= pluralize(@rest.errors.count, "error") %> prohibited
-      this rest from being saved:</h2>
-    <ul>
-    <% @rest.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
+<%= form_for @restaurant, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
   </div>
-  <% end %>
- <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
- 
-  <p>
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </p>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :address, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :address, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :phone_number, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :phone_number, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :image, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :image, :class => 'text_field' %>
+    </div>
+  </div>
 
-  <p>
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </p>
-
-  <p>
-    <%= f.label :phone_number %><br>
-    <%= f.text_field :phone_number %>
-  </p>
-
-  <p>
-    <%= f.label :image, "or image URL" %><br />
-    <%= f.file_field :image %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                restaurants_path, :class => 'btn' %>
+  </div>
 <% end %>
