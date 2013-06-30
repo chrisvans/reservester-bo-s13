@@ -39,4 +39,7 @@ Reservester::Application.configure do
   ENV["AWS_SECRET_ACCESS_KEY"] = "8pIULdpMtgNDjKrKeP/gu9p2woMdebtTwOjagF3+"
   ENV["AWS_S3_BUCKET"]  =  "reservester-dlo83"
 
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+
 end
