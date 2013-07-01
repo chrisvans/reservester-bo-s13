@@ -45,7 +45,7 @@ class RestaurantsControllerTest < ActionController::TestCase
   end
 
   test "should update restaurant" do
-    get :update, id: @restaurant, restaurant: {  }
+    put :update, id: @restaurant, restaurant: {  }
     assert_redirected_to restaurant_path(assigns(:restaurant))
   end
 
