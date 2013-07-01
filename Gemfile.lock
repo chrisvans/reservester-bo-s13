@@ -77,10 +77,12 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     multi_json (1.7.7)
+    mysql (2.9.1)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.6.7)
     nokogiri (1.5.10)
+    pg (0.15.1)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -149,6 +151,8 @@ DEPENDENCIES
   fog
   jquery-rails
   less-rails
+  mysql
+  pg
   rails (= 3.2.13)
   rmagick
   sass-rails (~> 3.2.3)
