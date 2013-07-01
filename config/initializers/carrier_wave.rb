@@ -7,5 +7,5 @@ CarrierWave.configure do |config|
 		# :endpoint => "nsnphu_reservester.s3-website-us-east-1.amazonaws.com"
 	}
 
-	config.fog_directory = 'nsnphu_reservester'
+	config.fog_directory = 'nsnphu_reservester' #bucket name
 end
