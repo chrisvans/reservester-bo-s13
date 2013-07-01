@@ -1,13 +1,21 @@
 <h1>Restaurant Information</h1>
 
-<p>Name: <%= @restaurant.name %> </p>
+<p><%= image_tag(@restaurant.image_url) if @restaurant.image? %></p>
 
-<p>Description: <%= @restaurant.description %> </p>
+<h3><%= @restaurant.name %> </h3>
 
-<p>Address: <%= @restaurant.address %> </p>
+<h5>Description:</h5>
+<p><%= @restaurant.description %> </p>
 
-<p>Phone: <%= @restaurant.phone %> </p>
+<h5>Address:</h5>
+<p><%= @restaurant.address %> </p>
 
-<%= link_to 'Edit', edit_restaurant_path %>
-<%= link_to 'Delete', restaurant_path, :confirm => 'Are You Sure?', :method => :delete %>
+<h5>Phone:</h5>
+<p><%= @restaurant.phone %> </p>
+
+
+<%= link_to 'Edit', edit_restaurant_path, :class => "btn btn-primary" %>
+<%= link_to 'Delete', restaurant_path, :class => "btn btn-primary btn-danger", :confirm => 'Are You Sure?', :method => :delete %>
+<p>
 <%= link_to 'Home', restaurants_path %>
+</p>
