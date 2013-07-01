@@ -4,7 +4,7 @@
   <%= f.input :description %>
   <%= f.input :address %>
   <%= f.input :phone %>
-  <%= f.file_field :photo %>
+  <%= f.input :photo, :as => :file %>
   <%= f.button :submit %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
               restaurants_path, :class => 'btn' %>

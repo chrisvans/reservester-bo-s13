@@ -14,3 +14,8 @@
 /log/*.log
 /tmp
 .env
+
+# Ignore AWS codes
+
+# Ignore Uploaded Photos
+/public/uploads/tmp
