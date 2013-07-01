@@ -23,13 +23,15 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem "carrierwave"
+gem "carrierwave" #for file uploads
 
 gem "rmagick"
 
 gem 'jquery-rails'
 
-gem 'fog'
+gem 'fog' # for AWS support
+
+gem 'figaro' # for easier ENV variables
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

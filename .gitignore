@@ -17,3 +17,8 @@
 *.DS_Store
 
 AWSInformation.txt
+
+*.jpg
+*.png
+# Ignore application configuration
+/config/application.yml
