@@ -17,7 +17,6 @@
 
 # Ignore AWS codes#
 /config/initializers/app_environment_variables.rb
-/config/initializers/carrier_wave.rb
 
 # Ignore Uploaded Photos
 /public/uploads/tmp
