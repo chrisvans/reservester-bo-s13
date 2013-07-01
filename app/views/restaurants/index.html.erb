@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <!--<th><%= model_class.human_attribute_name(:id) %></th>-->
+      <th></th>
       <th><%= model_class.human_attribute_name(:restaurant) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <!--<th><%= model_class.human_attribute_name(:street1) %></th>
@@ -23,6 +24,7 @@
     <% @restaurants.each do |restaurant| %>
       <tr>
         <!--<td><%= link_to restaurant.id, restaurant_path(restaurant) %></td>-->
+        <td><%= image_tag restaurant.image_url(:thumb).to_s %>
         <td><%= link_to restaurant.restaurant, restaurant_path(restaurant)  %></td>
         <td><%= restaurant.description %></td>
         <!--<td><%= restaurant.street1 %></td>
