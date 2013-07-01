@@ -1,6 +1,6 @@
 <h1>Restaurant Information</h1>
 
-<p><%= image_tag(@restaurant.image_url) if @restaurant.image? %></p>
+<p><%= image_tag(@restaurant.image_url(:masthead)) if @restaurant.image? %></p>
 
 <h3><%= @restaurant.name %> </h3>
 
