@@ -2,7 +2,7 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
-<div id="mast">
+<div class="mast">
   <%= image_tag @restaurant.image.masthead.url if @restaurant.image? %>
 </div>
 
@@ -17,6 +17,9 @@
   <dd><%= @restaurant.phone %></dd>
 </dl>
 
+<div class="mast">
+  <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%=  @restaurant.address %>&zoom=15&size=500x400&sensor=false&markers=color:blue|label:R|<%=@restaurant.address %>">
+</div>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
