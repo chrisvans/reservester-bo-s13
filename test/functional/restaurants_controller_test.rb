@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class RestaurantsControllerTest < ActionController::TestCase
+
+	def setup
+		@restaurant = restaurants(:one)
+	end
+
 	test "should get index" do 
 		get :index
 		assert_response :success
@@ -39,7 +44,7 @@ class RestaurantsControllerTest < ActionController::TestCase
 	end
 
 	test "should update restaurant" do
-		puts :update, id: @restaurant.id, restaurant: {  }
+		put :update, id: @restaurant.id, restaurant: {  }
 		assert_redirected_to restaurant_path(assigns(:restaurant))
 	end
 
@@ -48,6 +53,6 @@ class RestaurantsControllerTest < ActionController::TestCase
 			delete :destroy, id: @restaurant.id
 		end
 
-		assert_redirected_to restaurant_path
+		assert_redirected_to restaurants_path
 	end
 end
