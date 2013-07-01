@@ -15,6 +15,7 @@
   <dd><%= @restaurant.phone %></dd>
 </dl>
 
+<img src="http://maps.googleapis.com/maps/api/staticmap?center=<%=  @restaurant.address %>&zoom=15&size=500x400&sensor=false&markers=color:blue|label:R|<%=@restaurant.address %>">
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
