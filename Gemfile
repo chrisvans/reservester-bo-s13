@@ -7,6 +7,7 @@ gem 'rails', '3.2.13'
 
 group :development do
 	gem 'sqlite3'
+	gem 'rspec-rails', '~> 2.0'
 end
 
 group :production do
@@ -29,6 +30,8 @@ end
 gem 'jquery-rails'
 gem "carrierwave"
 gem "rmagick"
+gem "rspec"
+gem "fog", "~> 1.3.1"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
