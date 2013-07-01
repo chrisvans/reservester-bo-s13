@@ -1,43 +1,44 @@
-<%= form_for @restaurant, :html => { :multipart => true } do |f| %>
-<% if @restaurant.errors.any? %>
-<div id="errorExplanation">
-	<h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
-	<ul>
-		<% @restaurant.errors.full_messages.each do |msg| %>
-		<li><%= msg %></li>
-		<% end %>
-	</ul>
-</div>
-<% end %>
-<p>
-	<%= f.label :name %><br />
-	<%= f.text_field :name %>
-</p>
+<%= form_for @restaurant, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :class => 'text_area' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :address, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :address, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :phone_number, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :phone_number, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :image, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :image, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :menu, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :menu, :class => 'text_field' %>
+    </div>
+  </div>
 
-<p>
-	<%= f.label :description %><br />
-	<%= f.text_area :description %>
-</p>
-
-<p>
-	<%= f.label :address %><br />
-	<%= f.text_field :address %>
-</p>
-
-<p>
-	<%= f.label :phone_number %><br />
-	<%= f.text_field :phone_number %>
-</p>
-
-<p>
-	<%= f.label :image %><br />
-	<%= f.file_field :image %>
-</p>
-<p>
-	<%= f.label :menu %><br />
-	<%= f.file_field :menu %>
-</p>
-<p>
-	<%= f.submit %>
-</p>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                restaurants_path, :class => 'btn' %>
+  </div>
 <% end %>
