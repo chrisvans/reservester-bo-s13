@@ -3,22 +3,20 @@
 <h1><%= @restaurant.name %></h1>
 <p><%= @restaurant.description %></p>
 
-
-
-
-
+<%= image_tag @restaurant.photo.masthead.url if @restaurant.photo? %>
 
 <dl>
   <dt>Phone</dt>
   <dd><%= @restaurant.phone %></dd>
   <dt>Address</dt>
   <dd><%= @restaurant.address %></dd>
+  <dt>Owner</dt>
+  <dd><%= @restaurant.owner.name if @restaurant.owner %></dd>
 </dl>
 
-<%= image_tag @restaurant.photo.url %>
-<%=  @restaurant.pdf %>
+<%- if current_owner == @restaurant.owner && !current_owner.blank? %>
+  <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+  <%= link_to 'Destroy', restaurant_path(@restaurant), :method => :delete, :confirm => 'Are you sure that you want to delete this restaurant?' %> |
+<%- end %>
 
-
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Destroy', restaurant_path(@restaurant), :method => :delete, :confirm => 'Are you sure that you want to delete this restaurant?' %> |
 <%= link_to 'Back', restaurants_path %>
