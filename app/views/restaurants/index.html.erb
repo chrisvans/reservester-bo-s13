@@ -1,0 +1,15 @@
+<h1>Restaurants</h1>
+
+<table>
+	<% @restaurants.each do |restaurant| %>
+		<tr>
+			<!-- td><%= restaurant.name %></td -->
+			<td><%= link_to restaurant.name, restaurant_path(restaurant) %></td>
+		<!--	<td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
+			<td><%= link_to 'Destroy', restaurant_path(restaurant), method: :delete, data: { confirm: 'Are you sure you want to delete this restaurant?' } %></td>
+		-->
+		</tr>
+	<% end %>
+</table>
+<br>
+<%= link_to "Add new restaurant", new_restaurant_path %>

@@ -1,4 +1,22 @@
 Reservester::Application.routes.draw do
+
+  resources :restaurants
+
+  #get "restaurants/index"
+  #root to: "restaurants#index"
+
+  #get "restaurants/show"
+
+  #get "restaurants/new"
+
+  #get "restaurants/create"
+
+  #get "restaurants/edit"
+
+  #get "restaurants/update"
+
+  #get "restaurants/destroy"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
