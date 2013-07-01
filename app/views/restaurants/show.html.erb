@@ -12,6 +12,9 @@
   <dd><%= @restaurant.address %></dd>
   <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
   <dd><%= @restaurant.phone %></dd>
+  <dd><%= image_tag @restaurant.photo_url.to_s %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:photo) %>:</strong></dt>
+  <dd><%= @restaurant.photo %></dd>
 </dl>
 
 <div class="form-actions">
