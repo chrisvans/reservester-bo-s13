@@ -10,9 +10,7 @@
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:image) %></th> 
       <th>Menu</th>           
-      <th><%= model_class.human_attribute_name(:street) %></th>
-      <th><%= model_class.human_attribute_name(:city) %></th>
-      <th><%= model_class.human_attribute_name(:zipcode) %></th>
+      <th>Adress</th>
       <th><%= model_class.human_attribute_name(:phonenumber) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
@@ -27,9 +25,10 @@
         <td><%= image_tag(restaurant.image_url(:thumb).to_s) %></td>
         <td><%= link_to('Menu', restaurant.menue_url.to_s, :target => '_blank') %></td>
         <td><%= restaurant.street %> 
-        	<%= restaurant.streetnumber %></td>
-        <td><%= restaurant.city %></td>
-        <td><%= restaurant.zipcode %></td>
+        	<%= restaurant.streetnumber %>
+          <%= restaurant.zipcode %>
+          <%= restaurant.city %>
+        </td>
         <td><%= restaurant.phonenumber %></td>
         <td><%=l restaurant.created_at %></td>
         <td> 
