@@ -4,34 +4,7 @@
   <title>Reservester</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag :default %>
   <%= csrf_meta_tags %>
-  <div class="navbar navbar-fixed-top">
-  	<div class="navbar-inner">
-  	  <div class="container">
-  	  	<div style="float:left">
-  	  	  <ul class="nav nav-pills" style='display:inline'>
-  	  	  <% if notice %>
-		    <p class="notice"><%= notice %></p>
-		  <% end %>
-		  <% if alert %>
-		    <p class="alert"><%= alert %></p>
-		  <% end %>	
-		  </ul>
-		</div>
-  	  	<div style="float:right">
-  	  	  <ul class="nav nav-pills" style='display:inline'>
-  	  	  <% if not current_owner %>
-		    <%= link_to "Login", new_owner_session_path %>
-		  <% else %>
-            <%= link_to "Logout", destroy_owner_session_path, :method => :delete %>
-          <% end %>
-		  </ul>
-	    </div>
-	  </div>
-    </div>
-  </div>
-
 </head>
 <body>
 
