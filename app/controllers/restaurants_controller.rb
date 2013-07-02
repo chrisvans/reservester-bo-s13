@@ -20,7 +20,7 @@ class RestaurantsController < ApplicationController
       format.json { render :json => @restaurant }
     end
   end
-  
+
   def new
     @owner = Owner.find(params[:owner_id])
     @restaurant = Restaurant.new
@@ -32,7 +32,7 @@ class RestaurantsController < ApplicationController
 
   def create
   	@restaurant = Restaurant.new(params[:restaurant])
-    @restaurant = @owner.restaurants.build(params[:restaurant])
+    @restaurant.owner = current_owner
   	
     respond_to do |format|
       if @restaurant.save
@@ -47,10 +47,6 @@ class RestaurantsController < ApplicationController
       end
     end
   end
-
-
-
-
 
   def update
     @restaurant = Restaurant.find(params[:id])
