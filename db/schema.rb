@@ -11,16 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130624032105) do
+ActiveRecord::Schema.define(:version => 20130701190045) do
 
   create_table "restaurants", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.text     "address"
-    t.string   "phone"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "photo"
+    t.string   "street"
+    t.integer  "streetnumber"
+    t.string   "city"
+    t.integer  "zipcode"
+    t.string   "state"
+    t.string   "country"
+    t.string   "phonenumber"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "image"
+    t.string   "menue"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
 end

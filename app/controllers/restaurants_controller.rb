@@ -1,44 +1,49 @@
 class RestaurantsController < ApplicationController
-  def index
-    @restaurants = Restaurant.all
-  end
 
-  def show
-    @restaurant = Restaurant.find(params[:id])
-  end
+	def index
+		@restaurant = Restaurant.order("created_at DESC")
+	end
 
-  def new
-    @restaurant = Restaurant.new
-  end
 
-  def edit
-    @restaurant = Restaurant.find(params[:id])
-  end
+	def new
+		@restaurant = Restaurant.new(params[:restaurant])		
+	end
 
-  def create
-    @restaurant = Restaurant.new(params[:restaurant])
+	def show
+		@restaurant = Restaurant.find(params[:id])
+	end
 
-    if @restaurant.save
-      redirect_to @restaurant, notice: 'Restaurant was successfully created.'
-    else
-      render action: "new"
-    end
-  end
+	def edit
+		@restaurant = Restaurant.find(params[:id])
+	end
 
-  def update
-    @restaurant = Restaurant.find(params[:id])
 
-    if @restaurant.update_attributes(params[:restaurant])
-      redirect_to @restaurant, notice: 'Restaurant was successfully updated.'
-    else
-      render action: "edit"
-    end
-  end
+	def create
+		@restaurant = Restaurant.create(params[:restaurant])
+			if @restaurant.save
+				flash[:notice] = "We saved your restaurant entry"
+				redirect_to(:action => 'index')
+			else
+				render ('new')
+			end
+	end
 
-  def destroy
-    @restaurant = Restaurant.find(params[:id])
-    @restaurant.destroy
+	def update
+		@restaurant = Restaurant.find(params[:id])
+		if @restaurant.update_attributes(params[:restaurant])
+			flash[:notice] = "We updated your entry"
+			redirect_to(:action => 'index')
+		else
+			flash[:notice] = "Something went terribly wrong and we couldn't update your entry"
+			render ('edit')
+		end
+	end
 
-    redirect_to restaurants_url
-  end
+	def delete
+		@restaurant = Restaurant.find(params[:id]).destroy
+		flash[:notice] = "You entry has been deleted"
+		redirect_to(:action => 'index')
+	end
+
+
 end

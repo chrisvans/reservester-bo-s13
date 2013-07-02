@@ -5,13 +5,8 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :production do
-  gem 'pg'
-end
+gem 'pg'
 
-group :development, :test do
-  gem 'mysql2'
-end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -19,22 +14,29 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
+
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
-
-  gem 'twitter-bootstrap-rails'
 
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'carrierwave'
-
+gem "therubyracer"
+gem "less-rails" 
+gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
+#for image uploading
+gem 'rmagick'
+gem 'carrierwave'
+#for Amzon S3 services
+gem 'fog'
+gem 'figaro'
 
-gem 'mini_magick'
-gem 'fog', '~> 1.3.1'
+#for google static maps
+gem 'geocoder'
 
-gem 'dotenv-rails'
+
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

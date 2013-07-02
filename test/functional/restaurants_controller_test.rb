@@ -1,55 +1,55 @@
 require 'test_helper'
 
 class RestaurantsControllerTest < ActionController::TestCase
-  setup do
-    @restaurant = restaurants(:one)
+  # test "the truth" do
+  #   assert true
+  # end
+
+def setup
+  @restaurant = restaurants(:one)
+end
+
+  test "index exists" do
+  	get :index
+  	assert_response :success
+  	assert_not_nil assigns(:restaurant)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:restaurants)
+  test "new exists" do
+  	get :new
+  	assert_response :success
+  	assert_not_nil assigns(:restaurant)
+  end
+ 
+  test "create exists" do
+  	assert_difference('Restaurant.count') do
+  		post :create, restaurant: {:name => 'a', :description => 'b', :street => 'c', 
+  			:streetnumber => '5', :city => 'd', :zipcode => '9', :state => 'MA', :country => 'USA', 
+  			:phonenumber => '123'}
+  	end
+  	assert_redirected_to :action => 'index'
+  end
+  	
+ test "edit exists" do
+  	get :edit, {'id' => Restaurant.first}
+  	assert_response :success
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
+  # test "update exists" do
+  #	get :update, {'id' => Restaurant.first}
+  #	assert_response :success
+  #end
+
+
+  test "show with VALID id" do
+  	get :show, {'id' => Restaurant.first}
+  	assert_response :success
   end
 
-  test "should create restaurant" do
-    assert_difference('Restaurant.count') do
-      post :create, restaurant: {  }
-    end
-
-    assert_redirected_to restaurant_path(assigns(:restaurant))
+  test "show with INVALID id" do
+  	get :show, {'id' => 'ABC'}
+  	assert_response :error
   end
+  
 
-  test "should show restaurant" do
-    get :show, id: @restaurant
-    assert_response :success
-  end
-
-  test "should raise 404 with an invalid restaurant" do
-    assert_raise(ActiveRecord::RecordNotFound) {
-      get :show, id: 'abcd'
-    }
-  end
-
-  test "should get edit" do
-    get :edit, id: @restaurant
-    assert_response :success
-  end
-
-  test "should update restaurant" do
-    put :update, id: @restaurant, restaurant: {  }
-    assert_redirected_to restaurant_path(assigns(:restaurant))
-  end
-
-  test "should destroy restaurant" do
-    assert_difference('Restaurant.count', -1) do
-      delete :destroy, id: @restaurant
-    end
-
-    assert_redirected_to restaurants_path
-  end
 end
