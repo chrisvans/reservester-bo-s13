@@ -35,6 +35,7 @@ gem 'figaro'
 #for google static maps
 gem 'geocoder'
 
+gem 'devise'
 
 
 
