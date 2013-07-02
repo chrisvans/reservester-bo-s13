@@ -27,11 +27,12 @@ class RestaurantsController < ApplicationController
 
   def update
     @restaurant = Restaurant.find(params[:id])
-
+    @restaurant.latitude = @restaurant.geocode[0]
+    @restaurant.longitude = @restaurant.geocode[1]
     if @restaurant.update_attributes(params[:restaurant])
       redirect_to @restaurant, notice: 'Restaurant was successfully updated.'
     else
-      render action: "edit"
+      render action: "edit", notice: 'Error, check that address is valid and all required fields are entered.'
     end
   end
 
