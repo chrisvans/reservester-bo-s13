@@ -3,7 +3,7 @@
 <h1><%= @restaurant.name %></h1>
 <p><%= @restaurant.description %></p>
 
-<%= image_tag @restaurant.photo.masthead.url if @restaurant.photo? %>
+<%= image_tag @restaurant.photo.url if @restaurant.photo? %>
 
 <dl>
   <dt>Phone</dt>
