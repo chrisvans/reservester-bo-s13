@@ -15,9 +15,11 @@
 	<div class="navbar-inner">
 		<div class="container">
 			<a class="brand" href="#">Reservester</a>
-			<div class="nav=collapse">
+			<div class="nav-collapse">
 				<ul class="nav">
 					<li><%= link_to "Add Restaurant", new_restaurant_path %></li>
+				</ul>
+				<ul class="nav pull-right">
 					<% if owner_signed_in? %>
 					<li>Logged in as <%= current_owner.name %></li>
   					<li><%= link_to 'Edit profile', edit_owner_registration_path %></li>
@@ -25,10 +27,10 @@
 					<% else %>
   					<li><%= link_to "Sign up", new_owner_registration_path %></li>
   					<li><%= link_to "Login", new_owner_session_path %></li>
-					<% end %>
-
-
+  					<% end %>
 				</ul>
+
+
 			</div>
 		</div>
 	</div>
