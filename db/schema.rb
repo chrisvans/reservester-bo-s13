@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130702194716) do
+ActiveRecord::Schema.define(:version => 20130703152651) do
 
   create_table "owners", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20130702194716) do
     t.string   "photo"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "owner_id"
   end
 
 end
