@@ -1,4 +1,9 @@
 class RestaurantsController < ApplicationController
+
+	before_filter :authenticate_owner!, :except => [:index, :show]
+	before_filter :require_restaurant_owner_match!, :only => [:edit, :update, :destroy]
+
+
 	def index
 		@restaurants = Restaurant.all
 
@@ -17,13 +22,15 @@ class RestaurantsController < ApplicationController
 		
 	end
 
+
+
 	def new
 		@restaurant = Restaurant.new
 	end
 
 	def create
 		@restaurant = Restaurant.new(params[:restaurant])
-
+		@restaurant.owner = current_owner
 		respond_to do |format|
 			if @restaurant.save
     		format.html  {redirect_to(@restaurant, :notice => 'Restaurant was successfully created.') }
@@ -62,6 +69,18 @@ class RestaurantsController < ApplicationController
 			format.html { redirect_to restaurants_url }
 			format.json { head :no_content }
 		end
+	end
+
+	private
+
+	def require_restaurant_owner_match!
+    @restaurant = Restaurant.find(params[:id])
+
+    unless @restaurant.owner == current_owner
+      	format.html  { redirect_to(@restaurants, 
+      		:notice => 'You may not edit restaurants that you do not own.') }
+      	format.json  { head :no_content }
+    end
 	end
 
 end
