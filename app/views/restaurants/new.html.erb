@@ -29,7 +29,9 @@
   <div class="control-group">
     <%= f.label :menue, :class => 'control-label' %>
     <div class="controls">
-      <%= f.file_field :menue, :class => 'menue_area' %>
+      <%= image_tag(@restaurant.image_url(:thumb)) if @restaurant.image? %>
+      <%= f.file_field :image, :class => 'image_area' %>
+      <%= f.hidden_field :image, :class => 'image_area' %>
     </div>
   </div>  
   <div class="control-group">
