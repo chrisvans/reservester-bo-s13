@@ -1,20 +1,33 @@
 class RestaurantsController < ApplicationController
 
-	http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show, :new, :create]
+	before_filter :authenticate_owner!,
+    :only => [:new, :create]
+
 
 	def new
 		@restaurant = Restaurant.new
 	end
 
 	def destroy
-		@rest = Restaurant.find(params[:id])
-		@rest.destroy
+		@restaurant = Restaurant.find(params[:id])
+
+		if (@restaurant.owner_id != current_owner.id)
+			redirect_to restaurants_path
+			return 
+		end
+
+		@restaurant.destroy
 
 		redirect_to restaurants_path
 	end
 
 	def edit
-		@rest = Restaurant.find(params[:id])
+		@restaurant = Restaurant.find(params[:id])
+		if (@restaurant.owner_id != current_owner.id)
+			redirect_to restaurants_path
+			return 
+		end
+
 	end
 
 	def show
@@ -24,23 +37,24 @@ class RestaurantsController < ApplicationController
 
 
 	def create
-		@rest = Restaurant.new(params[:restaurant])
+		@restaurant = Restaurant.new(params[:restaurant])
+		@restaurant.owner_id = current_owner.id
 
-		if @rest.save
-			redirect_to @rest
+		if @restaurant.save
+			redirect_to @restaurant
 		else
 			render 'new'
 		end
 	end
 
 	def index
-		@rest = Restaurant.all
+		@restaurant = Restaurant.all
 	end 
 
 	def update
-		@rest = Restaurant.find(params[:id])
-		if @rest.update_attributes(params[:restaurant])
-			redirect_to @rest
+		@restaurant = Restaurant.find(params[:id])
+		if @restaurant.update_attributes(params[:restaurant])
+			redirect_to @restaurant
 		else
 			render 'edit'
 		end

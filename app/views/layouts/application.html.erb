@@ -5,6 +5,11 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <% if owner_signed_in? %>
+  <%= link_to "Sign Out", destroy_owner_session_path, method: :'delete' %>
+  <% else %>
+  <%= link_to "Sign In", new_owner_session_path %>
+  <% end %>
 </head>
 <body>
 

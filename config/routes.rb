@@ -1,4 +1,6 @@
 RestaurantsApp::Application.routes.draw do
+  devise_for :owners
+
   get "welcome/index"
 
   resources :restaurants
