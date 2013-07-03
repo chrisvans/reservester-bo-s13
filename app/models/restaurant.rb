@@ -14,6 +14,7 @@ class Restaurant < ActiveRecord::Base
 	  [streetnumber, street, city, state, zipcode, country].compact.join(', ')
 	end
 
+	belongs_to :owner
 	
 
 

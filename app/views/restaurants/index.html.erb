@@ -35,12 +35,14 @@
           <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= restaurant.latitude.to_s %>,<%= restaurant.longitude.to_s %>&amp;markers=<%= restaurant.latitude.to_s %>,<%= restaurant.longitude.to_s %>&amp;zoom=10&amp;size=300x200&amp;sensor=false"></img>
         </td>
         <td>
+          <% if current_owner == restaurant.owner %>
           <%= link_to('Edit',	{:action => 'edit', :id => restaurant.id}, :class => 'btn btn-mini') %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       {:action => 'delete', :id => restaurant.id},
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
+          <% end %>
         </td>
       </tr>
     <% end %>
