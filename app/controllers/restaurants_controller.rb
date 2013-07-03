@@ -21,7 +21,7 @@ before_filter :authenticate_owner!, except: [:index, :show]
 
 
 	def create
-		@restaurant = current_user.restaurant.create(params[:restaurant])
+		@restaurant = current_owner.restaurants.create(params[:restaurant])
 			if @restaurant.save
 				flash[:notice] = "We saved your restaurant entry"
 				redirect_to(:action => 'index')
@@ -31,7 +31,7 @@ before_filter :authenticate_owner!, except: [:index, :show]
 	end
 
 	def update
-		@restaurant = current_user.restaurant.find(params[:id])
+		@restaurant = current_owner.restaurants.find(params[:id])
 		if @restaurant.update_attributes(params[:restaurant])
 			flash[:notice] = "We updated your entry"
 			redirect_to(:action => 'index')
