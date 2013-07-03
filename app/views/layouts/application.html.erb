@@ -14,7 +14,10 @@
 	      <li class="active"><%= link_to 'Home', restaurants_path %></li>
 	      <% if owner_signed_in? %>
 			  <li>
-			  <%= link_to('Owner Logout', destroy_owner_session_path, :method => :delete) %>        
+			  	<%= link_to "Welcome, #{current_owner.name}", restaurants_path %>
+			  </li>
+			  <li>
+			  <%= link_to('Logout', destroy_owner_session_path, :method => :delete) %>
 			  </li>
 			<% else %>
 			  <li>
