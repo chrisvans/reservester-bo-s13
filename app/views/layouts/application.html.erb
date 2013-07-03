@@ -10,7 +10,7 @@
 	<div class="navbar">
 		<div class="navbar-inner">
     	<%= link_to 'Reservester', restaurants_path, :class => "brand" %>
-    	<ul class="nav">
+    	<ul class="nav pull-right">
 	      <li class="active"><%= link_to 'Home', restaurants_path %></li>
 	      <% if owner_signed_in? %>
 			  <li>
