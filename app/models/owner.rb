@@ -6,7 +6,8 @@ class Owner < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :username, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
   has_many :restaurants
+  validates_presence_of :username
 end

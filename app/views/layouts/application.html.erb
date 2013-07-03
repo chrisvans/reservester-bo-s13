@@ -16,7 +16,7 @@
             <ul class="nav nav-pills" style="display:inline">
                 <% if owner_signed_in? %>
               <li>
-                  <%= link_to 'Logged in as '+current_owner.email, edit_owner_registration_path %>
+                  <%= link_to 'Logged in as '+current_owner.username, edit_owner_registration_path %>
               </li>
               <li>
                   <%= link_to "Logout", destroy_owner_session_path, method: :delete %>
