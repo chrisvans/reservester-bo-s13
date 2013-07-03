@@ -3,6 +3,8 @@
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
+<h3>Another awesome Restaurant by <%= @restaurant.owner.name %></h3>
+
 <dl class="dl-horizontal">
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @restaurant.name %></dd>
