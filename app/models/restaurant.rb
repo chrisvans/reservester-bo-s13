@@ -7,11 +7,11 @@ class Restaurant < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   mount_uploader :menue, MenueUploader
 
-	geocoded_by :zipcode
+	geocoded_by :address
 	after_validation :geocode
 
 	def address
-	  [street, streetnumber, city, state, zipcode, country].compact.join(', ')
+	  [streetnumber, street, city, state, zipcode, country].compact.join(', ')
 	end
 
 	

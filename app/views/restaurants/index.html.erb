@@ -32,7 +32,7 @@
         <td><%= restaurant.phonenumber %></td>
         <td><%=l restaurant.created_at %></td>
         <td> 
-          <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= restaurant.latitude.to_s %>,<%= restaurant.longitude.to_s %>&markers=<%= restaurant.latitude.to_s %>,<%= restaurant.longitude.to_s %>&zoom=10&size=300x200&sensor=false"></img>
+          <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= restaurant.latitude.to_s %>,<%= restaurant.longitude.to_s %>&amp;markers=<%= restaurant.latitude.to_s %>,<%= restaurant.longitude.to_s %>&amp;zoom=10&amp;size=300x200&amp;sensor=false"></img>
         </td>
         <td>
           <%= link_to('Edit',	{:action => 'edit', :id => restaurant.id}, :class => 'btn btn-mini') %>
