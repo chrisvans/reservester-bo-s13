@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130702202643) do
+ActiveRecord::Schema.define(:version => 20130703225220) do
 
   create_table "owners", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -48,6 +48,9 @@ ActiveRecord::Schema.define(:version => 20130702202643) do
     t.string   "menue"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "owner_id"
   end
+
+  add_index "restaurants", ["owner_id"], :name => "index_restaurants_on_owner_id"
 
 end
