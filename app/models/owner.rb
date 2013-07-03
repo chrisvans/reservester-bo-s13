@@ -9,5 +9,5 @@ class Owner < ActiveRecord::Base
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
   has_many :restaurants
-  validates_presence_of :username
+  validates_presence_of :username, :email
 end

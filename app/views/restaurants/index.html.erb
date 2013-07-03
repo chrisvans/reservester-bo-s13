@@ -34,6 +34,7 @@ src="http://maps.google.com/maps/api/js?sensor=false">
         <td><%= image_tag restaurant.photo_url(:masthead) %></td>
         <td><%=l restaurant.created_at %></td>
         <td>
+          <% if owner_signed_in? %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_restaurant_path(restaurant), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -41,6 +42,7 @@ src="http://maps.google.com/maps/api/js?sensor=false">
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
+          <% end %>
         </td>
         <td>
         <a href="<%= restaurant.pdf %>">Download PDF of Menu</a>
@@ -51,7 +53,8 @@ src="http://maps.google.com/maps/api/js?sensor=false">
     <% end %>
   </tbody>
 </table>
-
+<% if owner_signed_in? %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_restaurant_path,
             :class => 'btn btn-primary' %>
+<% end %>

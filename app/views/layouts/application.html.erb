@@ -38,10 +38,16 @@
   </div>
   <div class="container-fluid" style="margin-top:40px">
       <% if notice %>
-        <p class="notice"><%= notice %></p>
+      <div class="alert alert-info" style="margin-top:40px">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= notice %>
+      </div>
       <% end %>
         <% if alert %>
-        <p class="alert"><%= alert %></p>
+      <div class="alert alert-error" style="margin-top:40px">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= alert %>
+      </div>
       <% end %>
 
 

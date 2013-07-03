@@ -13,4 +13,5 @@ class Restaurant < ActiveRecord::Base
   # validates :photo, presence: true
   # validates :photo_cache, presence: true
   belongs_to :owner
+  validates_presence_of :name
 end
