@@ -7,29 +7,47 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div id="container">
-		<div id="nav-collapse collapse">
-            <% if owner_signed_in? %>
-              Logged in as <strong><%= current_owner.email %></strong>.
-              <%= link_to 'Edit profile', edit_owner_registration_path %>
-              <%= link_to "Logout", destroy_owner_session_path, method: :delete %>
-            <% else %>
-              <%= link_to "Sign up", new_owner_registration_path %>
-              <%= link_to "Login", new_owner_session_path %>
-            <% end %>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <a class="brand" href="#">Reservester</a>
+        <div style="float:right">
+          <div class="nav">
+            <ul class="nav nav-pills" style="display:inline">
+                <% if owner_signed_in? %>
+              <li>
+                  <%= link_to 'Logged in as '+current_owner.email+".", edit_owner_registration_path %>
+              </li>
+              <li>
+                  <%= link_to "Logout", destroy_owner_session_path, method: :delete %>
+                <% else %>
+              </li>
+              <li>
+                  <%= link_to "Sign up", new_owner_registration_path %>
+              </li>
+              <li>
+                  <%= link_to "Login", new_owner_session_path %>
+              </li>
+                <% end %>
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
+          	<% if notice %>
+                <p class="notice"><%= notice %></p>
+              <% end %>
+              <% if alert %>
+                <p class="alert"><%= alert %></p>
+              <% end %>
 
-	<% if notice %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert"><%= alert %></p>
-    <% end %>
+        <div class="container">
+          <%= yield %>
+        </div>
 
-<div class="container">
-  <%= yield %>
-</div>
+
+  </div>
 
 </body>
 </html>
