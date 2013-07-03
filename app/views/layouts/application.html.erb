@@ -51,6 +51,14 @@
               <li><%= link_to "Link2", "/path2"  %></li>
               <li><%= link_to "Link3", "/path3"  %></li>
             </ul>
+            <ul class="nav pull-right">
+              <% if owner_signed_in? %>
+                <li><%= link_to "Logout", "#" %> </li>
+              <% else %>
+                <li><%= link_to "Login", "#" %> </li>
+                <li><%= link_to "Register", "#" %> </li>
+              <% end %>
+            </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
