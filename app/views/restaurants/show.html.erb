@@ -16,7 +16,7 @@
   <dt><strong><%= model_class.human_attribute_name(:photo) %>:</strong></dt>
   <dd><%= @restaurant.photo %></dd>
   <dt><strong><%= model_class.human_attribute_name(:menu) %>:</strong></dt>
-  <dd><a href="<%= @restaurant.menu %>">Download Menu</a></dd>
+  <dd><td><%= link_to 'Download', model_class.human_attribute_name(:menu_url).to_s if model_class.human_attribute_name(:menu_url) != nil %></dd>
 </dl>
 
 <div class="form-actions">

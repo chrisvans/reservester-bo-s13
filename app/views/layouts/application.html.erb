@@ -6,12 +6,45 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body>	
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to 'Reservester', root_path, :class => 'brand' %>
+      <ul class="nav">
+        <li><%= link_to 'Restaurants', restaurants_path %></li>
+      </ul>
+      <ul class="nav pull-right">
+        <%- if current_owner %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= "Welcome " + current_owner.name + " - " + current_owner.email %>
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'logout', destroy_owner_session_path, :method => :delete %></li>
+            </ul>
+          </li>
+        <%- else %>
+          <li><%= link_to 'login', new_owner_session_path %></li>
+        <%- end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<div style="padding: 20px;"></div>
 
 <div class="container-fluid">
 	<div class="row">
 		<div class="span1"></div>
-		<div class="span9"><%= yield %></div>
+		<div class="span8"><%= yield %></div>
+		<div class="span3">
+			<h2>About Us</h2>
+			This is a restaurant app where we can create new restaurants with maps , menus, address and a descripton.
+
+			I am glad you checked us out . 
+		</div>
 
 	</div>
 </div>
