@@ -1,4 +1,8 @@
 class RestaurantsController < ApplicationController
+
+  before_filter :authenticate_owner!, :except => [:index, :show]
+  before_filter :require_restaurant_owner_match!, :only => [:edit, :update, :destroy]
+
   def index
     @restaurants = Restaurant.all
   end
@@ -8,11 +12,13 @@ class RestaurantsController < ApplicationController
   end
 
   def new
+    @owner = Owner.find(params[:owner_id])
     @restaurant = Restaurant.new
   end
 
   def create
     # render text: params[:restaurant].inspect
+    @owner = Owner.find(params[:owner_id])
     @restaurant = Restaurant.new(params[:restaurant])
 
     if @restaurant.save
@@ -21,11 +27,6 @@ class RestaurantsController < ApplicationController
       render 'new'
     end
   end
-  
-  #private
-  #  def restaurant_params
-  #    params.require(:restaurant).permit(:name, :description, :address, :phone)
-  #  end
   
   def edit
     @restaurant = Restaurant.find(params[:id])
@@ -48,5 +49,13 @@ class RestaurantsController < ApplicationController
     redirect_to restaurants_path
   end
 
-  
+  private
+
+  def require_restaurant_owner_match!
+    @restaurant = Restaurant.find([:id])
+
+    unless @restaurant.owner == current_owner
+      render "unauthorized", :status => :unauthorized
+    end
+  end  
 end
