@@ -33,6 +33,7 @@ gem 'rmagick'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'fog'
+gem 'devise'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

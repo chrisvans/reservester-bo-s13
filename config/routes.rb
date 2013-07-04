@@ -1,9 +1,11 @@
 Reservester::Application.routes.draw do
 
+  devise_for :owners
+
   resources :restaurants
 
   #get "restaurants/index"
-  #root to: "restaurants#index"
+  root to: "restaurants#index"
 
   #get "restaurants/show"
 
