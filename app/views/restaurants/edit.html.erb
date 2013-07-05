@@ -1,86 +1,21 @@
 <div class="page-header">
   <h1>Edit your Restaurant</h1>
 </div>
-<%= form_for(:restaurant, :url => {:action => 'update', :id => @restaurant.id}, :method => 'put', :html => { :class => 'form-horizontal', :multipart => true}) do |f| %>
-  <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :description, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :description, :class => 'text_area' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :image, :class => 'control-label' %>
-    <div class="controls">
-      <%= image_tag(@restaurant.image_url(:thumb)) if @restaurant.image? %>
-      <%= f.file_field :image, :class => 'image_area' %>
-      <%= f.hidden_field :image, :class => 'image_area' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label "URL Image Upload", :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :remote_image_url, :class => 'image_area' %>
-    </div>
-  </div>  
-  <div class="control-group">
-    <%= f.label :menue, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.file_field :menue, :class => 'image_area' %>
-      <%= f.hidden_field :menue, :class => 'image_area' %>
-    </div>
-  </div>    
-  <div class="control-group">
-    <%= f.label :street, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :street, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :streetnumber, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :streetnumber, :class => 'number_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :city, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :city, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :zipcode, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :zipcode, :class => 'number_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :state, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :state, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :country, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :country, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :phonenumber, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :phonenumber, :class => 'number_field' %>
-    </div>
-  </div>
 
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
 
-  </div>
+<%= simple_form_for @restaurant, :url => {:action => 'update', :id => @restaurant.id}, :method => 'put', :html => {:class => 'form-horizontal', :multipart => true } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description, as: :text, input_html: { rows: "3" } %>
+  <%= f.input :street %>
+  <%= f.input :streetnumber %>
+  <%= f.input :city %>
+  <%= f.input :zipcode %>
+  <%= f.input :country, as: :text, input_html: { rows: "1"} %>
+  <%= f.input :phonenumber %>
+  <p><%= image_tag(@restaurant.image_url(:thumb)) if @restaurant.image? %></p>
+  <%= f.input :image %>  
+  <%= f.input :remote_image_url %>
+  <%= f.input :menue %>
+  <%= f.button :submit, class: "btn btn-primary", value: "Create the Session" %>
 <% end %>
 
