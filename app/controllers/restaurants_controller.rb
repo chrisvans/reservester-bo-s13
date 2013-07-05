@@ -32,7 +32,8 @@ class RestaurantsController < ApplicationController
 
   def create
   	@restaurant = Restaurant.new(params[:restaurant])
-    @restaurant.owner = current_owner
+    @restaurant = @owner.restaurants.build(params[:restaurant])
+    # @restaurant.owner = current_owner
   	
     respond_to do |format|
       if @restaurant.save
