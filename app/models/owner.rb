@@ -10,4 +10,7 @@ class Owner < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :restaurants
+
+  #validation
+  validates_presence_of :name
 end

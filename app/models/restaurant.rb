@@ -1,7 +1,12 @@
 class Restaurant < ActiveRecord::Base
+
+
   attr_accessible :name, :description, :street, :streetnumber, :city, 
   					:zipcode, :state, :country, :phonenumber, :image, :remote_image_url,
   					:menue, :longitude, :latitude
+
+	validates :name, presence: true
+	validates :owner, presence: true
 
 
   mount_uploader :image, ImageUploader
@@ -16,6 +21,7 @@ class Restaurant < ActiveRecord::Base
 
 	belongs_to :owner
 	
+
 
 
 end

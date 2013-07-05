@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>Create a new Restaurant</h1>
 </div>
-<%= form_for(:restaurant, :url => {:action => 'create'}, :method => 'post', :html => { :class => 'form-horizontal', :multipart => true}) do |f| %>
+<%= form_for(:restaurant, :url => {:action => 'create'}, :method => 'post', :html => { :class => 'form-horizontal', :multipart => true}) do |f| %>   
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
