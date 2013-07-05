@@ -38,6 +38,8 @@ gem 'geocoder'
 #user authentication
 gem 'devise'
 
+#better forms
+gem 'simple_form'
 
 
 # To use ActiveModel has_secure_password
