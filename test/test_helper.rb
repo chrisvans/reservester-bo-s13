@@ -20,7 +20,7 @@ end
 private
 
 def create_and_sign_in_owner
-  owner = Owner.create :name => 'John', :email => 'john@restaurant.com', :password => 'foobar123', :password_confirmation => 'foobar123'
+  owner = FactoryGirl.create(:owner)
 
   sign_in owner
 

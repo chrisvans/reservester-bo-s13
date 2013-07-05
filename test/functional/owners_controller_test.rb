@@ -2,13 +2,13 @@ require 'test_helper'
 
 class OwnersControllerTest < ActionController::TestCase
   test "should get dashboard" do
-    @owner = create_and_sign_in_owner
+    owner = create_and_sign_in_owner
 
     get :dashboard
 
     assert_response :success
 
-    assert_equal @owner, assigns(:owner)
+    assert_equal owner, assigns(:owner)
   end
 
   test "should not get dashboard for non-owners" do

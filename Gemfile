@@ -9,6 +9,7 @@ end
 group :development, :test do
   gem 'mysql2'
   gem 'simplecov', :require => false
+  gem 'factory_girl_rails'
 end
 
 # Gems used only for assets and not required
