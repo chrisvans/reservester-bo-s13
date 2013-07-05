@@ -1,0 +1,22 @@
+<h1>Restaurants</h1>
+<table class="table table-striped">
+	<tr>
+		<th>Restaurant Name</th>
+		<th>Description</th>
+		<th>Phone Number</th>
+		<th>Address</th>
+		<th>Image</th>	
+	</tr>
+		<% @restaurants.each do |restaurant| %>
+		<tr>
+			<td><%= link_to restaurant.name, restaurant %></td> 
+			<td><%= link_to restaurant.description, restaurant %></td>
+			<td><%= link_to restaurant.phone, restaurant %></td>
+			<td><%= link_to restaurant.address, restaurant %></td>
+			<td><%= image_tag restaurant.photo.thumbnail.url if restaurant.photo? %></td>
+		</tr>
+		<% end %>
+
+</table>
+
+<%= link_to 'New Restaurant', new_restaurant_path %>
