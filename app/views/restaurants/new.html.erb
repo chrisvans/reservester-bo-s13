@@ -3,6 +3,7 @@
 </div>
 
 <%= simple_form_for @restaurant, :url => {:action => 'create'}, :method => 'post', :html => {:class => 'form-horizontal', :multipart => true } do |f| %>
+  <%= f.error_notification %>
   <%= f.input :name, label: 'Restaurant Name'  %>
   <%= f.input :description, as: :text, input_html: { rows: "3" } %>
   <%= f.input :street %>
