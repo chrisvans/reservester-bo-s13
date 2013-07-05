@@ -3,7 +3,7 @@
 </div>
 
 <%= simple_form_for @restaurant, :url => {:action => 'create'}, :method => 'post', :html => {:class => 'form-horizontal', :multipart => true } do |f| %>
-  <%= f.input :name %>
+  <%= f.input :name, label: 'Restaurant Name'  %>
   <%= f.input :description, as: :text, input_html: { rows: "3" } %>
   <%= f.input :street %>
   <%= f.input :streetnumber %>
@@ -11,8 +11,8 @@
   <%= f.input :zipcode %>
   <%= f.input :country, as: :text, input_html: { rows: "1"} %>
   <%= f.input :phonenumber %>
-  <%= f.input :image %>  
-  <%= f.input :remote_image_url %>
+  <%= f.input :image, label: 'Upload an Image' %>  
+  <%= f.input :remote_image_url, label: 'Or paste Image URL' %>
   <%= f.input :menue %>
   <%= f.button :submit, class: "btn btn-primary", value: "Create the Session" %>
 <% end %>
