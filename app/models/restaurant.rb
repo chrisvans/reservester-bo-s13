@@ -20,6 +20,7 @@ class Restaurant < ActiveRecord::Base
 	end
 
 	belongs_to :owner
+	has_many :reservations
 	
 
 
