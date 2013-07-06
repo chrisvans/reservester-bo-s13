@@ -12,6 +12,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda', :require => false
   gem 'shoulda-matchers'
+  gem 'timecop'
 end
 
 # Gems used only for assets and not required
