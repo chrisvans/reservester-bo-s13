@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def require_restaurent_owner_match!
+  def require_restaurant_owner_match!
     unless current_restaurant.owner == current_owner
-      render "unauthorized", :status => :unauthorized
+      render "shared/unauthorized", :status => :unauthorized
     end
   end
 

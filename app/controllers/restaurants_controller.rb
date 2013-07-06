@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
   before_filter :require_current_restaurant, :only => [:show, :edit, :update, :destroy]
   before_filter :authenticate_owner!, :except => [:index, :show]
-  before_filter :require_restaurent_owner_match!, :only => [:edit, :update, :destroy]
+  before_filter :require_restaurant_owner_match!, :only => [:edit, :update, :destroy]
 
   def index
     @restaurants = Restaurant.all

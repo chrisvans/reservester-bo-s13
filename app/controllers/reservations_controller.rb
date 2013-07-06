@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   before_filter :require_current_reservation, :only => :destroy
   before_filter :require_current_restaurant, :only => :create
-  before_filter :require_restaurent_owner_match!, :except => :create
+  before_filter :require_restaurant_owner_match!, :except => :create
 
   def create
     @reservation = current_restaurant.reservations.build(params[:reservation])
