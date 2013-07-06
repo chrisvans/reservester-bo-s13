@@ -5,11 +5,9 @@ Reservester::Application.routes.draw do
 
   get '/dashboard' => 'owners#dashboard', :as => :dashboard
 
-  resources :owners do
-    resources :restaurants, :only => [:new, :create]
-  end
+  resources :owners
 
-  resources :restaurants, :except => [:new, :create] do
+  resources :restaurants do
     resources :reservations, :only => [:new, :create]
   end
 

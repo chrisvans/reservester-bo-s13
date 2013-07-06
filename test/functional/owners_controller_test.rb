@@ -7,8 +7,6 @@ class OwnersControllerTest < ActionController::TestCase
     get :dashboard
 
     assert_response :success
-
-    assert_equal owner, assigns(:owner)
   end
 
   test "should not get dashboard for non-owners" do

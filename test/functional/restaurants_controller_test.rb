@@ -18,10 +18,21 @@ class RestaurantsControllerTest < ActionController::TestCase
     owner = create_and_sign_in_owner
 
     assert_difference('Restaurant.count') do
-      post :create, :owner_id => owner.id, :restaurant => { :name => 'A Restaurant' }
+      post :create, :restaurant => { :name => 'A Restaurant' }
     end
 
     assert_redirected_to restaurant_path(assigns(:restaurant))
+    assert_equal owner, assigns[:restaurant].owner
+  end
+
+  test "create validation error" do
+    owner = create_and_sign_in_owner
+
+    assert_no_difference('Restaurant.count') do
+      post :create
+    end
+
+    assert_response :unprocessable_entity
   end
 
   test "should show restaurant" do
@@ -65,6 +76,17 @@ class RestaurantsControllerTest < ActionController::TestCase
 
     put :update, id: restaurant.id, restaurant: {  }
     assert_redirected_to restaurant_path(restaurant)
+  end
+
+  test "update restaurant validation error" do
+    owner = create_and_sign_in_owner
+
+    restaurant = FactoryGirl.create(:restaurant, :owner => owner)
+
+    put :update, id: restaurant.id, restaurant: { name: ''  }
+
+    assert restaurant.reload.name.present?
+    assert_response :unprocessable_entity
   end
 
   test "should 401 for update when restaurant owner do not match" do

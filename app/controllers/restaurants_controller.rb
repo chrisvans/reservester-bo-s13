@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-
+  before_filter :require_current_restaurant, :only => [:show, :edit, :update, :destroy]
   before_filter :authenticate_owner!, :except => [:index, :show]
   before_filter :require_restaurent_owner_match!, :only => [:edit, :update, :destroy]
 
@@ -8,12 +8,10 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @reservation = Reservation.new
-    @reservation.restaurant = current_restaurant
+    @reservation = Reservation.new(:restaurant => current_restaurant)
   end
 
   def new
-    @owner = Owner.find(params[:owner_id])
     @restaurant = Restaurant.new
   end
 
@@ -21,13 +19,12 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @owner = Owner.find(params[:owner_id])
-    @restaurant = @owner.restaurants.build(params[:restaurant])
+    @restaurant = current_owner.restaurants.build(params[:restaurant])
 
     if @restaurant.save
       redirect_to @restaurant, notice: 'Restaurant was successfully created.'
     else
-      render action: "new"
+      render 'new', :status => :unprocessable_entity
     end
   end
 
@@ -35,20 +32,20 @@ class RestaurantsController < ApplicationController
     if current_restaurant.update_attributes(params[:restaurant])
       redirect_to current_restaurant, notice: 'Restaurant was successfully updated.'
     else
-      render action: "edit"
+      render 'edit', :status => :unprocessable_entity
     end
   end
 
   def destroy
-    @restaurant = Restaurant.find(params[:id])
-
-    @restaurant.destroy
-
+    current_restaurant.destroy
     redirect_to restaurants_url
   end
 
-
   private
+  def require_current_restaurant
+    render_not_found unless current_restaurant
+  end
+
   helper_method :current_restaurant
   def current_restaurant
     @current_restaurant ||= Restaurant.find(params[:id])
