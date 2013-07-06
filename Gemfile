@@ -13,6 +13,8 @@ group :development, :test do
   gem 'shoulda', :require => false
   gem 'shoulda-matchers'
   gem 'timecop'
+  gem 'spin'
+  gem 'fakeweb'
 end
 
 # Gems used only for assets and not required
@@ -35,3 +37,5 @@ gem 'dotenv-rails'
 
 gem 'devise'
 
+
+gem 'httparty'

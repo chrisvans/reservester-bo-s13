@@ -14,4 +14,8 @@ Reservester::Application.routes.draw do
   resources :reservations, :except => [:new, :create]
 
   root :to => 'restaurants#index'
+
+  namespace :google do
+    resources :photos, :only => :show
+  end
 end

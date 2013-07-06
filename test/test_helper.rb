@@ -9,7 +9,17 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'shoulda'
 
+FakeWeb.allow_net_connect = false
+
 class ActiveSupport::TestCase
+  setup do
+    FakeWeb.clean_registry
+  end
+
+  def fakeweb_photo_grab(ref, status = ["200", "word to your mother"])
+    url = "https://maps.googleapis.com/maps/api/place/photo?photoreference=#{ref}&sensor=false&key=AIzaSyCtyfLCGa-gaRzEdiX_20JrMT8esLGnvrE&maxwidth=400"
+    FakeWeb.register_uri(:get, url, :status => status, :body => 'yoloswag')
+  end
 end
 
 class ActionController::TestCase

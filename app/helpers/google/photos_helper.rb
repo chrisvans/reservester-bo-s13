@@ -1,0 +1,2 @@
+module Google::PhotosHelper
+end

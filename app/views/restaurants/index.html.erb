@@ -2,7 +2,7 @@
   Restaurants
   <%- if current_owner %>
     <div class="pull-right">
-      <%= link_to 'New Restaurant', new_owner_restaurant_path(current_owner), :class => 'btn' %>
+      <%= link_to 'New Restaurant', new_restaurant_path, :class => 'btn' %>
     </div>
   <%- end %>
 </h1>
@@ -17,4 +17,3 @@
     </li>
   <% end %>
 </ul>
-
