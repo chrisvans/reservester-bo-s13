@@ -1,27 +1,13 @@
 require 'test_helper'
 
 class ReservationTest < ActiveSupport::TestCase
-  test 'requires an email' do
-    invalid_emails = ['test', 'test@', 'test@foo']
-    invalid_emails.each do |email|
-      reservation = Reservation.new :email => email, :reserve_on => 1.day.since
+  should belong_to(:restaurant)
 
-      assert !reservation.valid?
-
-      assert_equal ['is not a valid email'], reservation.errors[:email]
-    end
-
-    reservation = Reservation.new :email => 'test@gmail.com', :reserve_on => 1.day.since
-
-    assert reservation.valid?
-  end
-
-  test 'requires a reserve_on' do
-    reservation = Reservation.new :email => 'test@test.com', :reserve_on => nil
-    assert !reservation.valid?
-
-    reservation.reserve_on = 1.day.since
-
-    assert reservation.valid?
-  end
+  should validate_presence_of(:reserve_on)
+  should allow_value(Time.now + 1 .day).for(:reserve_on)
+  should validate_presence_of(:email)
+  should allow_value("testman@gmail.com").for(:email)
+  should_not allow_value("test").for(:email)
+  should_not allow_value("test@").for(:email)
+  should_not allow_value("test@foo").for(:email)
 end
