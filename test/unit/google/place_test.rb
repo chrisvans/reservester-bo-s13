@@ -2,6 +2,9 @@ require 'test_helper'
 
 module Google
   class PlaceTest < ActiveSupport::TestCase
+    setup do
+      Google::Place.unstub(:find)
+    end
 
     test "find success" do
       ref = "ref"

@@ -16,20 +16,15 @@ class RestaurantTest < ActiveSupport::TestCase
   end
 
   test "google_place for a restaurant that google place lookup fails" do
-    Google::Place.expects(:find).with("yolo").once.returns(nil)
     restaurant = FactoryGirl.create(:restaurant, :google_id => "yolo")
     assert_nil restaurant.google_place
   end
 
   test "google_place lookup for a legit google_place" do
-    place = Google::Place.new(
-      :reference => 'yolo',
-      :photos    => [
-        "google/photos/1"
-      ]
-    )
-    Google::Place.expects(:find).with("yolo").once.returns(place)
-    restaurant = FactoryGirl.create(:restaurant, :google_id => "yolo")
+    place = Google::Place.factory
+
+    restaurant = FactoryGirl.create(:restaurant, :google_id => place.reference)
+
     assert_equal place, restaurant.google_place
   end
 end

@@ -10,6 +10,9 @@ require 'rails/test_help'
 require 'shoulda'
 require 'mocha/setup'
 
+require Rails.root.join("test", "mocks", "google", "place.rb")
+
+
 FakeWeb.allow_net_connect = false
 
 class ActiveSupport::TestCase
