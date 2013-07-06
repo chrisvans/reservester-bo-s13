@@ -64,7 +64,7 @@ class RestaurantsControllerTest < ActionController::TestCase
     restaurant = FactoryGirl.create(:restaurant, :owner => owner)
 
     put :update, id: restaurant.id, restaurant: {  }
-    assert_redirected_to restaurant_path(assigns(:restaurant))
+    assert_redirected_to restaurant_path(restaurant)
   end
 
   test "should 401 for update when restaurant owner do not match" do

@@ -8,10 +8,8 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find(params[:id])
-
     @reservation = Reservation.new
-    @reservation.restaurant = @restaurant
+    @reservation.restaurant = current_restaurant
   end
 
   def new
@@ -20,7 +18,6 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-    @restaurant = Restaurant.find(params[:id])
   end
 
   def create
@@ -35,10 +32,8 @@ class RestaurantsController < ApplicationController
   end
 
   def update
-    @restaurant = Restaurant.find(params[:id])
-
-    if @restaurant.update_attributes(params[:restaurant])
-      redirect_to @restaurant, notice: 'Restaurant was successfully updated.'
+    if current_restaurant.update_attributes(params[:restaurant])
+      redirect_to current_restaurant, notice: 'Restaurant was successfully updated.'
     else
       render action: "edit"
     end
@@ -50,5 +45,12 @@ class RestaurantsController < ApplicationController
     @restaurant.destroy
 
     redirect_to restaurants_url
+  end
+
+
+  private
+  helper_method :current_restaurant
+  def current_restaurant
+    @current_restaurant ||= Restaurant.find(params[:id])
   end
 end

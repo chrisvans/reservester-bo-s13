@@ -1,10 +1,10 @@
-<%= form_for([@owner, @restaurant]) do |f| %>
-  <% if @restaurant.errors.any? %>
+<%= form_for([@owner, restaurant]) do |f| %>
+  <% if restaurant.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
 
       <ul>
-      <% @restaurant.errors.full_messages.each do |msg| %>
+      <% restaurant.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -42,7 +42,7 @@
   <div class="control-group">
     <%= f.label :photo %>
     <div class="controls">
-      <%= image_tag(@restaurant.photo_url) if @restaurant.photo? %>
+      <%= image_tag(restaurant.photo_url) if restaurant.photo? %>
       <%= f.file_field :photo %>
       <%= f.hidden_field :photo_cache %>
     </div>

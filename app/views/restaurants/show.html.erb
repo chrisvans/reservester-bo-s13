@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @restaurant.name %></h1>
-<p><%= @restaurant.description %></p>
+<h1><%= current_restaurant.name %></h1>
+<p><%= current_restaurant.description %></p>
 
-<%= image_tag @restaurant.photo.masthead.url if @restaurant.photo? %>
+<%= image_tag current_restaurant.photo.masthead.url if current_restaurant.photo? %>
 
 <dl>
   <dt>Phone</dt>
-  <dd><%= @restaurant.phone %></dd>
+  <dd><%= current_restaurant.phone %></dd>
   <dt>Address</dt>
-  <dd><%= @restaurant.address %></dd>
+  <dd><%= current_restaurant.address %></dd>
   <dt>Owner</dt>
-  <dd><%= @restaurant.owner.name if @restaurant.owner %></dd>
+  <dd><%= current_restaurant.owner.name if current_restaurant.owner %></dd>
 </dl>
 
-<%- if current_owner == @restaurant.owner %>
+<%- if current_owner == current_restaurant.owner %>
   <h2>Reservations</h2>
   <table class="table table-striped">
     <tr>
@@ -23,7 +23,7 @@
       <th>Message</th>
       <th></th>
     </tr>
-    <%- @restaurant.reservations.each do |reservation| %>
+    <%- current_restaurant.reservations.each do |reservation| %>
       <tr>
         <td><%= reservation.email %></td>
         <td><%= reservation.reserve_on %></td>
@@ -34,12 +34,12 @@
   </table>
 <%- else %>
   <h2>New Reservation</h2>
-  <%= render 'reservations/form', :reservation => @reservation %>
+  <%= render 'reservations/form', :reservation => @reservation, :restaurant => current_restaurant %>
 <%- end %>
 
-<%- if current_owner == @restaurant.owner && !current_owner.blank? %>
-  <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-  <%= link_to 'Destroy', restaurant_path(@restaurant), :method => :delete, :confirm => 'Are you sure that you want to delete this restaurant?' %> |
+<%- if current_owner == current_restaurant.owner && !current_owner.blank? %>
+  <%= link_to 'Edit', edit_restaurant_path(current_restaurant) %> |
+  <%= link_to 'Destroy', restaurant_path(current_restaurant), :method => :delete, :confirm => 'Are you sure that you want to delete this restaurant?' %> |
 <%- end %>
 
 <%= link_to 'Back', restaurants_path %>

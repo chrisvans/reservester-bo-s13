@@ -5,5 +5,6 @@ FactoryGirl.define do
     end
     association :restaurant
     message "LFO was the greatest band of all time"
+    reserve_on Time.now
   end
 end
