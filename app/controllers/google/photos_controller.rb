@@ -1,6 +1,10 @@
 class Google::PhotosController < ApplicationController
   before_filter :require_current_google_image, :only => :show
 
+  # TODO: Add caching so we don't refetch, and serve binary data
+  #       through the rails environment on each request.  On
+  #       first request it should store the data, then just 302
+  #       to it.
   def show
     options = { :disposition => :inline }
 

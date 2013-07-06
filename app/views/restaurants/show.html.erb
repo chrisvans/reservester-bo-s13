@@ -2,8 +2,18 @@
 
 <h1><%= current_restaurant.name %></h1>
 <p><%= current_restaurant.description %></p>
-
 <%= image_tag current_restaurant.photo.masthead.url if current_restaurant.photo? %>
+
+<div>
+  <% if current_restaurant.google_place.present? %>
+    <% current_restaurant.google_place.photos.each do |photo| %>
+      <%= link_to photo do %>
+        <%= image_tag photo, :width => "120" %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
 
 <dl>
   <dt>Phone</dt>

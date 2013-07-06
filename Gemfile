@@ -15,6 +15,7 @@ group :development, :test do
   gem 'timecop'
   gem 'spin'
   gem 'fakeweb'
+  gem 'mocha', :require => false
 end
 
 # Gems used only for assets and not required
