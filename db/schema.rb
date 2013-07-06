@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130701191940) do
+ActiveRecord::Schema.define(:version => 20130703165120) do
 
   create_table "owners", :force => true do |t|
     t.string   "name"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20130701191940) do
     t.datetime "updated_at",   :null => false
     t.string   "image"
     t.string   "menu"
+    t.integer  "owner_id"
   end
 
 end

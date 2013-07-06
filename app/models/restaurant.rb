@@ -5,7 +5,10 @@ class Restaurant < ActiveRecord::Base
   validates :description, :presence => true
   validates :name, :presence => true
   validates :phone_number, :presence => true
+  validates :owner, :presence => true
 
   mount_uploader :image, ImageUploader
   mount_uploader :menu, MenuUploader
+
+  belongs_to :owner
 end

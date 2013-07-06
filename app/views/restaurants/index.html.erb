@@ -11,7 +11,7 @@
       <th><%= model_class.human_attribute_name(:phone_number) %></th>
       <th><%= model_class.human_attribute_name(:image) %></th>
       <th><%= model_class.human_attribute_name(:menu) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+<!--       <th><%=t '.actions', :default => t("helpers.actions") %></th> -->
     </tr>
   </thead>
   <tbody>
@@ -23,7 +23,7 @@
         <td><%= restaurant.phone_number %></td>
         <td><%= image_tag restaurant.image.thumbnail.url if restaurant.image? %></td>
         <td><%= link_to "View Menu", restaurant.menu_url if restaurant.menu? %></td>
-        <td>
+<!--         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_restaurant_path(restaurant), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -31,12 +31,14 @@
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
-        </td>
+        </td> -->
       </tr>
     <% end %>
   </tbody>
 </table>
 
+<% if current_owner %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_restaurant_path,
             :class => 'btn btn-primary' %>
+<% end %>
