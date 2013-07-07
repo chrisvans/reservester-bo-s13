@@ -12,10 +12,12 @@ class ReservationsController < ApplicationController
 	end
 
 	
-	def delete
-
+	def destroy
+		@reservation = Reservation.find(params[:id])
+		@reservation.destroy
+		flash[:notice] = "Reservation Deleted!"
+		redirect_to({:controller => 'restaurants', :action => 'show'}, :id => @restaurant.id)
 	end
-
 
 
 

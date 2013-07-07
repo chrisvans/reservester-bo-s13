@@ -46,6 +46,7 @@
                     <%= reservation.message %>                
                     <%= reservation.reserve_on %>
                 </p>
+                <%= link_to('Delete', {:controller => 'reservations', :action => 'destroy', :id => @reservation.id, :method => :delete}, :confirm => "Are you sure you want to delete this reservation?", :class => 'btn btn-danger') %>
                 <% end %>
             </div>
         <% else %>
