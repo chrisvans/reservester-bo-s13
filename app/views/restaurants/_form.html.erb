@@ -1,13 +1,13 @@
-<%= form_for @restaurant, :html => {:multipart => true} do |f| %>
+<%= form_for([@owner, @restaurant]) do |f| %>
 	<% if @restaurant.errors.any? %>
-	<div id="errorExplanation">
-		<h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved;</h2>
-		<ul>
-		<% @restaurant.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-		<% end %>
-		</ul>
-	</div>
+		<div id="errorExplanation">
+			<h2><%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved;</h2>
+			<ul>
+				<% @restaurant.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
 	<% end %>
 	<p>
 		<%= f.label :name %><br>
@@ -48,4 +48,4 @@
 	<p>
 		<%= f.submit %>
 	</p>
-	<% end %>	
+<% end %>	
