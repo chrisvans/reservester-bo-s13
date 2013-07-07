@@ -37,8 +37,8 @@ class RestaurantsController < ApplicationController
   	
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to(@restaurant, 
-                      :notice => 'Post was successfully created.')}
+        format.html { redirect_to(restaurants_path, 
+                      :notice => 'Restaurant was successfully created.')}
         format.json { render :json => @restaurant,
                       :status => :created, :location => @restaurant }
       else
@@ -78,10 +78,12 @@ class RestaurantsController < ApplicationController
   private
 
   def require_restaurant_owner_match!
-    if current_owner.has_ownership?(Restaurant.find(params:[:id]))
+    @restaurant = Restaurant.find(params[:id])
+
+    if @restaurant.owner == current_owner
       return
     else
-      flash[:error] = "You don't have ownership."
+      flash[:error] = "Sorry, you don't have permission."
       redirect_to :back
     end
   end
