@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
 
 
-before_filter :authenticate_owner!, except: [:index, :show, :create]
+before_filter :authenticate_owner!, except: [:index, :show]
 
 	def index
 		@restaurant = Restaurant.order("created_at DESC")
@@ -21,7 +21,7 @@ before_filter :authenticate_owner!, except: [:index, :show, :create]
 	end
 
 
-	def create
+	def create2
 		@restaurant = current_owner.restaurants.create(params[:restaurant])
 			if @restaurant.save
 				flash[:notice] = "We saved your restaurant entry"
