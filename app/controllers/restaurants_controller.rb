@@ -22,8 +22,8 @@ class RestaurantsController < ApplicationController
   end
 
   def new
-    @owner = Owner.find(params[:owner_id])
-    @restaurant = Restaurant.new
+    #@owner = Owner.find(params[:owner_id])
+    @restaurant = current_owner.restaurants.new
   end
 
   def edit
@@ -31,8 +31,8 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-  	@restaurant = Restaurant.new(params[:restaurant])
-    @restaurant = @owner.restaurants.build(params[:restaurant])
+  	#@restaurant = Restaurant.new(params[:restaurant])
+    @restaurant = current_owner.restaurants.build(params[:restaurant])
     # @restaurant.owner = current_owner
   	
     respond_to do |format|
@@ -78,10 +78,11 @@ class RestaurantsController < ApplicationController
   private
 
   def require_restaurant_owner_match!
-    @restaurant = Restaurant.find(params[:id])
-
-    unless @restaurant.owner == current_owner
-      render "unauthorized", :status => :unauthorized
+    if current_owner.has_ownership?(Restaurant.find(params:[:id]))
+      return
+    else
+      flash[:error] = "You don't have ownership."
+      redirect_to :back
     end
   end
   
