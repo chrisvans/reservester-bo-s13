@@ -11,5 +11,5 @@ class Owner < ActiveRecord::Base
 
   has_many :restaurants, dependent: :destroy
 
-  validates  :email, :presence => true
+  validates  :name, :email, :presence => true
 end
