@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
 
-before_filter :authenticate_owner!, except: [:index, :show]
+
+before_filter :authenticate_owner!, except: [:index, :show, :create]
 
 	def index
 		@restaurant = Restaurant.order("created_at DESC")

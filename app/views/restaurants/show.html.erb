@@ -1,43 +1,58 @@
-<%- model_class = Restaurant -%>
+
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1>Restaurant</h1>
 </div>
 
-<h3>Another awesome Restaurant by <%= @restaurant.owner.name %></h3>
+<div class="container">
+    <div class="row">
+        <h3>Another awesome Restaurant by <%= @restaurant.owner.name %></h3>
+        <div class="span6">
+            <dl class="dl-horizontal">
+              <dt><strong>Name:</strong></dt>
+              <dd><%= @restaurant.name %></dd>
+              <dt><strong>Description:</strong></dt>
+              <dd><%= @restaurant.description %></dd>
+              <dt><strong>Picture:</strong></dt>
+              <dd><%= image_tag(@restaurant.image_url(:masthead).to_s) %></dd>  
+              <dt><strong>Address:</strong></dt>
+              <dd><%= @restaurant.streetnumber %> <%= @restaurant.street %>, <%= @restaurant.zipcode %> <%= @restaurant.city %>, <%= @restaurant.state %> </dd>
+              <dt><strong>Phonenumber:</strong></dt>
+              <dd><%= @restaurant.phonenumber %></dd>
+            </dl>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @restaurant.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @restaurant.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:image) %>:</strong></dt>
-  <dd><%= image_tag(@restaurant.image_url(:masthead).to_s) %></dd>  
-  <dt><strong><%= model_class.human_attribute_name(:street) %>:</strong></dt>
-  <dd><%= @restaurant.street %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:streetnumber) %>:</strong></dt>
-  <dd><%= @restaurant.streetnumber %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:city) %>:</strong></dt>
-  <dd><%= @restaurant.city %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:zipcode) %>:</strong></dt>
-  <dd><%= @restaurant.zipcode %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:state) %>:</strong></dt>
-  <dd><%= @restaurant.state %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:country) %>:</strong></dt>
-  <dd><%= @restaurant.country %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:phonenumber) %>:</strong></dt>
-  <dd><%= @restaurant.phonenumber %></dd>
-</dl>
+            <div class="form-actions">
+              <%= link_to t('.back', :default => t("helpers.links.back")),
+                          {:action => 'index'}, :class => 'btn'  %>
+              <% if current_owner == @restaurant.owner %>
+                <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                          {:action => 'edit', :id => @restaurant.id}, :class => 'btn' %>
+                <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                          {:action => 'delete', :id => @restaurant.id},
+                          :method => 'delete',
+                          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                          :class => 'btn btn-danger' %>
+              <% end %>
+            </div>
+        </div>
+        <div class="span6">
+        <% if current_owner == @restaurant.owner %>
+            <div class="well">
+                <h3>Your Upcoming Reservations for <%= @restaurant.name %></h3>
+                <% @restaurant.reservations.each do |reservation| %> 
+                    <p>
+                    <%= reservation.guestname %>
+                    <%= reservation.guestemail %>
+                    <%= reservation.guestnumber %>
+                    <%= reservation.message %>                
+                    <%= reservation.reserve_on %>
+                </p>
+            </div>
+            <% end %>
+        <% else %>
+            <h3>Make a Reservation</h3>
+               <%= render :partial => '/reservations/reservation_form', :reservation => @reservation %>
+        <% end %>
 
-<div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              {:action => 'index'}, :class => 'btn'  %>
-  <% if current_owner == @restaurant.owner %>
-    <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              {:action => 'edit', :id => @restaurant.id}, :class => 'btn' %>
-    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              {:action => 'delete', :id => @restaurant.id},
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
-  <% end %>
+        </div>
+    </div>
 </div>

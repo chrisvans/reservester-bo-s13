@@ -1,0 +1,10 @@
+
+<%= simple_form_for Reservation.new, :url => {:action => 'create'}, :method => 'post', :html => {:class => 'form-horizontal', :multipart => true } do |f| %>
+      <%= f.error_notification %>
+      <%= f.input :guestname, label: 'Your Name'  %>
+      <%= f.input :guestemail, label: 'Your Email' %>
+      <%= f.input :guestnumber, label: 'How many people?' %>
+      <%= f.input :reserve_on, label: 'When do you want to come?' %>                  
+      <%= f.input :message, label: 'Anything else we need to know?' %>
+      <%= f.button :submit, class: "btn btn-primary", value: "Create Reservation" %>
+<% end %> 
