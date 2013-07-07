@@ -46,11 +46,11 @@
                     <%= reservation.message %>                
                     <%= reservation.reserve_on %>
                 </p>
+                <% end %>
             </div>
-            <% end %>
         <% else %>
             <h3>Make a Reservation</h3>
-               <%= render :partial => '/reservations/reservation_form', :reservation => @reservation %>
+               <%= render :partial => '/reservations/reservation_form' %>
         <% end %>
 
         </div>

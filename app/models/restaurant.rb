@@ -5,6 +5,9 @@ class Restaurant < ActiveRecord::Base
   					:zipcode, :state, :country, :phonenumber, :image, :remote_image_url,
   					:menue, :longitude, :latitude
 
+	has_many :reservations
+	belongs_to :owner
+
 	validates :name, presence: true
 	validates :owner, presence: true
 
@@ -19,10 +22,8 @@ class Restaurant < ActiveRecord::Base
 	  [streetnumber, street, city, state, zipcode, country].compact.join(', ')
 	end
 
-	belongs_to :owner
-	has_many :reservations
-	accepts_nested_attributes_for :reservations
-	
+
+
 
 
 

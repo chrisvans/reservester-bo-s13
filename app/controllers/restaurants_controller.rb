@@ -14,6 +14,9 @@ before_filter :authenticate_owner!, except: [:index, :show]
 
 	def show
 		@restaurant = Restaurant.find(params[:id])
+
+		@reservation = Reservation.new
+    	@reservation.restaurant = @restaurant
 	end
 
 	def edit
@@ -21,7 +24,7 @@ before_filter :authenticate_owner!, except: [:index, :show]
 	end
 
 
-	def create2
+	def create
 		@restaurant = current_owner.restaurants.create(params[:restaurant])
 			if @restaurant.save
 				flash[:notice] = "We saved your restaurant entry"

@@ -1,4 +1,5 @@
 Reserver::Application.routes.draw do
+
   devise_for :owners
 
   # The priority is based upon order of creation:
@@ -6,6 +7,7 @@ Reserver::Application.routes.draw do
 
   resource :restaurants
   resource :reservations
+
 
 
   root :to => 'restaurants#index'
