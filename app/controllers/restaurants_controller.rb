@@ -9,6 +9,8 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    @reservation = Reservation.new
+    @reservation.restaurant = @restaurant
   end
 
   def new
@@ -49,13 +51,4 @@ class RestaurantsController < ApplicationController
     redirect_to restaurants_path
   end
 
-  private
-
-  def require_restaurant_owner_match!
-    @restaurant = Restaurant.find(params[:id])
-
-    unless @restaurant.owner == current_owner
-      render "unauthorized", :status => :unauthorized
-    end
-  end  
 end

@@ -1,0 +1,32 @@
+<%= form_for([@restaurant, @reservation]) do |f| %>
+	<% if @reservation.errors.any? %>
+		
+			<h2><%= pluralize(@reservation.errors.count, "error") %> Cannot save this reservation: </h2>
+			<ul>
+				<% @reservation.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		
+	<% end %>
+
+	<p>
+		<%= f.label :email %><br>
+		<%= f.email_field :email %>
+	</p>
+
+	<p>
+		<%= f.label :requested_date %>
+		<%= f.datetime_select :requested_date %>
+	</p>
+
+	<p>
+		<%= f.label :message %>
+		<%= f.text_field :message %>
+	</p>
+
+	<p>
+		<%= f.submit %>
+	</p>
+
+<% end %>

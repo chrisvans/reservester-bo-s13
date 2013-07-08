@@ -1,5 +1,5 @@
 class Restaurant < ActiveRecord::Base
-  attr_accessible :address, :description, :name, :phone, :image, :remote_image_url, :menu, :owner
+  attr_accessible :address, :description, :name, :phone, :image, :remote_image_url, :menu, :owner, :reservations
 
   belongs_to :owner
   has_many :reservations
