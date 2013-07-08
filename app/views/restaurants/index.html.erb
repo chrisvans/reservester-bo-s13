@@ -1,0 +1,25 @@
+<h1>Listing Restaurants</h1>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Address</th>
+		<th>Phone Number</th>
+		<th>Image</th>
+		<th>Menu</th>
+	</tr>
+
+	<% @restaurants.each do |restaurant| %>
+	<tr>
+		<td><%= link_to restaurant.name, restaurant %></td>
+		<td><%= restaurant.description %></td>
+		<td><%= restaurant.address %></td>
+		<td><%= restaurant.phone_number %></td>
+		<td><%= image_tag restaurant.image_url(:thumbnail).to_s if restaurant.image? %></td>
+		<td><%= link_to "View Menu", restaurant.menu_url if restaurant.menu? %></td>
+	</tr>
+	<% end %>
+</table>
+<br />
+<%= link_to "New Restaurant", new_restaurant_path %>
