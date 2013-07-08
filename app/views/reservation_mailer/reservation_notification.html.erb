@@ -2,11 +2,12 @@
 
 <p>Restaurant Name: <%= @reservation.restaurant.name %></p>
 <p>Restaurant ID: <%= @reservation.restaurant_id %></p>
+<p>Restaurant ID: <%= @reservation.restaurant %></p>
 
 <p>Customer email: <%= @reservation.email %></p>
 <p>Customer Message: <%= @reservation.message %></p>
 
 <p>Requested date and time: <%= @reservation.requested_date %></p>
 
-<p><%= link_to "Edit Your Reservation", restaurant_path(@reservation.restaurant_id) %></p>
+<p><%= link_to "Edit Your Reservation", restaurant_path(@reservation.restaurant) %></p>
 
