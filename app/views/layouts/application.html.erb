@@ -5,31 +5,31 @@
 	<%= stylesheet_link_tag    "application", :media => "all" %>
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
-	<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<ul class="nav"> 
-					<% if owner_signed_in? %>
-					<li>
-						<%= link_to('Logout', destroy_owner_session_path, :method => :delete) %>        
-					</li>
-					<% else %>
-					<li>
-						<%= link_to('Login', new_owner_session_path)  %>  
-					</li>
-					<% end %>
-				</ul>
-			</div>
-		</div>
-	</div>
+	<%= nav_bar :fixed => :top, :brand => "Reservester", :brand_link => restaurants_path do %>
+	<% if owner_signed_in? %>
+
+	<% menu_group :pull => :right do %>
+	<li class="navbar-text">Hello, <%= current_owner.name %>   </li>
+	<%= menu_item "Edit profile", edit_owner_registration_path %>
+	<%= menu_item "Log Out", destroy_owner_session_path, method: :delete %>
+	<% end %>
+	<% else %>
+	<% menu_group :pull => :right do %>
+	<%= menu_item "Sign Up", new_owner_registration_path %>
+	<%= menu_item "Login", new_owner_session_path %>
+	<% end %>
+	<% end %>
+	<% end %>
 </head>
 <body>
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-
 	<div class="container">
+		<% flash.each do |name, msg| %>
+		<div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+			<a class="close" data-dismiss="alert">x</a>
+			<%= msg %>
+		</div>
+		<% end %>
 		<%= yield %>
 	</div>
-
 </body>
 </html>

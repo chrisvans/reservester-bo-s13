@@ -1,5 +1,5 @@
 <h2>Resend unlock instructions</h2>
-dfsafd
+
 <%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= devise_error_messages! %>
 
@@ -9,4 +9,4 @@ dfsafd
   <div><%= f.submit "Resend unlock instructions" %></div>
 <% end %>
 
-<%= render "owners/shared/links" %>
+<%= render "devise/shared/links" %>

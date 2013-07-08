@@ -12,7 +12,9 @@ class RestaurantsController < ApplicationController
  end
 
  def edit
-  @restaurant = current_owner.restaurants.find(params[:id])  
+  
+    @restaurant = current_owner.restaurants.find(params[:id])  
+
  end
 
  def create
