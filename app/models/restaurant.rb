@@ -1,6 +1,7 @@
 class Restaurant < ActiveRecord::Base
 
 	belongs_to :owner
+	has_many :reservations
 
   attr_accessible :address, :description, :name, :phone_number, :image, :remote_image_url
   validates :name, presence: true, length: { minimum: 2}
