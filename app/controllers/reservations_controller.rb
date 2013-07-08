@@ -6,9 +6,12 @@ class ReservationsController < ApplicationController
 	end
 
 	def create
-        @reservation = Restaurant.find(params[:restaurant_id]).reservations.where(:r_time => params[:reservation_r_time]).first
-        @reservation.taken = true
+        @reservation = Restaurant.find(params[:restaurant_id]).reservations.new
+        @reservation_check = Restaurant.find(params[:restaurant_id]).where(:r_time => params[:r_time])
+        @reservation.r_time = params[:reservation][:r_time]
+        #@reservation.taken = true
         @reservation.anon_name = params[:reservation][:anon_name]
+        @reservation.reserved_on = params[:reservation][:reserved_on]
         if @reservation.save
           redirect_to root_url, notice: 'Reservation was successfully created.'
         else

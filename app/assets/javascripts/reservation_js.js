@@ -7,7 +7,7 @@ $(document).ready(function(){
 	    var fullData = {
 	    	dateData: dateText	
 	    	};
-		var template = "{{dateData}}";
+		var template = $('#reservedOn').html();
 		var content = Mustache.render(template, fullData);
         $('#reservedOnBox').html(content);
 	};
