@@ -33,3 +33,19 @@
               :class => 'btn btn-danger' %>
   <% end %>
 </div>
+<div>
+  <% if @restaurant.owner == current_owner && !@restaurant.reservations.blank? %>
+  <h2>Reservations</h2>
+  <table style="width:600px;text-align:center;">
+    <th>Email</th><th>Date &amp; Time</th><th>Message</th>
+  <% @restaurant.reservations.each do |res| %>
+    <tr><td><%= res.email %></td><td><%= res.reserve_on %></td><td><%= res.message %></td><td><%= link_to "Mark as Confirmed", reservation_path(res), :method => 'delete' %></td></tr>
+  <% end %>
+  </table>
+  <% end %>
+</div>
+
+<div>
+<h2>New Reservation</h2>
+  <%= render 'reservations/form', :restaurant => @restaurant, :reservation => @reservation %>
+</div>
