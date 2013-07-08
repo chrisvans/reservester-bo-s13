@@ -10,13 +10,25 @@
 	      <%= f.label reservation.r_time, :class => 'control-label' %>
 
 	      <div class="controls">
+	      	<% if @reservations.first == reservation %>
+	      	<%= radio_button_tag :reservation_r_time, reservation.r_time, true %>
+	      	<% else %>
 	        <%= radio_button_tag :reservation_r_time, reservation.r_time %>
+	        <% end %>
 	      </div>
 
 	    </div>
 	    <%= hidden_field_tag :restaurant_id, @restaurant.id %>
 	<% end %>
   <% end %>
+  <div class="control-group">
+    <%= f.label 'Your name:', :class => 'control-label' %>
+
+    <div class="controls">
+      <input class="text_field" id="reservation_anon_name" name="reservation[anon_name]" size="30" type="text" required="true">
+    </div>
+
+  </div>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
