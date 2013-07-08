@@ -9,6 +9,7 @@ src="http://maps.google.com/maps/api/js?sensor=false">
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>Create Reservation</th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:address) %></th>
@@ -27,6 +28,9 @@ src="http://maps.google.com/maps/api/js?sensor=false">
   <tbody>
     <% @restaurants.each do |restaurant| %>
       <tr>
+        <td><%= link_to t('.new', :default => t("helpers.links.new")),
+            new_reservation_path(:restaurant_id => restaurant.id),
+            :class => 'btn btn-primary' %></td>
         <td><%= restaurant.name %></td>
         <td><%= restaurant.description %></td>
         <td><%= restaurant.address %></td>
@@ -49,7 +53,7 @@ src="http://maps.google.com/maps/api/js?sensor=false">
         </td>
 
         <td><img src='https://maps.googleapis.com/maps/api/staticmap?center=<%= restaurant.latitude.to_s %>,<%= restaurant.longitude.to_s %>&zoom=19&size=400x400&markers=color:green%7Clabel:R%7C<%= restaurant.latitude.to_s %>,<%= restaurant.longitude.to_s %>&sensor=false' alt="Location" ></td>
-      </tr>
+    </tr>
     <% end %>
   </tbody>
 </table>
