@@ -18,13 +18,28 @@
 			<div class="nav=collapse">
 				<ul class="nav">
 					<li><%= link_to "Add Restaurant", new_restaurant_path %></li>
+					<% if owner_signed_in? %>
+					<li>Logged in as <%= current_owner.name %></li>
+  					<li><%= link_to 'Edit profile', edit_owner_registration_path %></li>
+  					<li><%= link_to "Logout", destroy_owner_session_path, method: :delete %></li>
+					<% else %>
+  					<li><%= link_to "Sign up", new_owner_registration_path %></li>
+  					<li><%= link_to "Login", new_owner_session_path %></li>
+					<% end %>
+
+
 				</ul>
 			</div>
 		</div>
 	</div>
 </div>
 <div class="container">
-	
+	<% if notice %>
+	<p class="notice"><%= notice %></p>
+	<% end %>
+	<% if alert %>
+	<p class="alert"><%= alert %></p>
+	<% end %>
 	<div class="row">
 		
 		<div class="span9"><%= yield %></div>

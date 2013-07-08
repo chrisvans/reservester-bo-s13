@@ -1,3 +1,4 @@
+#I'll need to add a line for Devise.
 Reservester::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
