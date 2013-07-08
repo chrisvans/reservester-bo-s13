@@ -16,3 +16,9 @@
 //= require_tree .
 //= require parsley
 //= require bootstrap-datetimepicker
+
+
+$("#bookingTime").datepicker({
+                           format: 'mm-dd-yyyy',
+                           autoclose: true
+                           })
