@@ -1,37 +1,7 @@
 class RestaurantsController < ApplicationController
-  def new
-    @restaurant = Restaurant.new
-  end
 
-  def edit
-    @restaurant = Restaurant.find(params[:id])
-  end
-
-  def create
-  	@restaurant = Restaurant.new(params[:restaurant])
-
-  	respond_to do |format|
-      if @restaurant.save
-        format.html { redirect_to(@restaurant, 
-                      :notice => 'Post was successfully created.')}
-        format.json { render :json => @restaurant,
-                      :status => :created, :location => @restaurant }
-      else
-        format.html { render :action => 'new' }
-        format.json { render :json => @restaurant.errors,
-                      :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  def show
-  	@restaurant = Restaurant.find(params[:id])
-
-    respond_to do |format|
-      format.html #show.html.erb
-      format.json { render :json => @restaurant }
-    end
-  end
+  before_filter :authenticate_owner!, except: [:index, :show]
+  before_filter :require_restaurant_owner_match!, :only => [:edit, :update, :destroy]
 
   def index
     @restaurants = Restaurant.all
@@ -39,6 +9,43 @@ class RestaurantsController < ApplicationController
     respond_to do |format|
       format.html #index.html.erb
       format.json { render :json => @restaurants }
+    end
+  end
+
+  def show
+    @restaurant = Restaurant.find(params[:id])
+
+    respond_to do |format|
+      format.html #show.html.erb
+      format.json { render :json => @restaurant }
+    end
+  end
+
+  def new
+    #@owner = Owner.find(params[:owner_id])
+    @restaurant = current_owner.restaurants.new
+  end
+
+  def edit
+    @restaurant = Restaurant.find(params[:id])
+  end
+
+  def create
+  	#@restaurant = Restaurant.new(params[:restaurant])
+    @restaurant = current_owner.restaurants.build(params[:restaurant])
+    # @restaurant.owner = current_owner
+  	
+    respond_to do |format|
+      if @restaurant.save
+        format.html { redirect_to(restaurants_path, 
+                      :notice => 'Restaurant was successfully created.')}
+        format.json { render :json => @restaurant,
+                      :status => :created, :location => @restaurant }
+      else
+        format.html { render :action => 'new' }
+        format.json { render :json => @restaurant.errors,
+                      :status => :unprocessable_entity }
+      end
     end
   end
 
@@ -65,6 +72,19 @@ class RestaurantsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to restaurants_url }
       format.json { head :no_content }
+    end
+  end
+
+  private
+
+  def require_restaurant_owner_match!
+    @restaurant = Restaurant.find(params[:id])
+
+    if @restaurant.owner == current_owner
+      return
+    else
+      flash[:error] = "Sorry, you don't have permission."
+      redirect_to :back
     end
   end
   

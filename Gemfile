@@ -27,6 +27,9 @@ gem 'jquery-rails'
 gem 'rmagick'
 gem 'carrierwave'
 gem 'fog', '~> 1.3.1'
+gem 'devise'
+gem "validates_phone_number", "~> 2.0.1"
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -8,27 +8,32 @@
   <meta name="viewport" content="width=device-width, inital-scale=1.0">
 </head>
 <body>
-	<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</a>
-				<a href="#" class="brand">Reservester</a>
-				
-			</div>
-		</div>
-	</div>
+
+	<%= nav_bar :fixed => :top, :brand => "Reservester", :brand_link => restaurants_path do %>
+	    <% if owner_signed_in? %>
+			
+	    	<% menu_group :pull => :right do %>
+	    		<li class="navbar-text">Hello, <%= current_owner.name %>   </li>
+				<%= menu_item "Edit profile", edit_owner_registration_path %>
+	        	<%= menu_item "Log Out", destroy_owner_session_path, method: :delete %>
+	    	<% end %>
+	    <% else %>
+	        <% menu_group :pull => :right do %>
+	            <%= menu_item "Sign Up", new_owner_registration_path %>
+	            <%= menu_item "Login", new_owner_session_path %>
+	        <% end %>
+	    <% end %>
+	<% end %>
+
 	<div class="container">
 		<% flash.each do |name, msg| %>
 			<div class="alert alert-<%= name == :notice ? "success" : "error" %>">
 				<a class="close" data-dismiss="alert">x</a>
 				<%= msg %>
 			</div>
-		<% end %>
+<% end %>
 	 	<%= yield %>
-	</div>
+			</div>
+
 </body>
 </html>
