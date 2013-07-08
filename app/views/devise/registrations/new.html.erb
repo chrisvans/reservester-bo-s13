@@ -1,20 +1,22 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= form_for(resource,  :as => resource_name, 
+                        :url => registration_path(resource_name),
+                        :html => {:"data-validate" => 'parsley', :"data-show-errors" => "true"}) do |f| %>
   <!--<%= devise_error_messages! %>-->
   <%= render "/shared/error_messages", :target => @owner %>
 
   <div><%= f.label :name %><%= mark_required(@owner, :name) %><br />
-  <%= f.text_field :name, :autofocus => true %></div>
+  <%= f.text_field :name, :autofocus => true, :"data-required" => "true", :class => "required", :"data-trigger"=>"change" %></div>
 
   <div><%= f.label :email %><%= mark_required(@owner, :email) %><br />
-  <%= f.email_field :email %></div>
+  <%= f.email_field :email, :"data-required" => "true", :class => "required", :"data-type"=>"email", :"data-trigger"=>"change"  %></div>
 
   <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <%= f.password_field :password, :"data-required" => "true", :class => "required", :"data-trigger"=>"change"  %></div>
 
   <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <%= f.password_field :password_confirmation, :"data-required" => "true", :class => "required", :"data-equalto"=> :password, :"data-trigger"=>"change"  %></div>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>
