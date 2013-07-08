@@ -4,8 +4,8 @@ class Restaurant < ActiveRecord::Base
   validates :address, :presence => true
   validates :description, :presence	=> true
   validates :name, :owner, :presence => true
-  validates :phone, :presence => true,
-                    :length => { :minimum => 5 }
+  validates :phone, :presence => true, :length => { :minimum => 5 }
+  #validates :phone, :phone_number => {:format => /\d{3}-\d{3}-\d{4}/}
   mount_uploader :image, ImageUploader 
 
   belongs_to :owner
