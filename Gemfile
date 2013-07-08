@@ -42,6 +42,8 @@ gem 'fog' # for AWS support
 
 gem 'figaro' # for easier ENV variables
 
+gem 'devise' # for logins
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

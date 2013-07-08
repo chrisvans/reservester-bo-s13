@@ -13,9 +13,13 @@
 <h5>Phone:</h5>
 <p><%= @restaurant.phone %> </p>
 
-
+<% if current_owner %>
+<% if current_owner.id == @restaurant.owner_id %>
 <%= link_to 'Edit', edit_restaurant_path, :class => "btn btn-primary" %>
 <%= link_to 'Delete', restaurant_path, :class => "btn btn-primary btn-danger", :confirm => 'Are You Sure?', :method => :delete %>
+
+<% end %>
+<% end %>
 <p>
 <%= link_to 'Home', restaurants_path %>
 </p>
