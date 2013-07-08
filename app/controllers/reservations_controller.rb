@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
 		@restaurant = Restaurant.find(params[:restaurant_id])
 		@reservation = @restaurant.reservations.create(params[:reservation])	
 			if @reservation.save
-				flash[:notice] = "We sent your reservation request!"
+				flash[:notice] = "We saved your reservation and notified the restaurant!"
 			
 				render ('restaurants/show')
 			else
