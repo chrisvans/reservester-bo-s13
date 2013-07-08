@@ -28,7 +28,7 @@ before_filter :authenticate_owner!, except: [:index, :show]
 		@restaurant = current_owner.restaurants.create(params[:restaurant])
 			if @restaurant.save
 				flash[:notice] = "We saved your restaurant entry"
-				redirect_to(:action => 'index')
+				redirect_to @restaurant
 			else
 				render ('new')
 			end
@@ -38,7 +38,7 @@ before_filter :authenticate_owner!, except: [:index, :show]
 		@restaurant = current_owner.restaurants.find(params[:id])
 		if @restaurant.update_attributes(params[:restaurant])
 			flash[:notice] = "We updated your entry"
-			redirect_to(:action => 'index')
+			redirect_to @restaurant
 		else
 			flash[:notice] = "Something went terribly wrong and we couldn't update your entry"
 			render ('edit')
@@ -48,7 +48,7 @@ before_filter :authenticate_owner!, except: [:index, :show]
 	def delete
 		@restaurant = Restaurant.find(params[:id]).destroy
 		flash[:notice] = "You entry has been deleted"
-		redirect_to(:action => 'index')
+		redirect_to root_path
 	end
 
 
