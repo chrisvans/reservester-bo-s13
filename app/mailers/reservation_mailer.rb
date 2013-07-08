@@ -3,6 +3,7 @@ class ReservationMailer < ActionMailer::Base
 
   def reservation_notification(reservation)
   	@reservation = reservation
-  	mail(:to => reservation.email, :subject => "Your Reservation")
+  	@owneremail = reservation.restaurant.owner.email
+  	mail(:to => @owneremail, :subject => "You have a new reservation")
   end
 end
