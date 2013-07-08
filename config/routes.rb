@@ -1,12 +1,12 @@
 RestaurantsApp::Application.routes.draw do
-  resources :reservations
-
-
+  
   devise_for :owners
 
   get "welcome/index"
 
-  resources :restaurants
+  resources :restaurants do
+    resources :reservations
+  end
 
   root :to => 'welcome#index'
   # The priority is based upon order of creation:

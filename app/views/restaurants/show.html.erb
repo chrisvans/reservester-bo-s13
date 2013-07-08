@@ -30,4 +30,24 @@
               :class => 'btn btn-danger' %>
   <% end %>
   <% end %>
+  <%= link_to "Make Reservation", new_restaurant_reservation_path(:restaurant_id => @restaurant.id) %>
 </div>
+
+ <% if owner_signed_in? %>
+  <% if @restaurant.owner_id == current_owner.id %>
+    <table>
+  <tr>
+    <th>Dated</th>
+    <th>Time</th>
+  </tr>
+ 
+  <% @restaurant.reservations.each do |post| %>
+    <tr>
+      <td><%= post.date %></td>
+      <td><%= post.time %></td>
+    </tr>
+  <% end %>
+</table>
+
+    <% end %>
+  <% end %>
