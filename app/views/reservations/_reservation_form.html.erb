@@ -1,5 +1,5 @@
 
-<%= simple_form_for Reservation.new, :url => {:controller => 'reservations', :action => 'create', :restaurant_id => @restaurant.id}, :method => 'post', :html => {:class => 'form-horizontal', :multipart => true } do |f| %>
+<%= simple_form_for @reservation, :url => {:controller => 'reservations', :action => 'create', :restaurant_id => @restaurant.id}, :method => 'post', :html => {:class => 'form-horizontal' } do |f| %>
       <%= f.error_notification %>
       <%= f.input :guestname, label: 'Your Name'  %>
       <%= f.input :guestemail, label: 'Your Email' %>

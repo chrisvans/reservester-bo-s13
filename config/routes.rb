@@ -8,7 +8,10 @@ Reserver::Application.routes.draw do
   resource :restaurants
   resources :reservations
 
-
+ # Sample resource route with sub-resources:
+     resources :restaurants do
+       resources :reservations
+     end
 
   root :to => 'restaurants#index'
 
