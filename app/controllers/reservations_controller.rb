@@ -6,6 +6,7 @@ class ReservationsController < ApplicationController
 		@reservation = @restaurant.reservations.build(params[:reservation])
 
 		if @reservation.save
+			ReservationMailer.reservation_notification(@reservation).deliver
       		redirect_to @restaurant, notice: 'Reservation was successfully created.'
     	else
       		render 'restaurant/show'

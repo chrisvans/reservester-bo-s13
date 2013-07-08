@@ -1,0 +1,16 @@
+
+Thank you for your reservation!
+
+Your email:
+<%= @reservation.email %>
+
+Your Restaurant:
+<%= @reservation.restaurant.name %>
+<%= @reservation.restaurant_id %>
+
+Your Message
+<%= @reservation.message %>
+
+Your requested date and time
+<%= @reservation.requested_date %>
+

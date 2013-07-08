@@ -1,0 +1,13 @@
+<h3>Thank you for your reservation!</h3>
+
+<p>Your email: <%= @reservation.email %></p>
+
+<p>Your Restaurant: <%= @reservation.restaurant.name %></p>
+<p>Restaurant ID: <%= @reservation.restaurant_id %></p>
+
+<p>Your Message: <%= @reservation.message %></p>
+
+<p>Your requested date and time: <%= @reservation.requested_date %></p>
+
+<p><%= link_to "Edit Your Reservation", restaurant_path(@reservation.restaurant_id) %></p>
+

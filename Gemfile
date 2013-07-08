@@ -35,6 +35,8 @@ gem 'carrierwave'
 gem 'fog'
 gem 'devise'
 
+gem 'sendgrid'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

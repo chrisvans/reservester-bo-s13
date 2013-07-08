@@ -37,4 +37,19 @@ Reservester::Application.configure do
 
   # 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # Sendgrid configuration
+  ActionMailer::Base.smtp_settings = {
+    :user_name => 'vinoverita',
+    :password => 'mipase77',
+    :domain => 'nahuelreviews.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+
+  # Mailcatcher
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
 end
