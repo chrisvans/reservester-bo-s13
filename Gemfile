@@ -24,8 +24,10 @@ group :assets do
 
   gem 'twitter-bootstrap-rails'
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-ui-rails'
 end
 
+gem 'mustache'
 gem 'devise'
 gem 'geocoder'
 
@@ -40,6 +42,7 @@ gem 'mini_magick'
 gem 'rmagick'
 
 gem 'dotenv-rails'
+gem "watu_table_builder", :require => "table_builder"
 
 
 # To use ActiveModel has_secure_password

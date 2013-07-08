@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130707213844) do
+ActiveRecord::Schema.define(:version => 20130708160540) do
 
   create_table "owners", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20130707213844) do
     t.string   "r_time"
     t.string   "anon_name"
     t.boolean  "taken"
+    t.datetime "reserved_on"
   end
 
   create_table "restaurants", :force => true do |t|
