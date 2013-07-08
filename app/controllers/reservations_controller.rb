@@ -14,22 +14,16 @@ class ReservationsController < ApplicationController
 		@reservation = Reservation.find(params[:id])
 	end
 
-	# def create
-	# 	@reservation = @restaurant.reservation.new(params[:reservation])
+	def create
+		@restaurant = Restaurant.find(params[:restaurant_id])
+		@reservation = @restaurant.reservations.build(params[:reservation])
 
-	# 	respond_to do |format|
-	# 		if @reservation.save
-	# 			format.html  { redirect_to(@reservation,
- #                    :notice => 'Reservation was successfully created.') }
-	# 			format.json  { render :json => @reservation,
- #                    :status => :created, :location => @reservation}
- #            else
-	# 		    format.html  { render :action => "new" }
-	# 		    format.json  { render :json => @reservation.errors,
-	# 		                    :status => :unprocessable_entity }
-	# 		end
-	# 	end
-	# end
+			if @reservation.save
+ 				redirect_to(restaurants_path, :notice => 'Reservation was successfully created.') 
+            else
+				render :action => "new"
+			end
+	end
 
 	def edit
 		@reservation = Reservation.find(params[:id])

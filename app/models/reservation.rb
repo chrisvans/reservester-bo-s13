@@ -4,6 +4,6 @@ class Reservation < ActiveRecord::Base
   belongs_to :restaurant
 
   validates :email, presence: true
-  validates :requested_datetime, presence: true
+  # validates :requested_datetime, presence: true
 
 end
