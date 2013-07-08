@@ -1,4 +1,7 @@
 class RestaurantsController < ApplicationController
+  before_filter :authenticate_owner!, :except => [:index, :show]
+  before_filter :require_ownership, :only => [:edit, :update, :destroy]
+
   def index
     @restaurants = Restaurant.all
   end
@@ -13,8 +16,9 @@ class RestaurantsController < ApplicationController
 
   def create #create a new restaurant
     @restaurant = Restaurant.new(params[:restaurant])
+    @restaurant.owner = current_owner
     if @restaurant.save
-      redirect_to @restaurant
+      redirect_to @restaurant, notice: "Restaurant was successfully created."
     else
       render "new"
     end
@@ -28,7 +32,7 @@ class RestaurantsController < ApplicationController
   def update
     @restaurant = Restaurant.find(params[:id])
     if @restaurant.update_attributes(params[:restaurant])
-      redirect_to @restaurant
+      redirect_to @restaurant, notice: "Restaurant was successfully updated."
     else
       render 'edit'
     end
@@ -39,5 +43,13 @@ class RestaurantsController < ApplicationController
     @restaurant.destroy
 
     redirect_to restaurants_path
+  end
+
+  private
+  def require_ownership
+    @restaurant = Restaurant.find(params[:id])
+    unless @restaurant.owner == current_owner
+      render "unauthorized", :status => :unauthorized #sets HTTP status code
+    end
   end
 end
