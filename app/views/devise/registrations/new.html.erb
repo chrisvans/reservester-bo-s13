@@ -4,10 +4,10 @@
   <!--<%= devise_error_messages! %>-->
   <%= render "/shared/error_messages", :target => @owner %>
 
-  <div><%= f.label :name %><br />
+  <div><%= f.label :name %><%= mark_required(@owner, :name) %><br />
   <%= f.text_field :name, :autofocus => true %></div>
 
-  <div><%= f.label :email %><br />
+  <div><%= f.label :email %><%= mark_required(@owner, :email) %><br />
   <%= f.email_field :email %></div>
 
   <div><%= f.label :password %><br />
