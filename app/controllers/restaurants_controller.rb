@@ -29,8 +29,7 @@ class RestaurantsController < ApplicationController
 	end
 
 	def create
-		@restaurant = Restaurant.new(params[:restaurant])
-		@restaurant.owner = current_owner
+		@restaurant = current_owner.restaurants.build(params[:restaurant])
 		respond_to do |format|
 			if @restaurant.save
     		format.html  {redirect_to(@restaurant, :notice => 'Restaurant was successfully created.') }
