@@ -6,7 +6,7 @@ Reserver::Application.routes.draw do
   # first created -> highest priority.
 
   resource :restaurants
-  resource :reservations
+  resources :reservations
 
 
 

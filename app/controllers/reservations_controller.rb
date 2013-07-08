@@ -16,8 +16,7 @@ class ReservationsController < ApplicationController
 	def destroy
 		@reservation = Reservation.find(params[:id])
 		@reservation.destroy
-		flash[:notice] = "Reservation Deleted!"
-		redirect_to({:controller => 'restaurants', :action => 'show'}, :id => @restaurant.id)
+		redirect_to :back , :notice => "Deleted reservation for #{@reservation.guestname}"
 	end
 
 

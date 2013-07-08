@@ -39,19 +39,23 @@
             <div class="well">
                 <h3>Your Upcoming Reservations for <%= @restaurant.name %></h3>
                     <table class="table table-hover table-condensed">
+                    <%= bootstrap_flash %>
+                    <% if @restaurant.reservations.blank? %>
+                          <h3 class="alert alert-info">You have no scheduled reservations!<h3>
+                    <% else %>    
                     <thead>
                         <tr>
                         <strong>
                           <th>Name</th>
                           <th>Email</th>
-                          <th>Phone</th>
+                          <th>Guests</th>                           
                           <th>Reservation Time</th> 
                           <th>Message</th>           
                           <th><%=t '.actions', :default => t("helpers.actions") %></th>
                         </strong>
                         </tr>
                     </thead>
-                    <tbody>                
+                    <tbody>            
                         <% @restaurant.reservations.each do |reservation| %> 
                         <tr>
                             <td><%= reservation.guestname %></td>
@@ -59,8 +63,10 @@
                             <td><%= reservation.guestnumber %></td>
                             <td><%= reservation.reserve_on %></td>       
                             <td><%= reservation.message %></td>
-                            <td><%= link_to('Confirm', {:controller => 'reservations', :action => 'destroy', :id => @reservation.id, :method => :delete}, :confirm => "Press OK to confirm and delete this reservation?", :class => 'btn btn-danger') %></td>
+                            <td><%= link_to('Delete', reservation_path(reservation), :method => :delete, :confirm => "Press OK to confirm and delete this reservation?", :class => 'btn btn-danger') %>
+                            </td>
                         </tr>
+                        <% end %>
                         <% end %> 
                     </tbody>
                     </table>
