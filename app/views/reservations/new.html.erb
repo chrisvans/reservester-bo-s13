@@ -4,7 +4,7 @@
 </div>
 <div>
 <%= form_for @reservation, :html => { :multipart => true, :class => 'form-horizontal' } do |f| %>
-  <%= @reservations.each do |reservation| %>
+  <% @reservations.each do |reservation| %>
     <% if reservation.taken == false %>
 	    <div class="control-group">
 	      <%= f.label reservation.r_time, :class => 'control-label' %>
