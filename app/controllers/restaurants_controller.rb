@@ -9,6 +9,9 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
+
+    @reservation = Reservation.new
+    @reservation.restaurant = @restaurant
   end
 
   def new
@@ -23,7 +26,6 @@ class RestaurantsController < ApplicationController
   def create
     @owner = Owner.find(params[:owner_id])
     @restaurant = @owner.restaurants.build(params[:restaurant])
-  
 
     if @restaurant.save
       redirect_to @restaurant, notice: 'Restaurant was successfully created.'
@@ -48,15 +50,5 @@ class RestaurantsController < ApplicationController
     @restaurant.destroy
 
     redirect_to restaurants_url
-  end
-
-  private
-
-  def require_restaurent_owner_match!
-    @restaurant = Restaurant.find(params[:id])
-
-    unless @restaurant.owner == current_owner
-      render "unauthorized", :status => :unauthorized
-    end
   end
 end
