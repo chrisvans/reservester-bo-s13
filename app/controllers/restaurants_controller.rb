@@ -77,9 +77,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
 
     unless @restaurant.owner == current_owner
-      	format.html  { redirect_to(@restaurants, 
-      		:notice => 'You may not edit restaurants that you do not own.') }
-      	format.json  { head :no_content }
+      	render "unauthorized", :status => :unauthorized
     end
 	end
 
