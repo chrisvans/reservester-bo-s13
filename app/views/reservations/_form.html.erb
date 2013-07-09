@@ -2,6 +2,8 @@
 	<p><%= f.label :name %></p>
 	<p><%= f.text_field :name %></p>
 	<p><%= f.label :email %></p>
-	<p><%= f.text_field :email %></p>
+	<p><%= f.email_field :email %></p>
+	<p><%= f.label :requested_datetime, "Reservation Time" %></p>
+	<p><%= f.datetime_select :requested_datetime %></p>
 	<%= f.submit %>
 <% end %>
