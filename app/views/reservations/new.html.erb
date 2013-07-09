@@ -19,7 +19,7 @@
     {{dateData}}
 
   <% @reservations.each do |reservation| %>
-    <% if reservation.taken == false && reservation.reserved_on != '{{dateData}}' %>
+    <% if reservation.taken == false && reservation.reserved_on != '{{dateData}}' && reservation.r_time != nil && reservation.is_master == true %>
 
         <div class="control-group">
 	      <%= f.label reservation.r_time, :class => 'control-label' %>
@@ -30,6 +30,9 @@
 	      	<% else %>
 	        <%= radio_button_tag :r_time, reservation.r_time %>
 	        <% end %>
+	        <div class="progress">
+                <div class="bar" style="width: %{((reservation.tables_taken / reservation.tables_max) * 100).to_s.split(".")[0]}%;"></div>
+            </div>
 	      </div>
 
 	    </div>

@@ -34,6 +34,9 @@ class RestaurantsController < ApplicationController
         reservation_setup = @restaurant.reservations.new
         reservation_setup.r_time = hour + ':' + minute
         reservation_setup.taken = false
+        reservation_setup.tables_taken = 0
+        reservation_setup.tables_max = 10 # Placeholder for tables_max form
+        reservation_setup.is_master = true
         reservation_setup.save
         if element % 2 == 0
           hour = (hour.to_i + 1).to_s
