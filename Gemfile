@@ -23,13 +23,14 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.3.0'
+gem 'jquery-ui-bootstrap-rails-asset'
 gem 'rmagick'
 gem 'carrierwave'
 gem 'fog', '~> 1.3.1'
 gem 'devise'
 gem "validates_phone_number", "~> 2.0.1"
-gem 'bootstrap-datetimepicker-rails'
+gem 'jquery-timepicker-addon-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

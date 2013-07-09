@@ -13,12 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require jquery-ui-bootstrap
 //= require_tree .
 //= require parsley
-//= require bootstrap-datetimepicker
+//= require jquery-ui-timepicker-addon
 
-
-$("#bookingTime").datepicker({
-                           format: 'mm-dd-yyyy',
-                           autoclose: true
-                           })
+$(function () {
+    $( "#bookingTime" ).datepicker();
+  }); 
