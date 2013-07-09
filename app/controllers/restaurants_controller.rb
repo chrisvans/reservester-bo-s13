@@ -27,7 +27,7 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = current_owner.restaurants.new(params[:restaurant])
-    hour = '5'
+    hour = '5' # Placeholders for hours_open form
     minute = '00'
     endhour = '12'
     for element in (1..(endhour.to_i - hour.to_i)*2+1)

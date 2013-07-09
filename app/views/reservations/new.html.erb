@@ -18,20 +18,22 @@
   <script id="reservedOn" type="text/javascript">
     {{dateData}}
 
-  <% @reservations.each do |reservation| %>
-    <% if reservation.taken == false && reservation.reserved_on != '{{dateData}}' && reservation.r_time != nil && reservation.is_master == true %>
+  <% @reservations.each_with_index do |reservation, index| %>
+    <% if reservation.taken == false && reservation.reserved_on != '{{dateData}}' && reservation.is_master == true %>
+        <% bar_length = "width:"+(((reservation.tables_taken / (reservation.tables_max*1.0)) * 100).to_s.split(".")[0]).to_s+"%;" %>
 
         <div class="control-group">
 	      <%= f.label reservation.r_time, :class => 'control-label' %>
 
 	      <div class="controls">
-	      	<% if @reservations.first == reservation %>
+	      <%= index %>
+	      	<% if index == 0 %>
 	      	<%= radio_button_tag :r_time, reservation.r_time, true %>
 	      	<% else %>
 	        <%= radio_button_tag :r_time, reservation.r_time %>
 	        <% end %>
 	        <div class="progress">
-                <div class="bar" style="width: %{((reservation.tables_taken / reservation.tables_max) * 100).to_s.split(".")[0]}%;"></div>
+                <div class="bar" style=<%= bar_length %>></div>
             </div>
 	      </div>
 
