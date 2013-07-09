@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130709002045) do
+ActiveRecord::Schema.define(:version => 20130709131849) do
 
   create_table "owners", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -36,13 +36,9 @@ ActiveRecord::Schema.define(:version => 20130709002045) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "restaurant_id"
-    t.string   "r_time"
-    t.string   "anon_name"
-    t.boolean  "taken"
-    t.datetime "reserved_on"
-    t.integer  "tables_taken"
-    t.integer  "tables_max"
-    t.boolean  "is_master"
+    t.string   "email"
+    t.datetime "date_time"
+    t.string   "message"
   end
 
   create_table "restaurants", :force => true do |t|

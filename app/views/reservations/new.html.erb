@@ -10,37 +10,14 @@
   <div class="control-group">
   	    <%= f.label 'Choose a date:', :class => 'control-label' %>
     <div class="controls">
-        <%= f.text_field :reserved_on %>
+        <%= f.text_field :date_time %>
     </div>
   </div> 
 
   <div id="reservedOnBox" type="text/html"></div>
   <script id="reservedOn" type="text/javascript">
-    {{dateData}}
-
-  <% @reservations.each_with_index do |reservation, index| %>
-    <% if reservation.taken == false && reservation.reserved_on != '{{dateData}}' && reservation.is_master == true %>
-        <% bar_length = "width:"+(((reservation.tables_taken / (reservation.tables_max*1.0)) * 100).to_s.split(".")[0]).to_s+"%;" %>
-
-        <div class="control-group">
-	      <%= f.label reservation.r_time, :class => 'control-label' %>
-
-	      <div class="controls">
-	      <%= index %>
-	      	<% if index == 0 %>
-	      	<%= radio_button_tag :r_time, reservation.r_time, true %>
-	      	<% else %>
-	        <%= radio_button_tag :r_time, reservation.r_time %>
-	        <% end %>
-	        <div class="progress">
-                <div class="bar" style=<%= bar_length %>></div>
-            </div>
-	      </div>
-
-	    </div>
+  {{dateData}}
 	    <%= hidden_field_tag :restaurant_id, @restaurant.id %>
-	<% end %>
-  <% end %>
   <div class="control-group">
     <%= f.label 'Your name:', :class => 'control-label' %>
 

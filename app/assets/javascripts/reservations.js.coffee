@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-  $('#reservation_reserved_on').datepicker
+  $('#reservation_date_time').datepicker
     dateFormat: 'yy-mm-dd'
     onSelect: (dateText, inst)=> 
         renderReservedDate(dateText)
