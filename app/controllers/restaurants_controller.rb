@@ -18,6 +18,7 @@ class RestaurantsController < ApplicationController
 		respond_to do |format|
     		format.html  # show.html.erb
     		format.json  { render :json => @restaurant }
+    		format.xml { render :xml => @restaurant }
     	end
 		
 	end
