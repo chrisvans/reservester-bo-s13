@@ -1,0 +1,9 @@
+<%= simple_form_for @reservation, :html => {:multipart => true, :class => 'form-horizontal' } do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :email %>
+  <%= f.input :requested_datetime %>
+  <%= f.input :short_message %>
+  <%= f.button :submit %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+              restaurants_path, :class => 'btn' %>
+<% end %>

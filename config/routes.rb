@@ -1,7 +1,18 @@
 Reservester::Application.routes.draw do
+  get "reservation/index"
+
+  get "reservation/create"
+
+  get "reservation/new"
+
+  get "reservation/destroy"
+
+  get "reservation/show"
+
   devise_for :owners
 
   resources :restaurants
+  resources :reservations
   root to: "restaurants#index"
 
 
