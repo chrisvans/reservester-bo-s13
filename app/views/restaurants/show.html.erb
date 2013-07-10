@@ -1,5 +1,5 @@
 <h1>Restaurant Information</h1>
-
+<div>
 <p><%= image_tag(@restaurant.image_url(:masthead)) if @restaurant.image? %></p>
 
 <h3><%= @restaurant.name %> </h3>
@@ -26,3 +26,24 @@
 <p>
 <%= link_to 'Home', restaurants_path %>
 </p>
+</div>
+<div>
+	<% if current_owner && current_owner.id == @restaurant.owner_id %>
+		<h3>Reservations</h3>
+		<table class="table table-hover">
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Time</th>
+			</tr>
+			<% @restaurant.reservations.each do |x| %>
+				<tr>
+					<td><%= x.name %></td>
+					<td><%= x.email %></td>
+					<td><%= x.requested_datetime %></td>
+				</tr>
+			<% end %>
+		</table>
+
+	<% end %>
+</div>
