@@ -1,5 +1,7 @@
 class ReservationsController < ApplicationController
 	def new
+		puts '-------------------------------'
+		puts 'with owner, this'
 		@reservation = Restaurant.find(params[:restaurant_id]).reservations.new
 		@restaurant = Restaurant.find(params[:restaurant_id])
 	end
@@ -16,7 +18,6 @@ class ReservationsController < ApplicationController
         else
           render action: "new", notice: 'There was an error.'
         end
-
     end
 
     def show

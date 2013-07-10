@@ -1,39 +1,35 @@
 class RestaurantsController < ApplicationController
   
-  before_filter :authenticate_owner!, except: [:index]
+  before_filter :authenticate_owner!, :except => [:index, :show]
+#  before_filter :require_restaurant_owner_match!, :only => [:edit, :update, :destroy]
+
   def index
     if owner_signed_in?
       @restaurants = Restaurant.where(:owner_id => current_owner.id)
-      puts '---------------------------------------'
-      puts @restaurants
-      puts current_owner.id
-      puts current_owner
     else
       @restaurants = Restaurant.all
     end
   end
 
   def show
-    @restaurant = current_owner.restaurants.find(params[:id])
+    @restaurant = Restaurant.find(params[:id])
 
-    
-    # @restaurant = Restaurant.find(params[:id])
+    @reservation = Reservation.new
+    @reservation.restaurant = @restaurant
   end
 
   def new
+    @owner = Owner.find(params[:owner_id])
     @restaurant = Restaurant.new
-
-    # @restaurant = Restaurant.new
   end
 
   def edit
     @restaurant = current_owner.restaurants.find(params[:id])
-
-    # @restaurant = Restaurant.find(params[:id])
   end
 
   def create
-    @restaurant = current_owner.restaurants.new(params[:restaurant])
+    @owner = Owner.find(params[:owner_id])
+    @restaurant = @owner.restaurants.build(params[:restaurant])
 
     if @restaurant.save
       redirect_to @restaurant, notice: 'Restaurant was successfully created.'
@@ -44,8 +40,6 @@ class RestaurantsController < ApplicationController
 
   def update
     @restaurant = Restaurant.find(params[:id])
-
-    # @restaurant = Restaurant.find(params[:id])
 
     if @restaurant.update_attributes(params[:restaurant])
       redirect_to @restaurant, notice: 'Restaurant was successfully updated.'
@@ -61,5 +55,3 @@ class RestaurantsController < ApplicationController
     redirect_to restaurants_url
   end
 end
-
-# Billy bob

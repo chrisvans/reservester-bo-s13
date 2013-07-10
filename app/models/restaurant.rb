@@ -12,6 +12,7 @@ class Restaurant < ActiveRecord::Base
   # validates :phone, presence: true
   # validates :photo, presence: true
   # validates :photo_cache, presence: true
+  
   belongs_to :owner
   has_many :reservations, :dependent => :destroy
   accepts_nested_attributes_for :reservations, :reject_if => lambda { |a| a[:email].blank? }, :allow_destroy => true
