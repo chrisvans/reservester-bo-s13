@@ -75,14 +75,5 @@ class RestaurantsController < ApplicationController
 		end
 	end
 
-	private
-
-	def require_restaurant_owner_match!
-    @restaurant = Restaurant.find(params[:id])
-
-    unless @restaurant.owner == current_owner
-      	render "unauthorized", :status => :unauthorized
-    end
-	end
 
 end

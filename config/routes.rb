@@ -9,10 +9,10 @@ Reservester::Application.routes.draw do
   end
 
   resources :restaurants, :except => [:new, :create] do
-      resources :reservations, :only => [:new, :create, :index]
+      resources :reservations, :only => [:create]
   end
 
-  resources :reservations, :except => [:new, :create]
+  resources :reservations, :only => [:destroy]
 
   root :to => "restaurants#index"
   
