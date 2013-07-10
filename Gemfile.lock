@@ -30,6 +30,9 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
+    bootstrap-datetimepicker-rails (0.0.11)
+    bootstrap-timepicker-rails (0.1.3)
+      railties (>= 3.0)
     builder (3.0.4)
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
@@ -161,6 +164,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-datetimepicker-rails
+  bootstrap-timepicker-rails
   carrierwave
   coffee-rails (~> 3.2.1)
   devise

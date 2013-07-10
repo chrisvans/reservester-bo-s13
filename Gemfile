@@ -37,6 +37,8 @@ gem 'fog', '~> 1.3.1'
 gem 'less-rails'
 gem 'therubyracer'
 gem 'jquery-rails'
+gem 'bootstrap-datetimepicker-rails'
+gem 'bootstrap-timepicker-rails'
 
 gem 'mini_magick'
 gem 'rmagick'
