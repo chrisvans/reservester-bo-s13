@@ -1,0 +1,10 @@
+<% form_for @restaurant do |f| %>
+  <p>
+  	<%= f.label :name %><br />
+  </p>
+
+  <% f.fields_for :reservations do |builder| %>
+    <%= render "reservation_fields", :f => builder %>
+  <% end %>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

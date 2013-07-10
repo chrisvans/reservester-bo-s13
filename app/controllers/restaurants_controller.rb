@@ -2,8 +2,15 @@ class RestaurantsController < ApplicationController
   
   before_filter :authenticate_owner!, except: [:index]
   def index
-    @restaurants = Restaurant.all
-    # @restaurants = Restaurant.all
+    if owner_signed_in?
+      @restaurants = Restaurant.where(:owner_id => current_owner.id)
+      puts '---------------------------------------'
+      puts @restaurants
+      puts current_owner.id
+      puts current_owner
+    else
+      @restaurants = Restaurant.all
+    end
   end
 
   def show

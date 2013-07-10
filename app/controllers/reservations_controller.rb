@@ -20,7 +20,7 @@ class ReservationsController < ApplicationController
     end
 
     def show
-		@reservations = Restaurant.find(params[:restaurant_id]).reservations.all
+		@restaurant = Restaurant.find(params[:restaurant_id])
 	end
 
 end

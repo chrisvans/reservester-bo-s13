@@ -1,38 +1,41 @@
-<%- model_class = Reservation -%>
+
 <div class="page-header">
-  <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize %></h1>
+  <h1>New Reservation</h1>
 </div>
 
-<div>
-
-  <%= form_for @reservation, :html => { :multipart => true, :class => 'form-horizontal' } do |f| %>
+<%= form_for @reservation do |f| %>
 
   <div class="control-group">
-  	    <%= f.label 'Choose a date:', :class => 'control-label' %>
-    <div class="controls">
-        <%= f.text_field :date_time %>
-    </div>
-  </div> 
-
-  <div id="reservedOnBox" type="text/html"></div>
-  <script id="reservedOn" type="text/javascript">
-  {{dateData}}
-	    <%= hidden_field_tag :restaurant_id, @restaurant.id %>
-  <div class="control-group">
-    <%= f.label 'Your name:', :class => 'control-label' %>
+    <%= f.label :email, :class => 'control-label' %>
 
     <div class="controls">
-      <input class="text_field" id="reservation_anon_name" name="reservation[anon_name]" size="30" type="text" required="true">
+      <%= f.text_field :email, :class => 'text_field' %>
     </div>
 
   </div>
+
+  <div class="control-group">
+    <%= f.label :date_time, :class => 'control-label' %>
+
+    <div class="controls">
+      <%= f.text_field :date_time, :class => 'text_area' %>
+    </div>
+
+  </div>
+
+  <div class="control-group">
+    <%= f.label :message, :class => 'control-label' %>
+
+    <div class="controls">
+      <%= f.text_area :message, :class => 'text_area' %>
+    </div>
+
+  </div>
+
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                reservations_path, :class => 'btn' %>
+                restaurants_path, :class => 'btn' %>
   </div>
 
-  <% end %>
-
-  </script>
-</div>
+<% end %>

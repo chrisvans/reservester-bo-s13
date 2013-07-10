@@ -10,4 +10,5 @@ class Owner < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :restaurants
   validates_presence_of :username, :email
+  validates_uniqueness_of :username, :email
 end
