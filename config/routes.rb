@@ -1,10 +1,18 @@
 Reservester::Application.routes.draw do
-  resources :reservations
+
 
 
   devise_for :owners
 
-  resources :restaurants
+  resources :owners do
+    resources :restaurants, :only => [:new, :create] 
+  end
+
+  resources :restaurants, :except => [:new, :create] do
+      resources :reservations, :only => [:new, :create, :index]
+  end
+
+  resources :reservations, :except => [:new, :create]
 
   root :to => "restaurants#index"
   
