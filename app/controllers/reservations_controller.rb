@@ -1,6 +1,8 @@
 class ReservationsController < ApplicationController
 	
 	before_filter :authenticate_owner!, :only => [:destroy]
+	# @restaurant = Restaurant.find(params[:restaurant_id])
+	# would like to put this up here some how
 
 	def index
 		@reservations = Reservation.all
@@ -12,7 +14,12 @@ class ReservationsController < ApplicationController
 	end
 
 	def show
+		@restaurant = Restaurant.find(params[:restaurant_id])
+		if current_owner && current_owner.id = @restaurant.owner_id
 		@reservation = Reservation.find(params[:id])
+		else redirect_to restaurants_path
+		end
+
 	end
 
 	def create
@@ -20,6 +27,7 @@ class ReservationsController < ApplicationController
 		@reservation = @restaurant.reservations.build(params[:reservation])
 
 			if @reservation.save
+				ReservationMailer.reservation_confirmation(@restaurant.owner).deliver
  				redirect_to(restaurants_path, :notice => 'Reservation was successfully created.') 
             else
 				render :action => "new"

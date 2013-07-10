@@ -161,6 +161,7 @@ DEPENDENCIES
   fog
   jquery-rails
   less-rails
+  mail
   mysql
   pg
   rails (= 3.2.13)

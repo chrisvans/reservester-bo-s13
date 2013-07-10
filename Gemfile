@@ -34,7 +34,7 @@ end
 
 gem "carrierwave" #for file uploads
 
-gem "rmagick"
+gem "rmagick" # to work with photos in imagemagick
 
 gem 'jquery-rails'
 
@@ -43,6 +43,8 @@ gem 'fog' # for AWS support
 gem 'figaro' # for easier ENV variables
 
 gem 'devise' # for logins
+
+gem "mail" # for email
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
