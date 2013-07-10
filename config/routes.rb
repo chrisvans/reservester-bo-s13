@@ -10,8 +10,12 @@ Reserver::Application.routes.draw do
 
  # Sample resource route with sub-resources (means: we're not even letting 
                                             #new, create, delete happen at the url level
+      resources :owners do
+       resources :restaurants, :except => [:edit, :delete]
+     end
+
      resources :restaurants do
-       resources :reservations, :only => [:new, :create, :delete]
+       resources :reservations, :only => [:create, :delete]
      end
 
   root :to => 'restaurants#index'

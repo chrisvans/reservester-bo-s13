@@ -2,14 +2,15 @@ Hi <%= @reservation.restaurant.owner.name %>,
 
 You have a new reservation from Reservster!
 
-Your reservation details are below:
+The reservation details are below:
 
 Guest name: <%= @reservation.guestname %>
 Guest email: <%= @reservation.guestemail %>
 Number of Seats: <%= @reservation.guestnumber %>
 Number of Seats: <%= @reservation.reserve_on %>
 
-Additonal Message: <%= @reservation.message %>
+Additonal Message:
+<%= @reservation.message %>
 
 
 Aloha,
