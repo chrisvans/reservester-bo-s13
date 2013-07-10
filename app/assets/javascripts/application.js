@@ -19,5 +19,8 @@
 //= require jquery-ui-timepicker-addon
 
 $(function () {
-    $( "#bookingTime" ).datepicker();
+    $( "#bookingTime" ).datetimepicker({
+    	timeFormat: "hh:mm tt",
+    	stepMinute: 5
+    });
   }); 

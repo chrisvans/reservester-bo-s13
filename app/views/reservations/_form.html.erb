@@ -5,11 +5,16 @@
     <div class="controls">
       <%= f.text_field :email, :class => 'text_field', :class=> 'required', :"data-required" =>'true', :required => 'true' %>
     </div>
-    <div class="controls">
-<%= f.label :booking_time, "Booking Time" %>
-  <%= f.text_field :booking_time, :id => "bookingTime" %>
-    </div>
   </div>
+
+
+    <div class="control-group"> 
+      <%= f.label :booking_time, "Booking Time" %> 
+      <div class="controls">
+        <%= f.text_field :booking_time, :id => "bookingTime" %>
+        
+      </div>
+    </div>
 
   
 
