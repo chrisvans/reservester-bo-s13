@@ -35,17 +35,21 @@ Reserver::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  #Mailcatcher settings
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+
   #Email settings:
 
-  ActionMailer::Base.smtp_settings = {
-  :address        => 'smtp.sendgrid.net',
-  :port           => '587',
-  :authentication => :plain,
-  :user_name      => ENV['SENDGRID_USERNAME'],
-  :password       => ENV['SENDGRID_PASSWORD'],
-  :domain         => 'localhost.com',
-  :enable_starttls_auto => true
-}
+#   ActionMailer::Base.smtp_settings = {
+#   :address        => 'smtp.sendgrid.net',
+#   :port           => '587',
+#   :authentication => :plain,
+#   :user_name      => ENV['SENDGRID_USERNAME'],
+#   :password       => ENV['SENDGRID_PASSWORD'],
+#   :domain         => 'localhost.com',
+#   :enable_starttls_auto => true
+# }
 
 
 end
