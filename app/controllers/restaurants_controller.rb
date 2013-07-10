@@ -46,12 +46,4 @@ class RestaurantsController < ApplicationController
 
     redirect_to restaurants_path
   end
-
-  private
-  def require_ownership
-    @restaurant = Restaurant.find(params[:id])
-    unless @restaurant.owner == current_owner
-      render "unauthorized", :status => :unauthorized #sets HTTP status code
-    end
-  end
 end

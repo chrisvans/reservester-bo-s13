@@ -1,0 +1,14 @@
+Hello <%= @owner.name %>,
+
+A new reservation has been made at one of your restaurants.
+
+Here are the details:
+
+Restaurant: <%= @reservation.restaurant.name %>
+Email: <%= @reservation.email %>
+Reservation Time: <%= @reservation.reserve_on %>
+Message: <%= @reservation.message %>
+
+Thank you!
+
+Reservester

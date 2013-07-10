@@ -39,7 +39,7 @@
   <table style="width:600px;text-align:center;">
     <th>Email</th><th>Date &amp; Time</th><th>Message</th>
   <% @restaurant.reservations.each do |res| %>
-    <tr><td><%= res.email %></td><td><%= res.reserve_on %></td><td><%= res.message %></td><td><%= link_to "Mark as Confirmed", reservation_path(res), :method => 'delete' %></td></tr>
+    <tr><td><%= res.email %></td><td><%= res.reserve_on %></td><td><%= res.message %></td><td><%= link_to "Mark as Confirmed", restaurant_reservation_path(@restaurant,res), :method => 'delete' %></td></tr>
   <% end %>
   </table>
   <% end %>
