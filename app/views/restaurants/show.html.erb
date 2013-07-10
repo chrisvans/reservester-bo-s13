@@ -30,21 +30,57 @@
               :class => 'btn btn-danger' %>
   <% end %>
   <% end %>
-  <%= link_to "Make Reservation", new_restaurant_reservation_path(:restaurant_id => @restaurant.id) %>
 </div>
+<!-- ---------------------------- -->
+<% if !owner_signed_in? %>
+<h2> Make a reservation</h2>
+  <%= form_for([@restaurant, @restaurant.reservations.build]) do |f| %>
+  <p>
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </p>
+  <p>
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+ </p>
+ <p>
+    <%= f.label :time %><br>
+    <%= f.time_select :time, {ampm: true} %>
+ </p>
+ <p>
+    <%= f.label :message %><br>
+    <%= f.text_area :message %>
+ </p>
+ <p>
+    <%= f.hidden_field :restaurant_id, value: params[:id] %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<% end %>
+
+<!-- ---------------------------- -->
 
  <% if owner_signed_in? %>
   <% if @restaurant.owner_id == current_owner.id %>
     <table>
   <tr>
-    <th>Dated</th>
+    <th>Date</th>
     <th>Time</th>
+    <th>Email</th>
+    <th>Message</th>
+    <th>Destroy</th>
   </tr>
  
   <% @restaurant.reservations.each do |post| %>
     <tr>
       <td><%= post.date %></td>
       <td><%= post.time %></td>
+      <td><%= post.email %></td>
+      <td><%= post.message %></td>
+      <td><%= link_to 'Destroy Reservation', [@restaurant, post], :method => 'delete',
+      data: {confirm: "Are you sure?"} %> </td>
     </tr>
   <% end %>
 </table>

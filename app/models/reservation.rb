@@ -1,5 +1,5 @@
 class Reservation < ActiveRecord::Base
-  attr_accessible :email, :date, :time, :restaurant_id, :comments
+  attr_accessible :email, :date, :time, :restaurant_id, :message
 
   belongs_to :restaurant
 
