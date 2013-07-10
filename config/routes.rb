@@ -5,12 +5,13 @@ Reserver::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  resource :restaurants
+  resources :restaurants
   resources :reservations
 
- # Sample resource route with sub-resources:
+ # Sample resource route with sub-resources (means: we're not even letting 
+                                            #new, create, delete happen at the url level
      resources :restaurants do
-       resources :reservations
+       resources :reservations, :only => [:new, :create, :delete]
      end
 
   root :to => 'restaurants#index'

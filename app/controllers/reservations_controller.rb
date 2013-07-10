@@ -1,4 +1,5 @@
 class ReservationsController < ApplicationController
+	before_filter :require_restaurant_owner_match!, :except => :create
 
 	def create
 		@restaurant = Restaurant.find(params[:restaurant_id])
