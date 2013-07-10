@@ -7,18 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="container-fluid">
 <!-- login or logout navbar -->
-<div class="navbar">
+<div class="navbar navbar-inverse navbar-static-top">
   <div class="navbar-inner">
     <%= link_to "Reservester", root_path, :class => "brand" %>
     <ul class="nav">
-      <li>
       <% if !current_owner.blank? %>
-      	<%= link_to "Logout", destroy_owner_session_path, method: :delete %>
+      <li><%= link_to "Dashboard", '/dashboard' %></li>
+      <li><%= link_to "Logout", destroy_owner_session_path, method: :delete %></li>
       <% else %>
-      	<%= link_to "Login", new_owner_session_path %>
+      <li><%= link_to "Login", new_owner_session_path %></li>
       <% end %>
-      </li>
     </ul>
   </div>
 </div>
@@ -30,6 +30,6 @@
 <div class="alert"><%= alert %></div>
 <% end %>
 <%= yield %>
-
+</div>
 </body>
 </html>

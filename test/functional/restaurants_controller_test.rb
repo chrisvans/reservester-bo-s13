@@ -13,7 +13,7 @@ class RestaurantsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:restaurants)
+    assert_not_nil assigns(:restaurants) #assigns function allows access to controller instance variables
   end
 
   test "should get new" do

@@ -9,7 +9,9 @@ Reservester::Application.routes.draw do
 
   resources :reservations, :except => [:new,:create,:destroy]
 
-  
+  authenticated :owner do
+    get 'dashboard', to: 'owners#dashboard'
+  end
 
   root :to => "restaurants#index"
   
