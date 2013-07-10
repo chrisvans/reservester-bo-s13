@@ -2,7 +2,7 @@
   <div class="control-group">
     <%= f.label :email, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :email, :class => 'text_area' %>
+      <%= f.email_field :email, :class => 'text_area', :"data-required" => "true", :"data-type" => 'email', :"required" => "true" %>
     </div>
   </div>
   <div class="control-group">
@@ -14,7 +14,7 @@
   <div class="control-group">
     <%= f.label :booking_time, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :booking_time, :id => 'bookingTime' %>
+      <%= f.text_field :booking_time, :id => 'bookingTime', :"data-required" => "true", :class => "required", :"required" => "true" %>
     </div>
   </div>
 
