@@ -16,7 +16,15 @@
 			<td><%= x.address %></td>
 			<td><%= x.phone %></td>
 			<td><%= image_tag(x.image_url(:thumb)) if x.image? %></td>
-			<td><%= link_to 'Show', restaurant_path(x), :class => "btn btn-primary" %></td>
+			<td>
+				<p>
+					<%= link_to 'Show', restaurant_path(x), :class => "btn btn-primary" %>
+				</p>
+				<p>
+				<%= link_to 'Reserve', new_restaurant_reservation_path(x), :class => "btn btn-primary" %>
+				</p>
+
+			</td>
 			
 		</tr>
 	<% end %>
