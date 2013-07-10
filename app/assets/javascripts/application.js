@@ -21,6 +21,8 @@
 $(function () {
     $( "#bookingTime" ).datetimepicker({
     	timeFormat: "hh:mm tt",
-    	stepMinute: 5
+    	stepMinute: 5,
+    	hourMin: 8,
+    	hourMax: 22
     });
   }); 
