@@ -18,6 +18,11 @@ Reserver::Application.routes.draw do
        resources :reservations, :only => [:create, :delete]
      end
 
+    #use the devise owner authenitcation method:
+    authenticated :owner do
+        get 'dashboard', to: 'owners#dashboard'
+    end
+
   root :to => 'restaurants#index'
 
   # Sample of regular route:

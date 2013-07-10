@@ -1,0 +1,12 @@
+<h2>All your Restaurants</h2>
+
+
+ <% @restaurant.each do |restaurant| %>
+ 	<% if current_owner == restaurant.owner %>
+ 		<p>	
+			<%= restaurant.name %>
+			<%= restaurant.description %>
+			<%= restaurant.city %>
+		</p>
+	<% end %>
+<% end %>

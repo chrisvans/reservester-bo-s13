@@ -3,7 +3,7 @@ class RestaurantsController < ApplicationController
 
 before_filter :authenticate_owner!, except: [:index, :show]
 #add this so a non-owner can't go through the inspector and edit, update or destroy a copy
-before_filter :require_restaurant_owner_match!, :only => [:edit, :update, :destroy]
+#before_filter :require_restaurant_owner_match!, only: [:edit, :update, :destroy]
 
 
 	def index

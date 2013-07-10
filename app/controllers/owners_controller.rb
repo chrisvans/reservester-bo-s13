@@ -1,8 +1,8 @@
 class OwnersController < ApplicationController
 
-	def dashboard
-		@dashboard = Restaurant.find(params[:id])
 
+	def dashboard
+		@restaurant = current_owner.restaurants.order("created_at DESC")
 	end
 
 
