@@ -1,5 +1,6 @@
 class ReservationsController < ApplicationController
 	
+	before_filter :authenticate_owner!, :only => [:destroy]
 
 	def index
 		@reservations = Reservation.all

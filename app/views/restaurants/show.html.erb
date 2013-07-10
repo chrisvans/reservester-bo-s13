@@ -35,12 +35,14 @@
 				<th>Name</th>
 				<th>Email</th>
 				<th>Time</th>
+				<th></th>
 			</tr>
 			<% @restaurant.reservations.each do |x| %>
 				<tr>
 					<td><%= x.name %></td>
 					<td><%= x.email %></td>
 					<td><%= x.requested_datetime %></td>
+					<td><%= link_to 'Delete', restaurant_reservation_path(@restaurant, x), :class => "btn btn-primary btn-danger", :confirm => 'Are You Sure?', :method => :delete %></td>
 				</tr>
 			<% end %>
 		</table>
