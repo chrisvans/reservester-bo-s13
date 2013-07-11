@@ -7,8 +7,10 @@ class ReservationsController < ApplicationController
 	def create
         @restaurant = Restaurant.find params[:restaurant_id]
         @reservation = @restaurant.reservations.build params[:reservation]
-        
+
+        @information = [Owner.find(id=@restaurant.owner_id), @reservation, @restaurant]
         if @reservation.save
+          ReservationMailer.reservation_notice(@information).deliver
           redirect_to @restaurant, notice: 'Reservation was successfully created.'
         else
           render 'restaurants/show'
