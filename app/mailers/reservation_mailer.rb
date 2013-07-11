@@ -8,7 +8,4 @@ class ReservationMailer < ActionMailer::Base
   	mail(:to => @owner_email, :subject => 'New Table Reservation from Reservster')
   end
 
-
-
-
 end
