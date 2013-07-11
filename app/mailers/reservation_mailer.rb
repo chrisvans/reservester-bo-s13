@@ -5,7 +5,7 @@ class ReservationMailer < ActionMailer::Base
   def reservation_notification(reservation)
   	@reservation = reservation
   	@owner_email = reservation.restaurant.owner.email
-  	mail(:to => @owner_email, :subject => 'New Table Reservation from Reservster')
+  	mail(:to => @owner_email, :subject => "New Table Reservation from Reservster for #{@reservation.restaurant.name}")
   end
 
 end
