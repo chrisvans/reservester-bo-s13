@@ -39,14 +39,5 @@ Reservester::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
 
-  ActionMailer::Base.smtp_settings = {
-    :user_name => ENV['GMAIL_USERNAME'],
-    :password => ENV['GMAIL_PASSWORD'],
-    :domain => 'localhost:3000',
-    :address => 'smtp.gmail.com',
-    :port => 465,
-    :authentication => :plain,
-    :enable_starttls_auto => true
-  }
 end
 
