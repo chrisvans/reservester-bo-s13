@@ -1,27 +1,28 @@
 class ReservationsController < ApplicationController
 	def new
-		puts '-------------------------------'
-		puts 'with owner, this'
 		@reservation = Restaurant.find(params[:restaurant_id]).reservations.new
-		@restaurant = Restaurant.find(params[:restaurant_id])
+ 	    @restaurant = Restaurant.find(params[:restaurant_id])
 	end
 
 	def create
-        @reservation = Restaurant.find(params[:restaurant_id]).reservations.new
+        @restaurant = Restaurant.find params[:restaurant_id]
+        @reservation = @restaurant.reservations.build params[:reservation]
         
-        # @reservation.r_time = params[:r_time]
-        # @reservation.anon_name = params[:anon_name]
-        # @reservation.reserved_on = params[:reserved_on]
-
         if @reservation.save
-          redirect_to root_url, notice: 'Reservation was successfully created.'
+          redirect_to @restaurant, notice: 'Reservation was successfully created.'
         else
-          render action: "new", notice: 'There was an error.'
+          render 'restaurants/show'
         end
     end
 
-    def show
-		@restaurant = Restaurant.find(params[:restaurant_id])
-	end
+    def destroy
+	    @reservation = Reservation.find params[:id]
+	    @reservation.destroy
 
+	    redirect_to @reservation.restaurant
+     end
+ #    def show
+	# 	@restaurant = Restaurant.find(params[:restaurant_id])
+	# end
+    
 end
