@@ -5,4 +5,5 @@ class Restaurant < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   belongs_to :owner
   has_many :reservations
+  accepts_nested_attributes_for :reservations
 end

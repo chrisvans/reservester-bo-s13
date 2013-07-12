@@ -8,9 +8,8 @@ Reservester::Application.routes.draw do
     resources :restaurants, :only => [:new, :create] 
   end
 
-  resources :restaurants, :except => [:new, :create] do
-      resources :reservations, :only => [:create]
-  end
+  resources :restaurants
+
 
   resources :reservations, :only => [:destroy]
 
