@@ -1,0 +1,24 @@
+<h1>Welcome Back, <%= current_owner.name %></h1>
+
+<h3>Here are your restaurants and upcoming reservations</h3>
+
+
+
+<% current_owner.restaurants.each do |x| %>
+	<h5><%= x.name %></h5>
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Date &amp; Time</th>
+		</tr>
+		<% x.reservations.each do |y| %>
+		<tr>
+			<td><%= y.name %></td>
+			<td><%= y.requested_datetime %></td>
+		</tr>
+		<% end %>
+	</table>
+<% end %>
+
+
+

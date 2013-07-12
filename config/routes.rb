@@ -7,7 +7,12 @@ Reservester::Application.routes.draw do
     resources :reservations
   end
   
+  get '/dashboard' => 'owners#dashboard'
 
+  # could also do
+  # authenticated :owner do
+  # get 'dashboard', :to 'owners#dashboard'
+  # end
 
 root :to => "restaurants#index"
 
