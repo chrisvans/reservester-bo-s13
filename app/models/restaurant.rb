@@ -23,6 +23,9 @@ class Restaurant < ActiveRecord::Base
 	end
 
 
+	def pretty_string
+		return "#{self.name} - #{self.street}"
+	end
 
 
 

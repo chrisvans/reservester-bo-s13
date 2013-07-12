@@ -2,6 +2,7 @@ class RestaurantsController < ApplicationController
 
 
 before_filter :authenticate_owner!, except: [:index, :show]
+#before_filter :require_current_restaurant!, :only => [:show, :edit, :update, :destroy]
 #add this so a non-owner can't go through the inspector and edit, update or destroy a copy
 #before_filter :require_restaurant_owner_match!, :only => [:edit, :update, :destroy]
 
@@ -52,7 +53,7 @@ before_filter :authenticate_owner!, except: [:index, :show]
 		end
 	end
 
-	def delete
+	def destroy
 		@restaurant = Restaurant.find(params[:id]).destroy
 		flash[:notice] = "You entry has been deleted"
 		redirect_to root_path

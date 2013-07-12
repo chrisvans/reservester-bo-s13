@@ -5,10 +5,25 @@ class RestaurantsControllerTest < ActionController::TestCase
   #   assert true
   # end
 
-  test "trying to pass a restaurant with a bad id" do
+  test "passing a restaurant with a bad id" do
     get :show, {:id => 'shitstorm'}
     assert_response :not_found
   end
+
+
+  test "passing the restaurant in show" do
+    restaurant = FactoryGirl.create(:restaurant)
+    get :show, {:id => restaurant.id}
+    
+    assert_response :success
+  end
+
+  # test "create the restaurant" do
+  #   restaurant = FactoryGirl.create(:restaurant)
+    
+
+  #   assert_response :success
+  # end
 
 # def setup
 #   @restaurant = restaurants(:one)
