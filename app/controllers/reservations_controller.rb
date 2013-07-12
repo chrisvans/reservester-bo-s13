@@ -25,9 +25,10 @@ class ReservationsController < ApplicationController
 	def create
 		@restaurant = Restaurant.find(params[:restaurant_id])
 		@reservation = @restaurant.reservations.build(params[:reservation])
+		@owner = @restaurant.owner
 
 			if @reservation.save
-				ReservationMailer.reservation_confirmation(@restaurant.owner).deliver
+				ReservationMailer.reservation_confirmation(@owner, @restaurant, @reservation).deliver
  				redirect_to(restaurants_path, :notice => 'Reservation was successfully created.') 
             else
 				render :action => "new"
