@@ -16,10 +16,10 @@ before_filter :authenticate_owner!, except: [:index, :show]
 	end
 
 	def show
-		@restaurant = Restaurant.find(params[:id])
+		current_restaurant
 
 		@reservation = Reservation.new
-    	@reservation.restaurant = @restaurant
+    	@reservation.restaurant = current_restaurant
     	#this will output json and can be used straight for IOS development
     	#respond_to do |format|
     	#	format.json { render :json => @restaurant}
@@ -57,6 +57,18 @@ before_filter :authenticate_owner!, except: [:index, :show]
 		flash[:notice] = "You entry has been deleted"
 		redirect_to root_path
 	end
+
+	private
+
+	def require_current_restaurant
+		render_not_found unless current_restaurant
+	end
+
+
+	helper_method :current_restaurant
+		def current_restaurant
+			@current_restaurant ||= Restaurant.find_by_id(params[:id]) #find_by_id only looks for id and returns nil if not found, rather than exception
+		end
 
 
 end

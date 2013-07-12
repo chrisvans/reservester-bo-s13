@@ -4,29 +4,29 @@
 </div>
 
 <div class="container">
-    <h3>Another awesome Restaurant by <%= @restaurant.owner.name %></h3>
+    <h3>Another awesome Restaurant by <%= current_restaurant.owner.name %></h3>
     <div class="row">
         <div class="span6">
             <dl class="dl-horizontal">
               <dt><strong>Name:</strong></dt>
-              <dd><%= @restaurant.name %></dd>
+              <dd><%= current_restaurant.name %></dd>
               <dt><strong>Description:</strong></dt>
-              <dd><%= @restaurant.description %></dd>
+              <dd><%= current_restaurant.description %></dd>
               <dt><strong>Picture:</strong></dt>
-              <dd><%= image_tag(@restaurant.image_url(:masthead).to_s) %></dd>  
+              <dd><%= image_tag(current_restaurant.image_url(:masthead).to_s) %></dd>  
               <dt><strong>Address:</strong></dt>
-              <dd><%= @restaurant.streetnumber %> <%= @restaurant.street %>, <%= @restaurant.zipcode %> <%= @restaurant.city %>, <%= @restaurant.state %> </dd>
+              <dd><%= current_restaurant.streetnumber %> <%= current_restaurant.street %>, <%= current_restaurant.zipcode %> <%= current_restaurant.city %>, <%= current_restaurant.state %> </dd>
               <dt><strong>Phonenumber:</strong></dt>
-              <dd><%= @restaurant.phonenumber %></dd>
+              <dd><%= current_restaurant.phonenumber %></dd>
             </dl>
 
             <div class="form-actions">
               <%= link_to 'Back', root_path, :class => 'btn'  %>
-              <% if current_owner == @restaurant.owner %>
+              <% if current_owner == current_restaurant.owner %>
                 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                          {:action => 'edit', :id => @restaurant.id}, :class => 'btn' %>
+                          {:action => 'edit', :id => current_restaurant.id}, :class => 'btn' %>
                 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                          {:action => 'delete', :id => @restaurant.id},
+                          {:action => 'delete', :id => current_restaurant.id},
                           :method => 'delete',
                           :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                           :class => 'btn btn-danger' %>
@@ -34,12 +34,12 @@
             </div>
         </div>
         <div class="span6">
-        <% if current_owner == @restaurant.owner %>
+        <% if current_owner == current_restaurant.owner %>
             <div class="well">
-                <h3>Your Upcoming Reservations for <%= @restaurant.name %></h3>
+                <h3>Your Upcoming Reservations for <%= current_restaurant.name %></h3>
                     <table class="table table-hover table-condensed">
                     <%= bootstrap_flash %>
-                    <% if @restaurant.reservations.blank? %>
+                    <% if current_restaurant.reservations.blank? %>
                           <h3 class="alert alert-info">You have no scheduled reservations!<h3>
                     <% else %>    
                     <thead>
@@ -55,7 +55,7 @@
                         </tr>
                     </thead>
                     <tbody>            
-                        <% @restaurant.reservations.each do |reservation| %> 
+                        <% current_restaurant.reservations.each do |reservation| %> 
                         <tr>
                             <td><%= reservation.guestname %></td>
                             <td><%= reservation.guestemail %></td>
