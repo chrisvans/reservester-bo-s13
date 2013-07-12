@@ -75,17 +75,4 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  private
-
-  def require_restaurant_owner_match!
-    @restaurant = Restaurant.find(params[:id])
-
-    if @restaurant.owner == current_owner
-      return
-    else
-      flash[:error] = "Sorry, you don't have permission."
-      redirect_to :back
-    end
-  end
-  
 end
