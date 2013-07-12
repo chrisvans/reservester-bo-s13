@@ -1,10 +1,10 @@
 <h2>All your Restaurants</h2>
 
 <div class="well">
-	<h3>You have a total of XX reservations - better get shit done!</h3>
+	<h3>You have a total of <%= @count %> reservations - better get shit done!</h3>
 </div>
 
- <% @restaurant.each do |restaurant| %>
+ <% @restaurants.each do |restaurant| %>
  	<% if current_owner == restaurant.owner %>
  		<p>	
 			<%= restaurant.name %>
