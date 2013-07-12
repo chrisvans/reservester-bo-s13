@@ -21,6 +21,16 @@
 
 <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%=  @restaurant.address %>&zoom=15&size=500x400&sensor=false&markers=color:blue|label:R|<%=@restaurant.address %>">
 
+<%- if current_owner == @restaurant.owner %>
+<h2>Reservations</h2>
+<p>put reservations here</p>
+
+<%- else %>
+  <h2>New Reservation</h2>
+  <%= render 'reservations/form' , :reservation => @reservation %>
+<%- end %>
+
+
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
