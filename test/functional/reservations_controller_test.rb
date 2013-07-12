@@ -9,7 +9,7 @@ class ReservationsControllerTest < ActionController::TestCase
 		assert_difference('Reservation.count', 1) do
 			post :create, :restaurant_id => @restaurant.id, :reservation => { :email => 'h@gmail.com', :reserve_on => date, :message => 'h' }
 		end
-	assert_redirected_to restaurant_path(@restaurant)
+		assert_redirected_to restaurant_path(@restaurant)
 	end
 
 	test "should destroy reservation for restaurant" do

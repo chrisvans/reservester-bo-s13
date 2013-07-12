@@ -10,7 +10,7 @@ class OwnersControllerTest < ActionController::TestCase
 
 	test "should not get dashboard when logged out" do
 		get :dashboard
-		assert_response :redirect
+		assert_redirected_to :new_owner_session
 	end
 
   private
