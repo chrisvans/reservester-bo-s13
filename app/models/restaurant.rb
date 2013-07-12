@@ -1,6 +1,6 @@
 class Restaurant < ActiveRecord::Base
-  attr_accessible :address, :description, :name, :phone, :photo, :photo_cache, :pdf, :longitude, :latitude
-  
+  attr_accessible :address, :description, :name, :phone, :photo, :photo_cache, :pdf, :longitude, :latitude, :restaurant_id
+
   mount_uploader :photo, PhotoUploader
   mount_uploader :pdf, PdfUploader
 
