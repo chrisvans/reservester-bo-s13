@@ -4,5 +4,5 @@ class Reservation < ActiveRecord::Base
   belongs_to :restaurant
 
   validates :booking_time, :presence => true
-  validates :email, :presence => true, :email => true
+  validates :email, :presence => true
 end
