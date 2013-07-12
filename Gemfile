@@ -27,6 +27,10 @@ group :assets do
   gem 'jquery-ui-rails'
 end
 
+group :development do
+	gem 'factory_girl_rails'
+end
+
 gem 'mustache'
 gem 'devise'
 gem 'geocoder'
