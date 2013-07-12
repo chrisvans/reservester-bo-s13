@@ -15,6 +15,9 @@ class RestaurantsController < ApplicationController
   def show
     @restaurant = Restaurant.find(params[:id])
 
+    @reservation = Reservation.new #create new reserv
+    @reservation.restaurant = @restaurant
+
     respond_to do |format|
       format.html #show.html.erb
       format.json { render :json => @restaurant }
@@ -22,8 +25,9 @@ class RestaurantsController < ApplicationController
   end
 
   def new
-    #@owner = Owner.find(params[:owner_id])
-    @restaurant = current_owner.restaurants.new
+    @owner = Owner.find(params[:owner_id])
+    @restaurant = Restaurant.new
+
   end
 
   def edit
@@ -31,22 +35,15 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-  	#@restaurant = Restaurant.new(params[:restaurant])
-    @restaurant = current_owner.restaurants.build(params[:restaurant])
-    # @restaurant.owner = current_owner
-  	
-    respond_to do |format|
-      if @restaurant.save
-        format.html { redirect_to(restaurants_path, 
-                      :notice => 'Restaurant was successfully created.')}
-        format.json { render :json => @restaurant,
-                      :status => :created, :location => @restaurant }
-      else
-        format.html { render :action => 'new' }
-        format.json { render :json => @restaurant.errors,
-                      :status => :unprocessable_entity }
-      end
+  	@owner = Owner.find(params[:owner_id])
+    @restaurant = @owner.restaurants.build(params[:restaurant])
+    
+    if @restaurant.save
+      redirect_to @restaurant, :notice => 'Restaurant was successfully created.'
+    else
+      render :action => 'new' 
     end
+    
   end
 
   def update
@@ -69,10 +66,6 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     @restaurant.destroy
 
-    respond_to do |format|
-      format.html { redirect_to restaurants_url }
-      format.json { head :no_content }
-    end
+     redirect_to restaurants_url 
   end
-
 end

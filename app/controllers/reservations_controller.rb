@@ -1,12 +1,21 @@
 class ReservationsController < ApplicationController
+  before_filter :require_restaurant_owner_match!, :except => :create
 
-  def index
+  def create
+  	@restaurant = Restaurant.find params[:restaurant_id]
+  	@reservation = @restaurant.reservations.build param[:reservation]
+
+  	if @reservation.save
+  	  redirect_to @restaurant, :notice => 'Your reservation has been created, yo'
+  	else
+  	  render 'restaurant/show'
+  	 end
   end
 
-  def show
-  end
+  def destroy
+  	@reservation = Reservation.find params[:id]
+  	@reservation.destroy
 
-  def new
-    @reservation = Reservation.new
+  	redirect_to @reservation.restaurant
   end
-end
+end #end class
