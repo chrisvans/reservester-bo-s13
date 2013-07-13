@@ -25,7 +25,8 @@ class RestaurantsController < ApplicationController
   end
 
   def new
-    @owner = Owner.find(params[:owner_id])
+    @owner = current_owner
+    #@owner = Owner.find(params[:owner_id])
     @restaurant = Restaurant.new
 
   end
@@ -35,7 +36,8 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-  	@owner = Owner.find(params[:owner_id])
+    @owner = current_owner
+  	#@owner = Owner.find(params[:owner_id])
     @restaurant = @owner.restaurants.build(params[:restaurant])
     
     if @restaurant.save
