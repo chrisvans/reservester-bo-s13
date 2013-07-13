@@ -3,5 +3,6 @@ class Reservation < ActiveRecord::Base
 
   belongs_to :restaurant
 
-  validate :email, :requested_date, :presence => true
+  validate :email, :presence => true
+  #validate :requested_date, :presence => true
 end

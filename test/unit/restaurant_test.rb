@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class RestaurantTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+#   test "pretty output" do
+#		name = 'Mi Pueblito'
+#		address = '123 Elm st. Somerville MA'
+#		restaurant = Restaurant.new(:name => name, :owner => owner)	
+#     assert..... 
+#   end
 end

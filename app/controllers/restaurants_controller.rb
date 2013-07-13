@@ -8,7 +8,10 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find(params[:id])
+    @restaurant = Restaurant.find_by_id(params[:id])
+    if @restaurant.nil?
+      render :text => 'Not Found', :status => :not_found
+    end
     @reservation = Reservation.new
     @reservation.restaurant = @restaurant
   end

@@ -1,6 +1,6 @@
 Reservester::Application.routes.draw do
 
-  resources :reservations
+  #resources :reservations
 
   devise_for :owners
 
@@ -14,7 +14,7 @@ Reservester::Application.routes.draw do
   end
 
   resources :restaurants, :except => [:new, :create] do
-    resources :reservations, :only => [:new, :create, :destroy]
+    resources :reservations, :only => [:new, :create]
   end
 
   resources :reservations, :except => [:new, :create]

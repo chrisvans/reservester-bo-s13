@@ -8,7 +8,7 @@ class Restaurant < ActiveRecord::Base
   mount_uploader :menu, MenuUploader
 
   validates :name, :owner, presence: true
-  validates :description, presence: true, length: { minimum: 6 }
+  #validates :description, presence: true, length: { minimum: 6 }
   validates :address, presence: true
   validates :phone, presence: true
 

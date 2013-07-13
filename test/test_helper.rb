@@ -11,4 +11,12 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   include Devise::TestHelpers
+
+  private
+  def create_and_sign_in_owner
+  	owner = FactoryGirl.create(:owner)
+  	sign_in owner
+
+  	owner
+  end
 end

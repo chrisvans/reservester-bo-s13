@@ -34,13 +34,15 @@
 			<th>Email</th>
 			<th>Reservation time</th>
 			<th>Message</th>
+			<th>Owner</th>
 		</tr>
 		<%- @restaurant.reservations.each do |reservation| %>
 		<tr>
 			<td><%= reservation.email %></td>
 			<td><%= reservation.requested_date%></td>
 			<td><%= reservation.message %></td>
-			<td><%= link_to 'Marked as Confirm', restaurant_reservation_path(@restaurant,reservation), :method => :delete, data: { confirm: 'Do you want to mark this reservation as confirmed?'} %></td>
+			<td><%= reservation.restaurant.owner.name %></td>
+			<td><%= link_to 'Marked as Confirm', reservation_path(reservation), :method => :delete, data: { confirm: 'Do you want to mark this reservation as confirmed?'} %></td>
 		</tr>
 		<%- end %>
 	</table>
