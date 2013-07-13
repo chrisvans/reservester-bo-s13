@@ -9,7 +9,7 @@ class Owner < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :restaurants
   # attr_accessible :title, :body
 
-  has_many :restaurants, dependent: :destroy
+  has_many :restaurants
 
   validates :name, :email, :presence => true
 end
