@@ -1,30 +1,14 @@
 require 'test_helper'
 
 class RestaurantTest < ActiveSupport::TestCase
-  should have_many :reservations
-  should belong_to :owner
+   test "pretty string" do
+     name = "Thai Restaurant"
+     address = "555 Main Street, Cambridge, MA"
+     restaurant = Restaurant.new(:name => name, :address => address)
 
-  should validate_presence_of(:name)
+     prettyresult = restaurant.pretty_string
+     assert_equal "Thai Restaurant - 555 Main Street, Cambridge, MA", prettyresult 
+   end
 
-  teardown do
-    Google::Place.unstub(:find)
-  end
 
-  test "google_place for a restaurant with no google_id" do
-    restaurant = FactoryGirl.create(:restaurant, :google_id => nil)
-    assert_nil restaurant.google_place
-  end
-
-  test "google_place for a restaurant that google place lookup fails" do
-    restaurant = FactoryGirl.create(:restaurant, :google_id => "yolo")
-    assert_nil restaurant.google_place
-  end
-
-  test "google_place lookup for a legit google_place" do
-    place = Google::Place.factory
-
-    restaurant = FactoryGirl.create(:restaurant, :google_id => place.reference)
-
-    assert_equal place, restaurant.google_place
-  end
 end

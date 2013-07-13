@@ -1,127 +1,49 @@
 require 'test_helper'
 
 class RestaurantsControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:restaurants)
+  test "testing if controller request fails" do
+    get :show, :id=> 1
+    #making assertion about what should happen 
+    assert_response :not_found
   end
 
-  test "should get new" do
-    owner = create_and_sign_in_owner
-
-    get :new, :owner_id => owner.id
+  test "testing if controller request passes" do
+    restaurant = FactoryGirl.create(:restaurant)
+    get :show, :id => restaurant.id
     assert_response :success
   end
 
-  test "should create restaurant" do
-    owner = create_and_sign_in_owner
+  test "create restaurant" do
 
-    assert_difference('Restaurant.count') do
-      post :create, :restaurant => { :name => 'A Restaurant' }
+    owner = create_and_sign_in_owner
+    # creating a restaurant 
+    assert_difference('Restaurant.count',1) do
+      #post to create action with restaurant params
+      post :create, :restaurant => {
+        :name => 'Chipotle',
+        :address => 'Kendall',
+        :phone => '123456778',
+        :description => 'Burritos!!!!!'
+      }
     end
-
+    #redirect to newly created restaurant show
     assert_redirected_to restaurant_path(assigns(:restaurant))
-    assert_equal owner, assigns[:restaurant].owner
   end
 
-  test "create validation error" do
+  test "create and destroy restaurant" do
+    #signing in to destroy a restaurant
     owner = create_and_sign_in_owner
-
-    assert_no_difference('Restaurant.count') do
-      post :create
-    end
-
-    assert_response :unprocessable_entity
-  end
-
-  test "should show restaurant" do
-    owner = create_and_sign_in_owner
-
+    #creating a new restaurant under owner
     restaurant = FactoryGirl.create(:restaurant, :owner => owner)
-
-    get :show, id: restaurant
-    assert_response :success
-  end
-
-  test "should raise 404 with an invalid restaurant" do
-    assert_raise ActiveRecord::RecordNotFound do
-      get :show, id: 'abcd'
-    end
-  end
-
-  test "should get edit" do
-    owner = create_and_sign_in_owner
-
-    restaurant = FactoryGirl.create(:restaurant, :owner => owner)
-
-    get :edit, id: restaurant.id
-    assert_response :success
-  end
-
-  test "should 401 for edit when restaurant owner do not match" do
-    current_owner = create_and_sign_in_owner
-    actual_owner = FactoryGirl.create(:owner)
-
-    restaurant = FactoryGirl.create(:restaurant, :owner => actual_owner)
-
-    get :edit, id: restaurant.id
-    assert_response :unauthorized
-  end
-
-  test "should update restaurant" do
-    owner = create_and_sign_in_owner
-
-    restaurant = FactoryGirl.create(:restaurant, :owner => owner)
-
-    put :update, id: restaurant.id, restaurant: {  }
-    assert_redirected_to restaurant_path(restaurant)
-  end
-
-  test "update restaurant validation error" do
-    owner = create_and_sign_in_owner
-
-    restaurant = FactoryGirl.create(:restaurant, :owner => owner)
-
-    put :update, id: restaurant.id, restaurant: { name: ''  }
-
-    assert restaurant.reload.name.present?
-    assert_response :unprocessable_entity
-  end
-
-  test "should 401 for update when restaurant owner do not match" do
-    current_owner = create_and_sign_in_owner
-    actual_owner = FactoryGirl.create(:owner)
-
-    restaurant = FactoryGirl.create(:restaurant, :owner => actual_owner)
-
-    put :update, id: restaurant.id, restaurant: {  }
-
-    assert_response :unauthorized
-  end
-
-  test "should destroy restaurant" do
-    owner = create_and_sign_in_owner
-
-    restaurant = FactoryGirl.create(:restaurant, :owner => owner)
-
+    # owner.restaurants.create(:name => 'Chipotle', :address => 'Kendall', :phone => '123456778', :description => 'Burritos!!!!!') # deleting a restaurant and checking
+    # if difference in restaurant table is -1
     assert_difference('Restaurant.count', -1) do
-      delete :destroy, id: restaurant.id
+      delete :destroy, :id => restaurant.id
     end
 
+    #making sure redirects to restaurants index
     assert_redirected_to restaurants_path
+
   end
 
-  test "should 401 for destroy when restaurant owner do not match" do
-    current_owner = create_and_sign_in_owner
-    actual_owner = FactoryGirl.create(:owner)
-
-    restaurant = FactoryGirl.create(:restaurant, :owner => actual_owner)
-
-    assert_no_difference('Restaurant.count') do
-      delete :destroy, id: restaurant.id
-    end
-
-    assert_response :unauthorized
-  end
 end

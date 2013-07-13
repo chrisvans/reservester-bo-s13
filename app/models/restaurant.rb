@@ -8,12 +8,9 @@ class Restaurant < ActiveRecord::Base
 
   mount_uploader :photo, PhotoUploader
 
-
-  def google_place
-    if self.google_id.blank?
-      nil
-    else
-      @google_place ||= Google::Place.find(self.google_id)
-    end
+  def pretty_string
+    return "#{self.name} - #{self.address}"
   end
+
+
 end

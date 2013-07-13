@@ -48,6 +48,6 @@ class RestaurantsController < ApplicationController
 
   helper_method :current_restaurant
   def current_restaurant
-    @current_restaurant ||= Restaurant.find(params[:id])
+    @current_restaurant ||= Restaurant.find_by_id(params[:id])
   end
 end
