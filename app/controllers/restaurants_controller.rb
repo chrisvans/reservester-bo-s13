@@ -5,7 +5,7 @@ class RestaurantsController < ApplicationController
 
   def index
     if owner_signed_in?
-      @restaurants = Restaurant.where(:owner_id => current_owner.id)
+      redirect_to '/dashboard'
     else
       @restaurants = Restaurant.all
     end

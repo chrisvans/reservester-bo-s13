@@ -23,8 +23,9 @@ class ReservationsController < ApplicationController
 
 	    redirect_to @reservation.restaurant
      end
- #    def show
-	# 	@restaurant = Restaurant.find(params[:restaurant_id])
-	# end
+
+  def edit
+    @reservation = Reservation.find params[:id]
+  end
     
 end
