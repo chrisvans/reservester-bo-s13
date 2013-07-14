@@ -18,8 +18,11 @@ class ReservationsController < ApplicationController
         @reservation = @restaurant.reservations.build params[:reservation]
         
         @information = [@restaurant.owner, @reservation, @restaurant]
+
         if @reservation.save
-          ReservationMailer.reservation_notice(@information).deliver
+          @worker_information = @reservation.id
+          Resque.enqueue(MailWorker, @worker_information)
+          # ReservationMailer.reservation_notice(@information).deliver
           redirect_to @restaurant, notice: 'Reservation was successfully created.'
         else
           render 'restaurants/show'
@@ -31,13 +34,11 @@ class ReservationsController < ApplicationController
 	    @restaurant = @reservation.restaurant
       @safe_reservation = @reservation
       @information = [@reservation.restaurant.owner, @safe_reservation, @reservation.restaurant]
-      puts @information
-      if @reservation.destroy
-        ReservationMailer.reservation_accepted(@information).deliver
-        redirect_to @restaurant, notice: 'Reservation confirmation sent.'
-      else
-	      redirect_to @restaurant
-      end
+      #@worker_information = @reservation.id
+      #Resque.enqueue(MailWorker, @worker_information)
+      @reservation.destroy
+      ReservationMailer.reservation_accepted(@information).deliver
+      redirect_to @restaurant, notice: 'Reservation confirmation sent.'
 
      end
 
