@@ -25,7 +25,7 @@
               <% if current_owner == current_restaurant.owner %>
                 <%= link_to t('.edit', :default => t("helpers.links.edit")),
                           {:action => 'edit', :id => current_restaurant.id}, :class => 'btn' %>
-                <%= link_to 'Delete', restaurant_path, :method => 'delete', :id => restaurant.id ,:confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+                <%= link_to 'Delete', restaurant_path, :method => 'delete', :id => current_restaurant.id ,:confirm => 'Are you sure?', :class => 'btn btn-danger' %>
               <% end %>
             </div>
         </div>
@@ -56,9 +56,9 @@
                             <td><%= reservation.guestname %></td>
                             <td><%= reservation.guestemail %></td>
                             <td><%= reservation.guestnumber %></td>
-                            <td><%= reservation.reserve_on %></td>       
+                            <td><%= reservation.reserve_on.to_s(:long) %></td>       
                             <td><%= reservation.message %></td>
-                            <td><%= link_to('Delete', reservation_path(reservation), :method => :delete, :confirm => "Press OK to confirm and delete this reservation?", :class => 'btn btn-danger') %>
+                            <td><%= link_to('Delete', reservation_path(reservation), :method => :delete, :confirm => "Press OK to confirm and delete this reservation?", :class => 'btn btn-mini btn-danger') %>
                             </td>
                         </tr>
                         <% end %>
