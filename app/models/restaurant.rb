@@ -3,7 +3,7 @@ class Restaurant < ActiveRecord::Base
 
   attr_accessible :name, :description, :street, :streetnumber, :city, 
   					:zipcode, :state, :country, :phonenumber, :image, :remote_image_url,
-  					:menue, :longitude, :latitude
+  					:menue, :longitude, :latitude, :category_ids
 
 	has_many :reservations, :dependent => :destroy
 	belongs_to :owner
