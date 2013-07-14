@@ -12,8 +12,6 @@ class CreateCategories < ActiveRecord::Migration
       t.belongs_to :categories
     end
 
-    add_index :categories_restaurants, [:restaurants_id, :categories_id]
-
 
   end
 end
