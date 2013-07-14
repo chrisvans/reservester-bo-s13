@@ -1,24 +1,19 @@
 <h2>All your Restaurants</h2>
 
-<div class="well">
-	<h3>You have a total of <%= @count %> reservations - better get shit done!</h3>
-</div>
-
  <% @restaurants.each do |restaurant| %>
  	<% if current_owner == restaurant.owner %>
  		<p>	
+ 		<h3>
 			<%= restaurant.name %>
-			<%= restaurant.description %>
+			in
 			<%= restaurant.city %>
-
-			<%= restaurant.reservations.each do |reservation| %>
-				<p>
-					<%= reservation.guestname %> |
-					<%= reservation.guestemail %> |
-					<%= reservation.reserve_on %>
-				</p>
-			<% end %>
+		</h3>
 		</p>
 	<% end %>
 
+	<div class="well">
+	<h4>You have <%= restaurant.reservations.count.to_i %> reservations for <%= restaurant.name %></h4>
+</div>
+
 <% end %>
+

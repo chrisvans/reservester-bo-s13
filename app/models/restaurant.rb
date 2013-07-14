@@ -5,7 +5,7 @@ class Restaurant < ActiveRecord::Base
   					:zipcode, :state, :country, :phonenumber, :image, :remote_image_url,
   					:menue, :longitude, :latitude
 
-	has_many :reservations
+	has_many :reservations, :dependent => :destroy
 	belongs_to :owner
 
 	validates :name, presence: true
