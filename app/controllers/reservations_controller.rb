@@ -28,5 +28,16 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find params[:id]
     @restaurant = Restaurant.find params[:restaurant_id]
   end
-    
+
+  def update
+    @reservation = Reservation.find(params[:id])
+    @restaurant = Restaurant.find(params[:restaurant_id])
+
+    if @reservation.update_attributes(params[:reservation])
+      redirect_to @restaurant, notice: 'Reservation was successfully updated.'
+    else
+      render action: "edit"
+    end
+  end
+
 end
