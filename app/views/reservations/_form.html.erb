@@ -1,4 +1,10 @@
-<%= form_for([@restaurant, @reservation]) do |f| %>
+<% if current_owner %>
+<% information = [current_owner, @restaurant, @reservation] %>
+<% else %>
+<% information = [@restaurant, @reservation] %>
+<% end %>
+
+<%= form_for(information) do |f| %>
   <% if @reservation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this restaurant from being saved:</h2>
