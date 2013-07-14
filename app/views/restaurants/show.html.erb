@@ -6,48 +6,86 @@
 
 </div>
 
-<dl class="dl-horizontal">
+<table class="table table-striped">
+  <thead>
+    <tr></tr>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %>, 
+      <%= model_class.human_attribute_name(:address) %>,
+      <%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:phone) %></th>
+      <th><%= model_class.human_attribute_name(:photo) %></th>
+        <% if owner_signed_in? %>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        <% end %>
+      <th>
+        Menu
+      </th>
+      <th>
+        Location
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+        <tr>
+        <td><strong><%= @restaurant.name %></strong><br/><br/>
+        <%= @restaurant.address %><br/><br/>
+        <%= @restaurant.description %></td>
+        <td><%= @restaurant.phone %></td>
+        <td><%= image_tag @restaurant.photo_url(:masthead) %></td>
+          <% if owner_signed_in? %>
+        <td>
+          <%= link_to "Edit Restaurant",
+                      edit_restaurant_path, :class => 'btn btn-mini' %>
+          <%= link_to "Delete Restaurant",
+                      restaurant_path,
+                      :method => :delete,                      
+                      :data => { :confirm => 'Are you sure?' },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+          <% end %>
+        <td>
+          <% if not @restaurant.pdf.blank? %>
+        <a href="<%= @restaurant.pdf %>">Download PDF of Menu</a>
+          <% else %>
+          No Menu Available.
+          <% end %>
+        </td>
 
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+        <td><img src='https://maps.googleapis.com/maps/api/staticmap?center=<%= @restaurant.latitude.to_s %>,<%= @restaurant.longitude.to_s %>&zoom=19&size=400x400&markers=color:green%7Clabel:R%7C<%= @restaurant.latitude.to_s %>,<%= @restaurant.longitude.to_s %>&sensor=false' alt="Location" ></td>
+    </tr>
+  </tbody>
+</table>
 
-  <dd><%= @restaurant.name %></dd>
-
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-
-  <dd><%= @restaurant.description %></dd>
-
-  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
-
-  <dd><%= @restaurant.address %></dd>
-
-  <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
-
-  <dd><%= @restaurant.phone %></dd>
-
-  <dt><strong><%= model_class.human_attribute_name(:photo) %>:</strong></dt>
-
-  <dd><%= image_tag @restaurant.photo_url(:thumbnail) %></dd>
-
-  <dt><strong><%= model_class.human_attribute_name(:pdf) %></strong>
-  </dt>
-
-  <dd>
-    <%= @restaurant.pdf %>
-  </dd>
-
-</dl>
+<%- if current_owner == @restaurant.owner %>
+  <h2>Reservations</h2>
+  <table class="table table-striped">
+    <tr>
+      <th>Email</th>
+      <th>Reserved Time</th>
+      <th>Message</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    <%- @restaurant.reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.email %></td>
+        <td><%= reservation.date_time %></td>
+        <td><%= reservation.message %></td>
+        <td><%= link_to 'Marked as Confirmed', owner_restaurant_reservation_path(current_owner, @restaurant, :id=>reservation.id), :method => :delete, :confirm => 'Mark this reservation confirmed?' %></td>
+      </tr>
+           <td><%= link_to 'Edit', edit_owner_restaurant_reservation_path(current_owner, @restaurant, :id=>reservation.id), :class => 'btn' %></td>
+          <td><%= link_to 'Destroy', owner_restaurant_reservation_path(current_owner, @restaurant, :id=>reservation.id), :method => :delete, :confirm => 'Are you sure that you want to delete this reservation without confirming it?', :class => 'btn' %></td>
+    <%- end %>
+  </table>
+<%- else %>
+  <h2>New Reservation</h2>
+  <%= render 'reservations/form', :reservation => @reservation %>
+<%- end %>
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               restaurants_path, :class => 'btn'  %>
-
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_restaurant_path(@restaurant), :class => 'btn' %>
-
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              restaurant_path(@restaurant),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
 
 </div>

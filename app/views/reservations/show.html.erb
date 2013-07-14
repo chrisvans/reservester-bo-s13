@@ -1,0 +1,18 @@
+<%- model_class = Reservation -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.new', 'Show %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+
+<ol>
+	<% for reservation in @restaurant.reservations.all %>
+	<li><%= reservation.email %></li>
+	<li><%= reservation.date_time %></li>
+	<li><%= reservation.message %></li>
+	<% end %>
+</ol>
+
+<p>
+ <%= link_to "Edit", edit_reservation_path(@reservation) %>
+ <%= link_to "Destroy", @reservation, :confirm => 'Are you sure?', :method => :delete %>
+ <%= link_to "View All", reservations_path %>
+</p>

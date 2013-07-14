@@ -1,4 +1,4 @@
-<%- model_class = Restaurant -%>
+<%- model_class = Owner -%>
 <script
 type="text/javascript"
 src="http://maps.google.com/maps/api/js?sensor=false">
@@ -9,7 +9,7 @@ src="http://maps.google.com/maps/api/js?sensor=false">
       <ul class="thumbnails">
         <% @restaurants.each do |restaurant| %>
           <li class="span4">
-            <%= link_to restaurant do %>
+            <%= link_to owner_restaurant_path(current_owner, restaurant) do %>
               <%= image_tag restaurant.photo.thumbnail.url if restaurant.photo? %>
               <h3><%= restaurant.name %><h3>
             <%- end %>
@@ -17,3 +17,6 @@ src="http://maps.google.com/maps/api/js?sensor=false">
         <% end %>
       </ul>
 
+<% if owner_signed_in? %>
+  <%= link_to 'New Restaurant', new_owner_restaurant_path(current_owner), :class => 'btn' %>
+<% end %>

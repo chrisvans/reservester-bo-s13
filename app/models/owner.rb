@@ -5,9 +5,9 @@ class Owner < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me
-  # attr_accessible :title, :body
+
   has_many :restaurants
   validates_presence_of :username, :email
+  validates_uniqueness_of :username, :email
 end

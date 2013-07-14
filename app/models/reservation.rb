@@ -1,5 +1,7 @@
 class Reservation < ActiveRecord::Base
-  attr_accessible :r_time
+  attr_accessible :email, :message, :date_time
+
+  validates_presence_of :email, :date_time
 
   belongs_to :restaurant
 

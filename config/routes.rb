@@ -1,8 +1,27 @@
 Reservester::Application.routes.draw do
+
   devise_for :owners
 
-  resources :restaurants, :reservations
+  get '/dashboard' => 'owners#dashboard', :as => :dashboard
+  
+  resources :owners do
+    resources :restaurants, :only => [:new, :create]
+  end
+
+  resources :owners do
+    resources :restaurants, :except => [:new, :create] do
+      resources :reservations, :only => [:edit, :destroy, :update, :show]
+    end
+  end
+
+  resources :restaurants, :except => [:new, :create] do
+    resources :reservations, :only => [:new, :create]
+  end
+
+# resources :reservations, :only => [:edit, :destroy]
+
   root :to => "restaurants#index"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

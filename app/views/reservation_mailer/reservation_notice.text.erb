@@ -1,0 +1,7 @@
+A new user is attempting to reserve a spot at your restaurant!
+
+<%= @user_reservation.email %> would like to reserve a spot at your restaurant, <%= @restaurant.name %> on <%= @user_reservation.date_time %>.
+
+Message from the user: <%= @user_reservation.message %>
+
+Check out the reservation here: <%= root_url %>

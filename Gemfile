@@ -24,8 +24,14 @@ group :assets do
 
   gem 'twitter-bootstrap-rails'
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-ui-rails'
 end
 
+group :development, :test do
+	gem 'factory_girl_rails'
+end
+
+gem 'mustache'
 gem 'devise'
 gem 'geocoder'
 
@@ -35,12 +41,18 @@ gem 'fog', '~> 1.3.1'
 gem 'less-rails'
 gem 'therubyracer'
 gem 'jquery-rails'
+gem 'bootstrap-datetimepicker-rails'
+gem 'bootstrap-timepicker-rails'
 
 gem 'mini_magick'
 gem 'rmagick'
 
 gem 'dotenv-rails'
+gem "watu_table_builder", :require => "table_builder"
+gem "recaptcha", :require => "recaptcha/rails"
+gem "resque"
 
+# mailtrap
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
