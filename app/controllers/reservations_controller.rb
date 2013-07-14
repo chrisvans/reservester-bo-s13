@@ -29,13 +29,14 @@ class ReservationsController < ApplicationController
     def destroy
 	    @reservation = Reservation.find params[:id]
 	    @restaurant = @reservation.restaurant
-      @information = [@reservation.restaurant.owner, @reservation, @reservation.restaurant]
-
+      @safe_reservation = @reservation
+      @information = [@reservation.restaurant.owner, @safe_reservation, @reservation.restaurant]
+      puts @information
       if @reservation.destroy
         ReservationMailer.reservation_accepted(@information).deliver
         redirect_to @restaurant, notice: 'Reservation confirmation sent.'
       else
-	      redirect_to @reservation.restaurant
+	      redirect_to @restaurant
       end
 
      end

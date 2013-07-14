@@ -49,6 +49,7 @@ gem 'rmagick'
 
 gem 'dotenv-rails'
 gem "watu_table_builder", :require => "table_builder"
+gem "recaptcha", :require => "recaptcha/rails"
 
 # mailtrap
 

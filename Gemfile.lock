@@ -130,6 +130,7 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    recaptcha (0.3.5)
     ref (1.0.5)
     rmagick (2.13.2)
     ruby-hmac (0.4.0)
@@ -185,6 +186,7 @@ DEPENDENCIES
   mustache
   pg
   rails (= 3.2.13)
+  recaptcha
   rmagick
   sass-rails (~> 3.2.3)
   therubyracer
