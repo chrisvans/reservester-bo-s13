@@ -7,7 +7,7 @@ class ReservationsController < ApplicationController
 		@reservation = Reservation.new(params[:reservation])
 		@reservation.restaurant = @restaurant
 
-		if @reservation.save
+		if verify_recaptcha(:model => @reservation, :message => "Ah! reCAPTCHA!") && @reservation.save
 			ReservationMailer.reservation_notification(current_owner,@reservation).deliver
 			redirect_to @restaurant, :notice => "Your reservation was successful!"
 		else
