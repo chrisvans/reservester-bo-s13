@@ -51,6 +51,7 @@ gem 'dotenv-rails'
 gem "watu_table_builder", :require => "table_builder"
 gem "recaptcha", :require => "recaptcha/rails"
 gem "resque"
+gem "resque_mailer"
 
 # mailtrap
 

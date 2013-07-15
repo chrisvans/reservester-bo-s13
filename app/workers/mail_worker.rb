@@ -1,16 +1,13 @@
-class MailWorker
-	@queue = :mail_queue
+# class MailWorker
+# 	@queue = :mail_queue
 
-	def self.perform(worker_information)
-		puts '------------------------'
-		puts worker_information
-		puts '------------------------'
-		reservation = Reservation.find(worker_information)
-		owner = reservation.restaurant.owner
-		restaurant = reservation.restaurant
-		mail_information = [owner, reservation, restaurant]
+# 	def self.perform(worker_information)
+# 		reservation = Reservation.find(worker_information)
+# 		owner = reservation.restaurant.owner
+# 		restaurant = reservation.restaurant
+# 		mail_information = [owner, reservation, restaurant]
 
-		ReservationMailer.reservation_notice(mail_information).deliver
-    end
+# 		ReservationMailer.reservation_notice(mail_information).deliver
+#     end
 
-end
+# end
