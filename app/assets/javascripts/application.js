@@ -20,6 +20,7 @@
 
 $(function () {
     $( "#bookingTime" ).datetimepicker({
+    	dateFormat: "yy-mm-dd",
     	timeFormat: "hh:mm tt",
     	stepMinute: 5,
     	hourMin: 8,
