@@ -10,11 +10,6 @@ class ReservationsController < ApplicationController
 	def create
         @restaurant = Restaurant.find params[:restaurant_id]
 
-        time_format = params[:reservation][:date_time].to_s
-        time_format[13] = ":"
-        time_format = time_format.to_datetime
-        params[:reservation][:date_time] = time_format
-
         @reservation = @restaurant.reservations.build params[:reservation]
         
         @information = [@restaurant.owner, @reservation, @restaurant]
@@ -32,12 +27,17 @@ class ReservationsController < ApplicationController
     def destroy
 	    @reservation = Reservation.find params[:id]
 	    @restaurant = @reservation.restaurant
-      @safe_reservation = @reservation
-      @information = [@reservation.restaurant.owner, @safe_reservation, @reservation.restaurant]
+
+      @information = [@reservation.restaurant.owner, @reservation, @reservation.restaurant]
+
+      puts '---------------------------------'
+      puts @information
+      puts '---------------------------------'
+
+      ReservationMailer.reservation_accepted(@information).deliver
       #@worker_information = @reservation.id
       #Resque.enqueue(MailWorker, @worker_information)
       @reservation.destroy
-      ReservationMailer.reservation_accepted(@information).deliver
       redirect_to @restaurant, notice: 'Reservation confirmation sent.'
 
      end

@@ -15,7 +15,7 @@ class ReservationMailer < ActionMailer::Base
     @user_reservation = information[1]
     @restaurant = information[2]
 
-  	mail(:to => "<%{@user_reservation.email}>", :subject => "Reservation Accepted")
+  	mail(:to => "<#@user_reservation.email}>", :subject => "Reservation Accepted")
   end
 
 end
