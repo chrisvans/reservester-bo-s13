@@ -7,6 +7,7 @@ Reserver::Application.routes.draw do
 
   resources :restaurants
   resources :reservations
+  resources :categories
 
  # Sample resource route with sub-resources (means: we're not even letting 
                                             #new, create, delete happen at the url level

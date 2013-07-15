@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(:version => 20130714195554) do
   end
 
   create_table "categories_restaurants", :force => true do |t|
-    t.integer "restaurants_id"
-    t.integer "categories_id"
+    t.integer "restaurant_id"
+    t.integer "category_id"
   end
 
   create_table "owners", :force => true do |t|

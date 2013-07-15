@@ -8,8 +8,8 @@ class CreateCategories < ActiveRecord::Migration
 
  
     create_table :categories_restaurants do |t|
-      t.belongs_to :restaurants
-      t.belongs_to :categories
+      t.belongs_to :restaurant
+      t.belongs_to :category
     end
 
 

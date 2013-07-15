@@ -15,7 +15,7 @@
   <%= f.input :image, label: 'Upload an Image' %>  
   <%= f.input :remote_image_url, label: 'Or paste Image URL' %>
   <%= f.input :menue %>
-  <%= f.association :categories, collection: Categories.all(order: 'name'), prompt: "Choose one Category", as: :radio_buttons  %>
+  <%= f.association :categories, collection: Category.all(order: 'name'), prompt: "Choose one Category", as: :radio_buttons  %>
   
   <%= f.button :submit, class: "btn btn-primary", value: "Create Restaurant" %>
 <% end %>

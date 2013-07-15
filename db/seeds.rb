@@ -25,12 +25,12 @@
     "Vegetarian Restaurants",
     "Wine Bars" ]
 
-Categories.delete_all
+Category.delete_all
 
 MyCategories.each do |categories|
   categories.each_line do |category|
     name = category.chomp
-    Categories.create!(:name => name)
+    Category.create!(:name => name)
   end
 end
 
