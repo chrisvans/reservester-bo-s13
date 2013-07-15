@@ -9,7 +9,7 @@ class ReservationsController < ApplicationController
   	if @reservation.save
   	  redirect_to @restaurant, :notice => 'Your reservation has been created, yo'
   	else
-  	  render 'restaurants/show'
+  	  render 'restaurants/show', :notice => 'Uh-oh. Reservation did not save.'
   	 end
   end
 

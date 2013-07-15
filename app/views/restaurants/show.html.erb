@@ -41,9 +41,8 @@
     <%- @restaurant.reservations.each do |reservation| %>
       <tr>
         <td><%= reservation.email %></td>
-        <td><%= reservation.reserve_on %></td>
+        <td><%= reservation.booking_time %></td>
         <td><%= reservation.message %></td>
-        <td><%= link_to 'Marked as Confirmed', reservation_path(reservation), :method => :delete, :confirm => 'Mark this reservation confirmed?' %></td>
       </tr>
     <%- end %>
 
@@ -52,6 +51,7 @@
   <%= render 'reservations/form' , :reservation => @reservation %>
 <%- end %>
 
+test
 
 
 <div class="form-actions">
