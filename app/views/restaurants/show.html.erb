@@ -18,6 +18,8 @@
   <dd><%= @restaurant.phone %></dd>
   <dt><strong>Owner:</strong></dt>
   <dd><%= @restaurant.owner.name  %></dd>
+  <dt><strong>Menu:</strong></dt>
+  <dd><%= link_to "Menu", @restaurant.menu_url if @restaurant.menu? %>
 </dl>
 
   <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%=  @restaurant.address %>&zoom=15&size=600x500&sensor=false&markers=color:blue|label:R|<%=@restaurant.address %>">
@@ -26,7 +28,8 @@
     <h4>Images</h4>
   <%= image_tag @restaurant.image.masthead.url if @restaurant.image? %>
   </div>
-</div>
+
+ </div>
 
 
 <%- if current_owner == @restaurant.owner %>
