@@ -1,8 +1,8 @@
-<%= form_for @restaurant, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+<%= form_for @restaurant, :html => { :class => 'form-horizontal', :multipart => true, :'data-validate' => "parsley" } do |f| %>
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
+      <%= f.text_field :name, :class => 'text_field', :id => 'fullname', :name => 'fullname', :'data-required' => 'true' %>
     </div>
   </div>
   <div class="control-group">
@@ -20,7 +20,7 @@
   <div class="control-group">
     <%= f.label :phone, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :phone, :class => 'text_field' %>
+      <%= f.text_field :phone, :class => 'text_field', :'data-type' => 'phone' %>
     </div>
   </div>
   <div class="control-group">
