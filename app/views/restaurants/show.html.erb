@@ -12,8 +12,12 @@
               <dd><%= current_restaurant.name %></dd>
               <dt><strong>Description:</strong></dt>
               <dd><%= current_restaurant.description %></dd>
-              <dt><strong>Category:</strong></dt>
-              <dd><%= current_restaurant.categories.name %></dd>
+              <dt><strong>Categories:</strong></dt>
+              <dd>
+                  <% current_restaurant.categories.each do |category| %>
+                  <%= category.name %> |
+                  <% end %> 
+              </dd>
               <dt><strong>Picture:</strong></dt>
               <dd><%= image_tag(current_restaurant.image_url(:masthead).to_s) %></dd>  
               <dt><strong>Address:</strong></dt>
