@@ -46,6 +46,8 @@ gem 'devise' # for logins
 
 gem "mail" # for email
 
+gem "factory_girl_rails" # for test data generation
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

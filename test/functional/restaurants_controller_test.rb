@@ -7,8 +7,9 @@ class RestaurantsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
+    owner = create_and_sign_in_owner
   	get :new
-  	assert_response :success
+  	assert_response :success #test fails, currently being redirect (probably to owner login)
   end
 
   test "should show restaurant" do
@@ -17,8 +18,12 @@ class RestaurantsControllerTest < ActionController::TestCase
   end
 
   test "should create restaurant" do
-  	assert_difference('Restaurant.count') do
-  		post :create, restaurant: {}
+    owner = create_and_sign_in_owner
+
+  	assert_difference('Restaurant.count', 1) do
+  		post :create, restaurant: {
+        :name => 'Scotts Burrito Shack'
+      }
   	end
   	assert_redirected_to restaurant_path(assigns(:restaurant))
   end
