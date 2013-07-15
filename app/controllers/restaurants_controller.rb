@@ -12,6 +12,7 @@ class RestaurantsController < ApplicationController
 
     @reservation = Reservation.new
     @reservation.restaurant = @restaurant
+    
   end
 
   def new

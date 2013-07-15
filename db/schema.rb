@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130707222814) do
+ActiveRecord::Schema.define(:version => 20130715182425) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "categories_restaurants", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "product_id"
+  end
 
   create_table "owners", :force => true do |t|
     t.string   "name"
@@ -55,5 +66,14 @@ ActiveRecord::Schema.define(:version => 20130707222814) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
   end
+
+  create_table "restaurants_categories", :id => false, :force => true do |t|
+    t.integer  "restaurant_id", :null => false
+    t.integer  "category_id",   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "restaurants_categories", ["restaurant_id", "category_id"], :name => "index_restaurants_categories_on_restaurant_id_and_category_id", :unique => true
 
 end
