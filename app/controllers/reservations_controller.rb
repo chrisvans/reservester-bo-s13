@@ -11,12 +11,9 @@ class ReservationsController < ApplicationController
         @restaurant = Restaurant.find params[:restaurant_id]
 
         @reservation = @restaurant.reservations.build params[:reservation]
-        
-        # @information = [@restaurant.owner, @reservation, @restaurant]
 
         if @reservation.save
           @worker_information = @reservation.id
-          # Resque.enqueue(MailWorker, @worker_information)
           ReservationMailer.reservation_notice(@reservation.id).deliver
           redirect_to @restaurant, notice: 'Reservation was successfully created.'
         else
@@ -28,12 +25,8 @@ class ReservationsController < ApplicationController
 	    @reservation = Reservation.find params[:id]
 	    @restaurant = @reservation.restaurant
 
-      # @information = [@reservation.restaurant.owner, @reservation, @reservation.restaurant]
-
       ReservationMailer.reservation_accepted(@reservation.id).deliver
-      
-      # @worker_information = @reservation.id
-      # Resque.enqueue(MailWorker, @worker_information)
+
       @reservation.update_attribute(:deleted, true)
       redirect_to @restaurant, notice: 'Reservation confirmation sent.'
 
