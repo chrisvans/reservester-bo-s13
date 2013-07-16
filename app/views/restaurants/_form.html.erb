@@ -8,5 +8,11 @@
 	<p><%= f.label :phone %></p>
 	<p><%= f.text_field :phone %></p>
 	<p><%= f.file_field :image %></p>
+	<% for category in Category.find(:all) %>
+	<label class="checkbox">
+       <%= check_box_tag "restaurant[category_ids][]", category.id, @restaurant.categories.include?(category) %>
+       <%= category.name %>
+    </label>
+    <% end %>
 	<%= f.submit %>
 <% end %>

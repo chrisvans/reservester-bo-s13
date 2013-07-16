@@ -3,10 +3,11 @@ class Restaurant < ActiveRecord::Base
   has_many :reservations
   has_and_belongs_to_many :categories
 
-  attr_accessible :address, :description, :name, :phone, :image
+  attr_accessible :address, :description, :name, :phone, :image, :category_ids
 
   accepts_nested_attributes_for :reservations
-  
+  accepts_nested_attributes_for :categories
+
   validates :name, presence: true
 
   mount_uploader :image, ImageUploader
