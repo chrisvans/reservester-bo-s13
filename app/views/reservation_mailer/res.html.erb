@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+
+<h1><%= @restaurant.name %> has a reservation</h1>
+<p>
+<%= @reservation.email %> has made a reservation at <%= @restaurant.name %>!<br>
+Info:<br>
+<%= @reservation.email %><br>
+<%= @reservation.date %><br>
+<%= @reservation.time %><br>
+<%= @reservation.message %><br>
+</p>
+<p> 
+To login to the site, just follow this link:.
+ <br>
+Congrats on the reservation!
+<p>
+</body>
+</html>

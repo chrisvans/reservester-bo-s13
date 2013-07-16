@@ -9,9 +9,11 @@ class ReservationsController < ApplicationController
 
 		if @reservation.save!
 			redirect_to restaurants_path
+			ReservationMailer.res(@restaurant.owner, @restaurant, @reservation).deliver
 		else
 			render restaurant_show_path
 		end
+
 	end
 
 	def destroy

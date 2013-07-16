@@ -2,6 +2,9 @@ RestaurantsApp::Application.routes.draw do
   
   devise_for :owners
 
+
+  devise_for :owners, controllers: { registrations: "registrations" }
+
   get "welcome/index"
 
   resources :restaurants do

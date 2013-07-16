@@ -5,21 +5,21 @@ gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) support
 gem "twitter-bootstrap-rails"
 gem 'jquery-rails'
 gem 'devise'
+gem 'better_errors'
+gem 'binding_of_caller'
 
 gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :development, :test do
+# group :development, :test do
 	gem 'sqlite3'
-end
+# end
 
-
-
-group :production do
-	gem 'pg'
-end
+# group :production do
+# 	gem 'pg'
+# end
 
 gem 'mini_magick'
 gem "rmagick"
