@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# put scategories here
+
+# clear scategories here
+
+Categories.delete_all
+
+categories_list = ["Fast Food", "Fast Casual", "Casual Dining", "Family Style", "Fine Dining", "Bistro", "Buffet", "Cafe", "Coffeehouse", "Pub"]
+
+categories_list.each do |catname|
+	Categories.find_or_create_by_name(catname)
+end
