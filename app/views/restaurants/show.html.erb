@@ -15,7 +15,7 @@
               <dt><strong>Categories:</strong></dt>
               <dd>
                   <% current_restaurant.categories.each do |category| %>
-                  <%= category.name %> |
+                  <%= link_to(category.name, {:controller => 'categories', :action => 'show', :id => category.id} ) %> |
                   <% end %> 
               </dd>
               <dt><strong>Picture:</strong></dt>
