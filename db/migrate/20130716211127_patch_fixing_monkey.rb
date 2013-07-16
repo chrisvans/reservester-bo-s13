@@ -1,7 +1,5 @@
 class PatchFixingMonkey < ActiveRecord::Migration
   def change
-  	drop_table :categories
-  	drop_table :categories_restaurants
   	create_table :categories do |t|
   		t.string :name
 
