@@ -39,7 +39,17 @@ Reservester::Application.configure do
   ENV["AWS_SECRET_ACCESS_KEY"] = "8pIULdpMtgNDjKrKeP/gu9p2woMdebtTwOjagF3+"
   ENV["AWS_S3_BUCKET"]  =  "reservester-dlo83"
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
 
+  ActionMailer::Base.smtp_settings = {
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
+    :domain => 'yourdomain.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
 
 end

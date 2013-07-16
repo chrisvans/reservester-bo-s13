@@ -32,6 +32,8 @@ gem 'devise'
 gem "validates_phone_number", "~> 2.0.1"
 gem 'jquery-timepicker-addon-rails'
 gem 'factory_girl_rails'
+gem 'sendgrid'
+gem 'figaro'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
