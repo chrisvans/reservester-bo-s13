@@ -2,9 +2,14 @@
 
 
 <% @restaurant.each do |restaurant| %>
-
-	<%= restaurant.name %>
-
+	<ul class="thumbnails">
+		<li class="span4">
+			<div class="thumbnail">
+				<h3><%= restaurant.name %></h3>
+				<%= image_tag(restaurant.image_url(:thumb).to_s) %>
+				<p><%= restaurant.description %></p>
+			</div>
+		</li>
 <% end %>
 
 
