@@ -1,6 +1,11 @@
 Reservester::Application.routes.draw do
 
 
+  get "categories" => 'categories#index'
+  match 'categories/:id' => 'categories#show'
+
+  # get "categories/show"
+
   devise_for :owners
 
   resources :restaurants do

@@ -1,0 +1,31 @@
+<h1>Here Are the Restaurants in the <%= @category.name %> category</h1>
+
+<table class="table table-hover">
+		<tr>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Address</th>
+			<th>Phone</th>
+			<th></th>
+			<th></th>
+		</tr>
+	<% @category.restaurants.each do |x| %>
+		<tr>
+			<td><%= x.name %></td>
+			<td><%= x.description %></td>
+			<td><%= x.address %></td>
+			<td><%= x.phone %></td>
+			<td><%= image_tag(x.image_url(:thumb)) if x.image? %></td>
+			<td>
+				<p>
+					<%= link_to 'Show', restaurant_path(x), :class => "btn btn-primary" %>
+				</p>
+				<p>
+				<%= link_to 'Reserve', new_restaurant_reservation_path(x), :class => "btn btn-primary" %>
+				</p>
+
+			</td>
+			
+		</tr>
+	<% end %>
+</table>
