@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130716205909) do
+ActiveRecord::Schema.define(:version => 20130716211127) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(:version => 20130716205909) do
   end
 
   create_table "categories_restaurants", :force => true do |t|
-    t.integer "restaurants_id"
-    t.integer "categories_id"
+    t.integer "restaurant_id"
+    t.integer "category_id"
   end
 
   create_table "categorizations", :force => true do |t|
