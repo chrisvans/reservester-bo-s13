@@ -53,12 +53,11 @@
     </div>
 
   </div>
-  <% for category in Category.find(:all) %>
-  <div>
-    <%= check_box_tag "restaurant[category_ids][]", category.id, @restaurant.categories.include?(category) %>
-    <%= category.name %>
-  </div>
-  <% end %>
+  <%= f.select :category_ids,
+  Category.all.map { |cat| [cat.name, cat.id] },
+  { include_blank: true },
+  { multiple: true, class: 'chzn-select' }
+%>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

@@ -16,4 +16,7 @@
 //= require jquery.ui.datepicker
 //= require bootstrap-datetimepicker
 //= require bootstrap-timepicker
+//= require chosen-jquery
+//= require chosen-prototype
+//= require chosen-jquery
 //= require_tree .

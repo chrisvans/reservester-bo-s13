@@ -55,6 +55,8 @@ gem "recaptcha", :require => "recaptcha/rails"
 gem "resque"
 gem "resque_mailer"
 
+gem "chosen-rails"
+
 # mailtrap
 
 # To use ActiveModel has_secure_password
