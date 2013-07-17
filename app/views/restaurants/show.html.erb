@@ -15,7 +15,7 @@
 
 <h5>Categories:</h5>
 	<% @restaurant.categories.each do |x| %>
-	<p><%= x.name %></p>
+	<p><%= link_to "#{x.name}", category_path(x) %></p>
 	<% end %>
 	
 <p>
