@@ -1,11 +1,29 @@
+<div class="page-header">
+  <h1>Search by Categories</h1>
+</div>
 
-<div style="float:left">
+<div id="categories" style="float:left">
   <%= form_for @restaurant do |f| %>
     <p>
-      <%= f.label :category_tokens, "Categories" %><br />
-      <%= f.text_field :category_tokens %>
+      <%= f.label :category_ids, "Search" %>
+      <br />
+      <%= f.select :category_ids,
+  Category.all.map { |cat| [cat.name, cat.id] },
+  { include_blank: true },
+  { multiple: true, class: 'chzn-select' } %>
     </p>
-    <p><%= f.submit %></p>
   <% end %>
 </div>
+<script id="restaurant_fill" type="text/html">
+
+<%= @categories = Category.where(:id => 5) %>
+<%= @restaurants = @categories.map(&:restaurants).flatten.uniq %>
+
+Bacon Bibble
+
+
+</script>
+<div id="restaurants_by_cat">
+</div>
+
 

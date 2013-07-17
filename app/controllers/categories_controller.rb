@@ -2,7 +2,10 @@ class CategoriesController < ApplicationController
   
   def index
   	@restaurant = Restaurant.new
-  	@categories = Category.where("name ilike ?", "%#{params[:q]}%")
+  	@categories = Category.all
+
+    # Turns out I didn't need this.
+  	# @categories = Category.where("name ilike ?", "%#{params[:q]}%")
 
   	respond_to do |format|
   		format.html
@@ -10,8 +13,9 @@ class CategoriesController < ApplicationController
   	end
   end
 
-  def show
-  	@category = Category.find_by_id(params[:id])
-  	@restaurants = @category.restaurants
-  end
+  # def show
+  # 	@categories = Category.where(:id => params[:id])
+  # 	@restaurants = @categories.map(&:restaurants).flatten.uniq
+  # end
+
 end
