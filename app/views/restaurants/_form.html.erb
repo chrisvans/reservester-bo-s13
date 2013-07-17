@@ -14,12 +14,26 @@
 		<%= f.text_field :name %>
 	</p>
 
+<!--
 	<p>
 		<%= f.collection_select :category_ids, 
 			Category.all, :id, :name,
 
 			{:prompt => @select_value, 
 			 :selected => @restaurant.categories }
+		%>
+	</p>
+
+	<p>
+		<%= f.label :category_tokens, "Category:" %>
+		<%= f.text_field :category_tokens, "data-pre" => @restaurant.categories.map(&:attributes).to_json %>
+	</p>
+-->
+	<p>
+		<%= f.select :category_ids,
+  			Category.all.map { |u| [u.name, u.id] },
+  			{ include_blank: true },
+  			{ multiple: true, class: 'chzn-select' }
 		%>
 	</p>
 

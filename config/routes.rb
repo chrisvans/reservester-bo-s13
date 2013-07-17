@@ -1,8 +1,5 @@
 Reservester::Application.routes.draw do
 
-  resources :categories
-
-
   #resources :reservations
 
   devise_for :owners
@@ -21,6 +18,8 @@ Reservester::Application.routes.draw do
   end
 
   resources :reservations, :except => [:new, :create]
+
+  resources :categories, :only => [:index, :show]
 
   #get "restaurants/index"
   root to: "restaurants#index"

@@ -13,6 +13,7 @@ group :development, :test do
   gem 'mysql2'
   gem 'simplecov', :require => false, :group => :test
   gem 'factory_girl_rails'
+  gem 'annotate'
 end
 
 # Gems used only for assets and not required
@@ -38,6 +39,7 @@ gem 'fog'
 gem 'devise'
 
 gem 'sendgrid'
+gem 'chosen-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -13,4 +13,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require chosen-jquery
+//= require chosen-prototype
 //= require_tree .
+
+$(function() {
+	$("#restaurant_category_tokens").tokenInput("/categories.json"), 
+	{crossDomain: false,
+	prePopulate: $("#restaurant_category_tokens").data("pre"),
+	theme: "facebook"
+	});
+});
