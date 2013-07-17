@@ -6,7 +6,7 @@
 		<li class="span4">
 			<div class="thumbnail">
 				<h3><%= restaurant.name %></h3>
-				<%= image_tag(restaurant.image_url(:thumb).to_s) %>
+				<%= link_to((image_tag(restaurant.image_url(:thumb).to_s)), {:controller => 'restaurants', :action => 'show', :id => restaurant.id} ) %>
 				<p><%= restaurant.description %></p>
 			</div>
 		</li>

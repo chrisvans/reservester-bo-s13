@@ -31,7 +31,7 @@
         <td><%= link_to("Show", {:action => 'show', :id => restaurant.id}) %></td>
         <td><%= restaurant.name %></td>
         <td><%= restaurant.description %></td>
-        <td><%= image_tag(restaurant.image_url(:thumb).to_s) %></td>
+        <td><%= link_to(image_tag(restaurant.image_url(:thumb).to_s), {:controller => 'restaurants', :action => 'show', :id => restaurant.id} ) %></td>
         <td><%= link_to('Menu', restaurant.menue_url.to_s, :target => '_blank') %></td>
         <td><%= restaurant.street %> 
         	<%= restaurant.streetnumber %>
