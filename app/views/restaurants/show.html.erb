@@ -13,7 +13,7 @@
       <th><%= model_class.human_attribute_name(:name) %>, 
       <%= model_class.human_attribute_name(:address) %>,
       <%= model_class.human_attribute_name(:description) %></th>
-      <th>Categories</th>
+      <th style="width:200px;">Categories</th>
       <th><%= model_class.human_attribute_name(:phone) %></th>
       <th><%= model_class.human_attribute_name(:photo) %></th>
         <% if owner_signed_in? %>
@@ -32,9 +32,13 @@
         <td><strong><%= @restaurant.name %></strong><br/><br/>
         <%= @restaurant.address %><br/><br/>
         <%= @restaurant.description %></td>
-        <td><% for category in @restaurant.categories %>
-                <%= category.name %><br/>
-            <% end %></td>
+        <td>
+          <% for category in @restaurant.categories %>
+            <%= link_to category do %>
+                <%= category.name %> ( <%= category.restaurants.count %> )<br/>
+            <% end %>
+          <% end %>
+        </td>
         <td><%= @restaurant.phone %></td>
         <td><%= image_tag @restaurant.photo_url(:masthead) %></td>
           <% if owner_signed_in? %>
