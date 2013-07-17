@@ -8,6 +8,7 @@ class ReservationsController < ApplicationController
 		@reservation = current_restaurant.reservations.build(params[:reservation])
 		respond_to do |format|
 			if @reservation.save
+				ReservationMailer.reservation_notification(@reservation).deliver
     			format.html  { redirect_to(current_restaurant,
     							:notice => 'Your reservation has been accepted. See you soon!') }
     			format.json  { render :json => @reservation,
