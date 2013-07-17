@@ -11,7 +11,9 @@
 
 <p>
 	<strong>Category:</strong>
-	<%= @restaurant.categories.map { |c| c.name } %>
+	<% @restaurant.categories.each do |cat| %>
+		<%= cat.name %>
+	<% end %>
 </p>
 
 <p>
