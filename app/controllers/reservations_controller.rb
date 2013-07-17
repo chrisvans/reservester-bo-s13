@@ -21,10 +21,15 @@ class ReservationsController < ApplicationController
 	end
 
 	def destroy
-		@reservation = Restaurant.find(params[:id])
+		@reservation = Reservation.find(params[:id])
 		@reservation.destroy
 
 		redirect_to @reservation.restaurant
 	end
 
+	private
+	helper_method :current_restaurant
+	def current_restaurant
+		@current_restaurant ||= Reservation.find_by_id(params[:id]).restaurant
+	end
 end
