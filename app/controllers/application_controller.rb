@@ -9,5 +9,9 @@ class ApplicationController < ActionController::Base
     unless @restaurant.owner == current_owner
       render "unauthorized", :status => :unauthorized
     end
-  end  
+  end
+
+  #def get_all_categories
+  #	@categories = Category.all
+  #end
 end

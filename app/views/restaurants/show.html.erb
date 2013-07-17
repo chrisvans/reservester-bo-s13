@@ -10,6 +10,11 @@
 </p>
 
 <p>
+	<strong>Category:</strong>
+	<%= @restaurant.categories.map { |c| c.name } %>
+</p>
+
+<p>
 	<strong>Address:</strong>
 	<%= @restaurant.address %>
 </p>

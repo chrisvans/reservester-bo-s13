@@ -1,5 +1,8 @@
 Reservester::Application.routes.draw do
 
+  resources :categories
+
+
   #resources :reservations
 
   devise_for :owners

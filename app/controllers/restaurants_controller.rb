@@ -38,7 +38,10 @@ class RestaurantsController < ApplicationController
   end
 
   def update
+    params[:restaurant][:category_ids] ||= []
+
     @restaurant = Restaurant.find(params[:id])
+    #@categories = Category.find(:all, :order => 'name')
 
     if @restaurant.update_attributes(params[:restaurant])
       redirect_to @restaurant

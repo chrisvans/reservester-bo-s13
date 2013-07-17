@@ -1,4 +1,5 @@
 require 'test_helper'
+include Devise::TestHelpers
 
 class ReservationsControllerTest < ActionController::TestCase
 #  test "create restaurant not found" do

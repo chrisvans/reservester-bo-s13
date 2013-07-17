@@ -15,6 +15,15 @@
 	</p>
 
 	<p>
+		<%= f.collection_select :category_ids, 
+			Category.all, :id, :name,
+
+			{:prompt => @select_value, 
+			 :selected => @restaurant.categories }
+		%>
+	</p>
+
+	<p>
 		<%= f.label :description %>
 		<%= f.text_area :description %><br>
 	</p>

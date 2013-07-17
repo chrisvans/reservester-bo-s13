@@ -1,4 +1,5 @@
 require 'test_helper'
+#include Devise::TestHelpers
 
 class RestaurantsControllerTest < ActionController::TestCase
 	test "testing if controller request fails" do 

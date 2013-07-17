@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+restaurant_categories = ["African","Chinese", "Mexican", "Japanese", "Thai", "Cafe", 
+	"Mediterranean", "Middle_Eastern" ]
+
+Category.delete_all
+
+restaurant_categories.each do |name|
+	Category.create!(:name => name)
+end
