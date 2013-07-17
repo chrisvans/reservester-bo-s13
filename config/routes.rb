@@ -1,8 +1,9 @@
 Reservester::Application.routes.draw do
 
+  resources :categories
 
-  get "categories" => 'categories#index'
-  match 'categories/:id' => 'categories#show'
+  # get "/categories" => 'categories#index'
+  # match 'categories/:id' => 'categories#show'
 
   # get "categories/show"
 

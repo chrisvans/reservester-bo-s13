@@ -5,7 +5,7 @@ class CreateCategories < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_column :restaurants, :category_id, :integer
+    # add_column :restaurants, :category_id, :integer
 
     create_table :categories_restaurants do |t|
     	t.belongs_to :restaurant
