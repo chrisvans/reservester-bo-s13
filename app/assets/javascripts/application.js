@@ -20,3 +20,17 @@
 //= require chosen-prototype
 //= require chosen-jquery
 //= require_tree .
+
+// $(function() {
+// 	$("#restaurant_category_tokens").tokenInput("/restaurants.json", {
+// 		crossDomain: false
+// 	});
+// });
+
+$(function() {
+  $("#restaurant_category_tokens").tokenInput("/categories.json", {
+    crossDomain: false,
+    prePopulate: $("#restaurant_category_tokens").data("pre"),
+    theme: "facebook"
+  });
+});

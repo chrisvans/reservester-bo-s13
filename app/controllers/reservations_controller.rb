@@ -24,7 +24,7 @@ class ReservationsController < ApplicationController
     def destroy
 	    @reservation = Reservation.find params[:id]
 	    @restaurant = @reservation.restaurant
-
+      
       ReservationMailer.reservation_accepted(@reservation.id).deliver
 
       @reservation.update_attribute(:deleted, true)

@@ -1,10 +1,11 @@
-<ul>
-  <% @categories.each do |category| %>
-    <li class="span4">
-      <%= link_to category do %>
-          <h3><%= category.name %><h3>
-      <%- end %>
-    </li>
+
+<div style="float:left">
+  <%= form_for @restaurant do |f| %>
+    <p>
+      <%= f.label :category_tokens, "Categories" %><br />
+      <%= f.text_field :category_tokens %>
+    </p>
+    <p><%= f.submit %></p>
   <% end %>
-</ul>
-<%= link_to "Back", :back %>
+</div>
+
