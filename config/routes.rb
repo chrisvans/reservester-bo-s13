@@ -18,6 +18,8 @@ Reservester::Application.routes.draw do
     resources :reservations, :only => [:new, :create]
   end
 
+  resources :categories, :only => [:index, :show]
+
 # resources :reservations, :only => [:edit, :destroy]
 
   root :to => "restaurants#index"

@@ -7,6 +7,7 @@ class RestaurantsController < ApplicationController
     if owner_signed_in?
       redirect_to '/dashboard'
     else
+      @categories = Category.all
       @restaurants = Restaurant.all
     end
   end

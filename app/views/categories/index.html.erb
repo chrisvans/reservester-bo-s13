@@ -1,0 +1,10 @@
+<ul>
+  <% @categories.each do |category| %>
+    <li class="span4">
+      <%= link_to category do %>
+          <h3><%= category.name %><h3>
+      <%- end %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "Back", :back %>
