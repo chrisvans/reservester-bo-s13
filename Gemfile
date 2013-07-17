@@ -9,6 +9,7 @@ group :development do
 	gem 'sqlite3'
 	gem 'rspec-rails', '~> 2.0'
 	gem 'factory_girl_rails'
+	gem 'pry-rails'
 end
 
 group :production do
@@ -38,6 +39,7 @@ gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem "devise"
 gem "recaptcha", :require => "recaptcha/rails"
+gem "chosen-rails"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

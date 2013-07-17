@@ -46,9 +46,13 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :category_tokens, "Categories", :class => 'control-label' %>
+    <%= f.label :category_ids, "Categories", :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :category_tokens, "data-pre" => @restaurant.categories.map(&:attributes).to_json %>
+      <%= f.select :category_ids,
+      Category.all.map { |cat| [cat.name, cat.id] },
+      { include_blank: true },
+      { :multiple => true, :class => 'chzn-select' }
+      %>
     </div>
   </div>
 

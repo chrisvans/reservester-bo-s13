@@ -14,11 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+//= require chosen-jquery
+//= require scaffold
 
-$(function(){
-	$("#restaurant_category_tokens").tokenInput("/restaurants/new.json", {
-		crossDomain: false,
-		prePopulate: $("#restaurant_category_tokens").data("pre"),
-		theme: "facebook"
-	});
-});
+
