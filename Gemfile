@@ -8,11 +8,14 @@ gem 'rails', '3.2.13'
 
 group :production do 	
 	gem 'pg'
+	gem 'sendgrid'
+
 end
 
 
 group :development do 
  gem 'sqlite3'
+ gem 'mailcatcher'
 end
 
 # Gems used only for assets and not required
@@ -39,6 +42,8 @@ gem 'rmagick',  '~> 2.13.1'
 gem 'fog'
 
 
+gem 'simplecov', :require => false, :group => :test
+gem 'factory_girl_rails', :group => :test
 
 
 # To use ActiveModel has_secure_password

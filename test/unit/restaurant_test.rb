@@ -10,6 +10,5 @@ class RestaurantTest < ActiveSupport::TestCase
   test "example test" do 
   	assert true
   end
- 
   
 end

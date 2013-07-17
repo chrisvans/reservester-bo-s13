@@ -1,13 +1,16 @@
 class RestaurantsController < ApplicationController
 
 	before_filter :authenticate_owner!, except: [:index, :show]
-
+	# before_filter :require_restaurant_owner_match! [:create, :edit ]
 	def index 
 		@restaurants  = Restaurant.all
 	end
 
 	def show 
 		@restaurant = Restaurant.find(params[:id])
+
+		@reservation = Reservation.new
+		@reservation.restaurant = @restaurant
 	end
 
 	def new

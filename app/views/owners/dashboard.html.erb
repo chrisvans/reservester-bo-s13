@@ -1,0 +1,9 @@
+<h1><%= @owner.name %></h1>
+
+<h2><%= @owner.name %>'s Restaurants</h2>
+<ul>
+	<% @restaurants.each do |restaurant| %>
+	<li><%= restaurant.name %></li>
+	<% end %>
+</ul>
+

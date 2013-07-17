@@ -1,0 +1,38 @@
+<table>
+  <tr>      
+    <td><strong>Name:</strong></td>
+    <td><%= @restaurant.name %></td>
+  </tr>
+  <tr> 
+    <td><strong>Description:</strong></td>
+    <td><%= @restaurant.description %></td>
+  </tr>
+  <tr>
+    <td><strong>Address:</strong></td>
+    <td><%= @restaurant.address %></td>
+  </tr>
+  <tr>
+    <td><strong>City:</strong></td>
+    <td><%= @restaurant.city %></td>
+  </tr>
+  <tr>
+    <td><strong>State:</strong></td>
+    <td><%= @restaurant.state %></td>
+  </tr>
+  <tr>
+    <td><strong>Zip Code:</strong></td>
+    <td><%= @restaurant.zip_code %></td>
+  <tr>
+  </tr>
+    <td><strong>Menu:</strong></td>
+    <td><%= link_to_if(@restaurant.pdf_menu?, "View menu", @restaurant.pdf_menu_url)%></td>
+  </tr>
+  <tr>
+    <td><strong>Phone:</strong></td>
+    <td><%= @restaurant.phone_number %></td>  
+  </tr>
+  <tr> 
+    <td><strong>Owner:</strong></td>
+    <td><%= @restaurant.owner.name %></td>
+  </tr>
+</table>

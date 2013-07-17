@@ -13,5 +13,19 @@ class ActiveSupport::TestCase
 end
 
 class ActionController::TestCase
+
+
 	include Devise::TestHelpers
+
 end 	
+
+private
+	
+def create_and_sign_in_owner
+
+	owner = Owner.create name: "Josh", email: "josh@gmail", password: "password123", password_confirmation: "password123"
+
+	sign_in owner
+
+	owner
+end

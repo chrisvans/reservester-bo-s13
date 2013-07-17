@@ -1,11 +1,27 @@
 
 <%= form_for @reservation do |f| %>
 	<div class = "control-group">	
-		<%= f.label :name, :class => 'control_label' %>
+		<%= f.label :guest_name, :class => 'control_label' %>
 		<div class = "controls">
-			<%= f.text_field :name, :class => 'text_field' %>
+			<%= f.text_field :guest_name, :class => 'text_field' %>
 		</div>
 	</div>
-
-	
+	<div class = "control-group">	
+		<%= f.label :email, :class => 'control_label' %>
+		<div class = "controls">
+			<%= f.text_field :email, :class => 'email_field' %>
+		</div>
+	</div>
+	<div class = "control-group">	
+		<%= f.label :message, :class => 'control_label' %>
+		<div class = "controls">
+			<%= f.text_area :message, :class => 'text_area' %>
+		</div>
+	</div>
+	<div class = "control-group">	
+		<%= f.label :time, :class => 'control_label' %>
+		<div class = "controls">
+			<%= f.date_select :time, :class => 'date_select' %>
+		</div>
+	</div>
 <%  end  %>
