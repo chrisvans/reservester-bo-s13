@@ -8,5 +8,6 @@ class CategoriesController < ApplicationController
 	end
 
 	def search
+		@categories
 	end
 end

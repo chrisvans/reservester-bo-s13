@@ -16,7 +16,7 @@ Reservester::Application.routes.draw do
 
   resources :categories, :only => [:index,:show]
 
-  get '/categories/search', to: 'categories#search'
+  get '/categories/search/', to: 'categories#search'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
