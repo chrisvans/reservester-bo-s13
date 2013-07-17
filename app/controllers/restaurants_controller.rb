@@ -4,6 +4,7 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
+    @categories = Category.all
   end
 
   def show
@@ -14,6 +15,11 @@ class RestaurantsController < ApplicationController
 
   def new #form to create a new restaurant
     @restaurant = Restaurant.new
+    @categories = Category.where("name like ?", "%#{params[:q]}%")
+    respond_to do |format|
+      format.html
+      format.json { render :json => @categories.map(&:attributes) }
+    end
   end
 
   def create #create a new restaurant

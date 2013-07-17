@@ -1,0 +1,3 @@
+<% @categories.each do |cat| %>
+<%= link_to "#{cat.titleized_name} (#{cat.restaurants.count})", category_path(cat) %><br />
+<% end %>

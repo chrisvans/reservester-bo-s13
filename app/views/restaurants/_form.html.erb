@@ -45,6 +45,12 @@
       <%= f.file_field :menu, :class => 'text_field' %>
     </div>
   </div>
+  <div class="control-group">
+    <%= f.label :category_tokens, "Categories", :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :category_tokens, "data-pre" => @restaurant.categories.map(&:attributes).to_json %>
+    </div>
+  </div>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

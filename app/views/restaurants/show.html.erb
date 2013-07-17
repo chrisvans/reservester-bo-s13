@@ -18,6 +18,14 @@
   <dd><%= image_tag @restaurant.image.masthead.url if @restaurant.image? %></dd>
   <dt><strong><%= model_class.human_attribute_name(:menu) %>:</strong></dt>
   <dd><%= link_to "View Menu", @restaurant.menu.url if @restaurant.menu? %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:categories) %>:</strong></dt>
+  <dd><% unless @restaurant.categories.blank? %>
+    <% @restaurant.categories.each do |cat| %>
+      <%= link_to cat.titleized_name, category_path(cat) %><% unless @restaurant.categories.last == cat %>,<% end %>
+    <% end %>
+    <% end %>
+  </dd>
+  
 </dl>
 
 <div class="form-actions">
