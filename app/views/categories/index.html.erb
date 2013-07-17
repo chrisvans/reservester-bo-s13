@@ -14,16 +14,19 @@
     </p>
   <% end %>
 </div>
+
 <script id="restaurant_fill" type="text/html">
-
-<%= @categories = Category.where(:id => 5) %>
-<%= @restaurants = @categories.map(&:restaurants).flatten.uniq %>
-
-Bacon Bibble
-
+<% @categories = Category.where(:id => [5, 2]) %>
+<% @restaurants = @categories.map(&:restaurants).flatten.uniq %>
+<% for category in @categories %>
+<%= category.name %><br />
+<% end %>
+<% for restaurant in @restaurants %>
+<%= restaurant.name %><br />
+<% end %>
 
 </script>
-<div id="restaurants_by_cat">
+<div style="clear:left" id="restaurants_by_cat">
 </div>
 
 
