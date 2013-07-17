@@ -7,17 +7,17 @@ Reservester::Application.routes.draw do
 
   # get "categories/show"
 
-  devise_for :owners
+  devise_for :users
 
   resources :restaurants do
     resources :reservations
   end
   
-  get '/dashboard' => 'owners#dashboard'
+  get '/dashboard' => 'users#dashboard'
 
   # could also do
-  # authenticated :owner do
-  # get 'dashboard', :to 'owners#dashboard'
+  # authenticated :user do
+  # get 'dashboard', :to 'users#dashboard'
   # end
 
 root :to => "restaurants#index"

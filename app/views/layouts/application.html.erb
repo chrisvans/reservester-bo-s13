@@ -14,19 +14,19 @@
     		<li><%= link_to 'Home', restaurants_path %></li>
     	</ul>
     	<ul class="nav pull-right">
-	      <% if owner_signed_in? %>
+	      <% if user_signed_in? %>
 			  <li>
-			  	<%= link_to "Welcome, #{current_owner.name}", restaurants_path %>
+			  	<%= link_to "Welcome, #{current_user.name}", restaurants_path %>
 			  </li>
 			  <li>
-			  <%= link_to('Logout', destroy_owner_session_path, :method => :delete) %>
+			  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 			  </li>
 			<% else %>
 			  <li>
-			  <%= link_to('Owner Login', new_owner_session_path)  %>  
+			  <%= link_to('User Login', new_user_session_path)  %>  
 			  </li>
 			  <li>
-			  	<%= link_to('Sign Up', new_owner_registration_path)  %>  
+			  	<%= link_to('Sign Up', new_user_registration_path)  %>  
 			  </li>
 
 			<% end %>

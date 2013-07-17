@@ -17,7 +17,7 @@ class ActiveSupport::TestCase
 
 end
 
-	def create_and_sign_in_owner
-		@owner = FactoryGirl.create(:owner)
-		sign_in @owner
+	def create_and_sign_in_user
+		@owner = FactoryGirl.create(:user)
+		sign_in @user
 	end

@@ -1,4 +1,4 @@
-class Owner < ActiveRecord::Base
+class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -14,7 +14,7 @@ class Owner < ActiveRecord::Base
   has_many :restaurants
 
 FactoryGirl.define do
-  factory :owner do
+  factory :user do
     name "Yolo Man"
     sequence(:email) do |n| 
       "swagdude#{n}@omgmail.com"

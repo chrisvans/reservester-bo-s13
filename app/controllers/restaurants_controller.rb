@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
 
-	before_filter :authenticate_owner!, :only => [:new, :create, :edit, :update, :destroy]
+	before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
 	# TODO: Add current_restaurant helper method
 
   def index
@@ -9,7 +9,7 @@ class RestaurantsController < ApplicationController
 	end
 
 	def new
-		@restaurant = current_owner.restaurants.new
+		@restaurant = current_user.restaurants.new
 	end
 
 	def show
@@ -17,7 +17,7 @@ class RestaurantsController < ApplicationController
 	end
 
 	def create
-		@restaurant = current_owner.restaurants.new(params[:restaurant])
+		@restaurant = current_user.restaurants.new(params[:restaurant])
 
 		respond_to do |format|
 			if @restaurant.save
@@ -34,11 +34,11 @@ class RestaurantsController < ApplicationController
 	end
 
 	def edit
-		@restaurant = current_owner.restaurants.find(params[:id])
+		@restaurant = current_user.restaurants.find(params[:id])
 	end
 
 	def update
-		@restaurant = current_owner.restaurants.find(params[:id])
+		@restaurant = current_user.restaurants.find(params[:id])
 
 		if @restaurant.update_attributes(params[:restaurant])
       	 redirect_to(@restaurant, :notice => 'Restaurant was successfully updated.')
@@ -47,7 +47,7 @@ class RestaurantsController < ApplicationController
 	end
 
 	def destroy
-		@restaurant = current_owner.restaurants.find(params[:id])
+		@restaurant = current_user.restaurants.find(params[:id])
 		@restaurant.destroy
 		redirect_to restaurants_path
 	end

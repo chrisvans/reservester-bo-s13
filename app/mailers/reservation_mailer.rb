@@ -1,11 +1,11 @@
 class ReservationMailer < ActionMailer::Base
   default from: "bathrobeman@bathrobeman.com"
 
-  def reservation_confirmation(owner, restaurant, reservation)
-  	@owner = owner
+  def reservation_confirmation(user, restaurant, reservation)
+  	@user = user
   	@restaurant = restaurant
   	@reservation = reservation
-  	mail(:to => @owner.email, :subject => "You Have a New Reservation")
+  	mail(:to => @user.email, :subject => "You Have a New Reservation")
   end
 
 end

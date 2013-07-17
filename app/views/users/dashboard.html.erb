@@ -1,10 +1,10 @@
-<h1>Welcome Back, <%= current_owner.name %></h1>
+<h1>Welcome Back, <%= current_user.name %></h1>
 
 <h3>Here are your restaurants and upcoming reservations</h3>
 
 
 
-<% current_owner.restaurants.each do |x| %>
+<% current_user.restaurants.each do |x| %>
 	<h5><%= x.name %></h5>
 	<table>
 		<tr>

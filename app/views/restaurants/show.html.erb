@@ -22,8 +22,8 @@
 	<%= link_to 'Make a Reservation', new_restaurant_reservation_path(@restaurant)  %>
 </p>
 
-<% if current_owner %>
-<% if current_owner.id == @restaurant.owner_id %>
+<% if current_user %>
+<% if current_user.id == @restaurant.user_id %>
 <%= link_to 'Edit', edit_restaurant_path, :class => "btn btn-primary" %>
 <%= link_to 'Delete', restaurant_path, :class => "btn btn-primary btn-danger", :confirm => 'Are You Sure?', :method => :delete %>
 
@@ -34,7 +34,7 @@
 </p>
 </div>
 <div>
-	<% if current_owner && current_owner.id == @restaurant.owner_id %>
+	<% if current_user && current_user.id == @restaurant.user_id %>
 		<h3>Reservations</h3>
 		<table class="table table-hover">
 			<tr>

@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
 	
-	before_filter :authenticate_owner!, :only => [:destroy]
+	before_filter :authenticate_userer!, :only => [:destroy]
 	# @restaurant = Restaurant.find(params[:restaurant_id])
 	# would like to put this up here some how
 
@@ -15,7 +15,7 @@ class ReservationsController < ApplicationController
 
 	def show
 		@restaurant = Restaurant.find(params[:restaurant_id])
-		if current_owner && current_owner.id = @restaurant.owner_id
+		if current_user && current_userer.id = @restaurant.user_id
 		@reservation = Reservation.find(params[:id])
 		else redirect_to restaurants_path
 		end
@@ -25,10 +25,10 @@ class ReservationsController < ApplicationController
 	def create
 		@restaurant = Restaurant.find(params[:restaurant_id])
 		@reservation = @restaurant.reservations.build(params[:reservation])
-		@owner = @restaurant.owner
+		@user = @restaurant.user
 
 			if @reservation.save
-				ReservationMailer.reservation_confirmation(@owner, @restaurant, @reservation).deliver
+				ReservationMailer.reservation_confirmation(@user, @restaurant, @reservation).deliver
  				redirect_to(restaurants_path, :notice => 'Reservation was successfully created.') 
             else
 				render :action => "new"

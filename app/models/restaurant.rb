@@ -1,5 +1,5 @@
 class Restaurant < ActiveRecord::Base
-  belongs_to :owner
+  belongs_to :user
   has_many :reservations
   has_and_belongs_to_many :categories
 
@@ -17,7 +17,7 @@ FactoryGirl.define do
     sequence(:name) do |n| 
       "J. Pace and Son Location ##{n}" 
     end
-    association :owner
+    association :user
   end
 end
 

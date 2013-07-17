@@ -7,7 +7,7 @@ class RestaurantsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    owner = create_and_sign_in_owner
+    owner = create_and_sign_in_user
   	get :new
   	assert_response :success #test fails, currently being redirect (probably to owner login)
   end
@@ -18,7 +18,7 @@ class RestaurantsControllerTest < ActionController::TestCase
   end
 
   test "should create restaurant" do
-    owner = create_and_sign_in_owner
+    owner = create_and_sign_in_user
 
   	assert_difference('Restaurant.count', 1) do
   		post :create, restaurant: {
