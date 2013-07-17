@@ -8,8 +8,12 @@ Reservester::Application.routes.draw do
     resources :restaurants, :only => [:new, :create] 
   end
 
-  resources :restaurants
 
+  resources :restaurants do
+    resources :reservations
+  end
+
+  resources :restaurants
 
   resources :reservations, :only => [:destroy]
 

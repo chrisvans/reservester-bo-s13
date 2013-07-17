@@ -1,7 +1,7 @@
-<%= form_for @restaurant, :html => { :class => 'form-horizontal', :multipart => true, :"data-validate" => 'parsley' } do |f| %>
-  <%= render "shared/error_messages", :target => @restaurant %>
+<%= form_for current_restaurant, :html => { :class => 'form-horizontal', :multipart => true, :"data-validate" => 'parsley' } do |f| %>
+  <%= render "shared/error_messages", :target => current_restaurant %>
   <div class="control-group">
-    <%= f.label :restaurant, :class => 'control-label' %><%= mark_required(@restaurant, :restaurant) %>
+    <%= f.label :restaurant, :class => 'control-label' %><%= mark_required(current_restaurant, :restaurant) %>
     <div class="controls">
       <%= f.text_field :restaurant, :class => 'text_field', :class=> 'required', :"data-required" =>'true', :required => 'true' %>
     </div>

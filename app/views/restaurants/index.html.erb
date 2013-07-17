@@ -53,6 +53,6 @@
 </table>
 <% if owner_signed_in? %>
 <%= link_to t('.new', :default => t("helpers.links.new")),
-            new_restaurant_path(@restaurant),
+            new_restaurant_path(current_restaurant),
             :class => 'btn btn-primary' %>
 <% end %>

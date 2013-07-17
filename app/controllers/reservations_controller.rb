@@ -2,18 +2,19 @@ class ReservationsController < ApplicationController
 	before_filter :require_restaurant_owner_match!, :only => [:edit, :update, :destroy]
 
 	
+	
 	def create
-		@restaurant = Restaurant.find params[:restaurant_id]
-		@reservation = @restaurant.reservations.build(params[:reservation])
+		current_restaurant = Restaurant.find params[:restaurant_id]
+		@reservation = current_restaurant.reservations.build(params[:reservation])
 		respond_to do |format|
 			if @reservation.save
-    			format.html  { redirect_to(@restaurant,
+    			format.html  { redirect_to(current_restaurant,
     							:notice => 'Your reservation has been accepted. See you soon!') }
     			format.json  { render :json => @reservation,
     							:status => :created, :location => @reservation }
       		else
         		format.html { render 'restaurant/show' }
-        		format.json { render :json => @restaurant.errors,
+        		format.json { render :json => current_restaurant.errors,
                       			:status => :unprocessable_entity }
     		end
     	end

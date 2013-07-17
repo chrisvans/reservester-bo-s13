@@ -1,10 +1,10 @@
-<%= form_for ([@restaurant, @reservation]), :html => { :class => 'form-horizontal', :multipart => true, :"data-validate" => 'parsley' } do |f| %>
+<%= form_for ([current_restaurant, @reservation]), :html => { :class => 'form-horizontal', :multipart => true, :"data-validate" => 'parsley' } do |f| %>
   <%= render "shared/error_messages", :target => @reservation %>
   <h1>Make a Reservation</h1>
     <div class="control-group">
     <%= f.label :datetime, :class => 'control-label' %>
     <div class="controls">
-      <%= f.datetime_field :datetime, :class => 'datetime_field' %><%= mark_required(@reservation, :datetime) %>
+      <%= f.datetime_select :datetime, :class => 'datetime_field' %><%= mark_required(@reservation, :datetime) %>
     </div>
   </div>
   <div class="control-group">
@@ -25,6 +25,6 @@
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                @restaurant, :class => 'btn' %>
+                current_restaurant, :class => 'btn' %>
   </div>
 <% end %>
