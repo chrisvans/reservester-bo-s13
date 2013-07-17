@@ -4,7 +4,7 @@
 
 <% @categories.each do |category| %>
 	<p>
-	<%= link_to(category.name + 'Add count of Restaurants', {:action => 'show', :id => category.id} ) %>
+	<%= link_to(category.name, {:action => 'show', :id => category.id} ) %>
+		<span class="badge badge-info"><%= category.restaurants.count %></span>
 	</p>
-
 <% end %>

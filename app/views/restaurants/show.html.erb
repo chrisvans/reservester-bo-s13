@@ -62,7 +62,7 @@
                             <td><%= reservation.guestname %></td>
                             <td><%= reservation.guestemail %></td>
                             <td><%= reservation.guestnumber %></td>
-                            <td><%= reservation.reserve_on.to_s(:long) %></td>       
+                            <td><%= reservation.reserve_on.to_s(:short) %></td>       
                             <td><%= reservation.message %></td>
                             <td><%= link_to('Delete', reservation_path(reservation), :method => :delete, :confirm => "Press OK to confirm and delete this reservation?", :class => 'btn btn-mini btn-danger') %>
                             </td>

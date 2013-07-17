@@ -39,7 +39,7 @@
           <%= restaurant.city %>
         </td>
         <td><%= restaurant.phonenumber %></td>
-        <td><%=l restaurant.created_at %></td>
+        <td><%= restaurant.created_at.to_s(:short) %></td>
         <td> 
           <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= restaurant.latitude.to_s %>,<%= restaurant.longitude.to_s %>&amp;markers=<%= restaurant.latitude.to_s %>,<%= restaurant.longitude.to_s %>&amp;zoom=10&amp;size=300x200&amp;sensor=false"></img>
         </td>

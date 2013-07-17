@@ -8,7 +8,6 @@ class CategoriesController < ApplicationController
 	def show
 		@categories = Category.find(params[:id])
 
-		@restaurant = @categories.restaurants
 	end
 
 
