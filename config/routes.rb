@@ -12,6 +12,10 @@ RestaurantsApp::Application.routes.draw do
   end
 
   root :to => 'welcome#index'
+  
+  authenticated :owner do
+    get 'dashboard', to: 'owners#dashboard'
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
