@@ -3,7 +3,7 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 <div>
-  <%= category_link_list(@categories) %>
+  <%= link_to "All Categories", categories_path %>---<%= category_link_list(@categories) %>
   <hr />
 </div>
 <table class="table table-striped">

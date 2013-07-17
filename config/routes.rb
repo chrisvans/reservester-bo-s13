@@ -15,6 +15,8 @@ Reservester::Application.routes.draw do
   root :to => "restaurants#index"
 
   resources :categories, :only => [:index,:show]
+
+  get '/categories/search', to: 'categories#search'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
