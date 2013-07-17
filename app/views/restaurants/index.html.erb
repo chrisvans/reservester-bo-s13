@@ -3,9 +3,7 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 <div>
-  <% @categories.each do |cat| %>
-  <%= link_to "#{cat.titleized_name} (#{cat.restaurants.count})", category_path(cat) %><% unless @categories.last == cat %>---<% end %>
-  <% end %>
+  <%= category_link_list(@categories) %>
   <hr />
 </div>
 <table class="table table-striped">
