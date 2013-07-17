@@ -1,5 +1,5 @@
 <h1>Restaurant Categories</h1>
 	<% @categories.each do |x| %>
-		<p><%= link_to "#{x.name}", category_path(x) %></p>
+		<p><%= link_to "#{x.name} (#{x.restaurants.count})", category_path(x) %></p>
 	<% end %>
-	
+
