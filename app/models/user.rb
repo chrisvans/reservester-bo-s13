@@ -13,16 +13,24 @@ class User < ActiveRecord::Base
 
   has_many :restaurants
 
-FactoryGirl.define do
-  factory :user do
-    name "Yolo Man"
-    sequence(:email) do |n| 
-      "swagdude#{n}@omgmail.com"
-    end
+# FactoryGirl.define do
+#   factory :user do
+#     name "Yolo Man"
+#     sequence(:email) do |n| 
+#       "swagdude#{n}@omgmail.com"
+#     end
  
-    password 'swag2themax'
-    password_confirmation 'swag2themax'
+#     password 'swag2themax'
+#     password_confirmation 'swag2themax'
+#   end
+# end
+
+  def owner?
+    role == 'owner'
   end
-end
+
+  def patron?
+    role == 'patron'
+  end
   
 end

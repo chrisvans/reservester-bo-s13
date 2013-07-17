@@ -12,13 +12,13 @@ class Restaurant < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-FactoryGirl.define do
-  factory :restaurant do
-    sequence(:name) do |n| 
-      "J. Pace and Son Location ##{n}" 
-    end
-    association :user
-  end
-end
+# FactoryGirl.define do
+#   factory :restaurant do
+#     sequence(:name) do |n| 
+#       "J. Pace and Son Location ##{n}" 
+#     end
+#     association :user
+#   end
+# end
 
 end
