@@ -46,6 +46,9 @@ gem 'devise'
 #better forms
 gem 'simple_form'
 
+#schema table description above every controller 
+gem 'annotate', ">=2.5.0"
+
 
 
 

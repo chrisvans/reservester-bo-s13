@@ -1,5 +1,8 @@
 <%- model_class = Restaurant -%>
 
+<div id="map-canvas"></div>
+
+
 <div class="page-header">
     <h1>Find your Restaurant</h1> 
     <% if owner_signed_in? %>
@@ -54,3 +57,5 @@
   </tbody>
 </table>
 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDznLVuaEKF1kcsn85b34RQAjEnUgVxCSU&sensor=false">
+    </script>
