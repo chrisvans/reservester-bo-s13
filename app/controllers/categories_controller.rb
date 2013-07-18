@@ -13,9 +13,10 @@ class CategoriesController < ApplicationController
   	end
   end
 
-  # def show
-  # 	@categories = Category.where(:id => params[:id])
-  # 	@restaurants = @categories.map(&:restaurants).flatten.uniq
-  # end
+  def show
+    @categories = Category.where(:id => params[:id])
+  	@category = Category.find_by_id(params[:id])
+  	@restaurants = @categories.map(&:restaurants).flatten.uniq
+  end
 
 end

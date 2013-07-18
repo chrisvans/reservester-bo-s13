@@ -14,7 +14,6 @@
     </p>
   <% end %>
 </div>
-
 <script id="restaurant_fill" type="text/html">
 <% @categories = Category.where(:id => [5, 2]) %>
 <% @restaurants = @categories.map(&:restaurants).flatten.uniq %>
