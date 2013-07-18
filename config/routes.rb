@@ -18,7 +18,9 @@ Reservester::Application.routes.draw do
     resources :reservations, :only => [:new, :create]
   end
 
-  resources :categories, :only => [:index, :show]
+  resources :categories
+
+  get '/restaurants_by_cat' => 'categories#get_restaurants_by_cat'
 
 # resources :reservations, :only => [:edit, :destroy]
 
