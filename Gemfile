@@ -11,9 +11,8 @@ end
 
 group :development, :test do
 	gem 'factory_girl_rails'
+  gem 'sqlite3'
 end
-
-gem 'sqlite3'
 
 
 # Gems used only for assets and not required
