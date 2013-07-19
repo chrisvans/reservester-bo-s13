@@ -13,7 +13,9 @@
  *= require jquery.ui.datepicker
  *= require bootstrap-datetimepicker
  *= require bootstrap-timepicker
+ *= require chosen
  */
+ 
 #calendar table {
   border-collapse: collapse;
   width: 100%;

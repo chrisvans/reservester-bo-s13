@@ -53,6 +53,11 @@
     </div>
 
   </div>
+  <%= f.select :category_ids,
+  Category.all.map { |cat| [cat.name, cat.id] },
+  { include_blank: true },
+  { multiple: true, class: 'chzn-select' }
+%>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

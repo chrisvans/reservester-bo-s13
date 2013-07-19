@@ -2,8 +2,6 @@
 <html>
 <head>
   <title>Reservester</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application" %>
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" %>
@@ -19,7 +17,7 @@
             <ul class="nav nav-pills" style="display:inline">
                 <% if owner_signed_in? %>
               <li>
-                  <%= link_to 'Logged in as '+current_owner.username, edit_owner_registration_path %>
+                  <%= link_to 'Logged in as '+current_owner.username.split(' ').map(&:capitalize).join(' '), edit_owner_registration_path %>
               </li>
               <li>
                   <%= link_to "Logout", destroy_owner_session_path, method: :delete %>

@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
+
 gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-
 gem 'pg'
-
 
 # group :development, :test do
 #   gem 'mysql2'
@@ -31,26 +31,31 @@ group :development, :test do
 	gem 'factory_girl_rails'
 end
 
-gem 'mustache'
+gem 'quiet_assets', :group => :development
+gem 'thin'
+
 gem 'devise'
-gem 'geocoder'
 
-gem 'carrierwave'
-gem 'fog', '~> 1.3.1'
-
-gem 'less-rails'
 gem 'therubyracer'
+gem 'mustache'
+gem 'less-rails'
 gem 'jquery-rails'
+gem "chosen-rails"
 gem 'bootstrap-datetimepicker-rails'
 gem 'bootstrap-timepicker-rails'
 
+gem 'geocoder'
+gem 'carrierwave'
+gem 'fog', '~> 1.3.1'
 gem 'mini_magick'
 gem 'rmagick'
 
 gem 'dotenv-rails'
 gem "watu_table_builder", :require => "table_builder"
 gem "recaptcha", :require => "recaptcha/rails"
+
 gem "resque"
+gem "resque_mailer"
 
 # mailtrap
 

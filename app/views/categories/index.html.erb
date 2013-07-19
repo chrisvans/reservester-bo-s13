@@ -1,0 +1,35 @@
+<div class="page-header">
+  <h1>Search by Categories</h1>
+</div>
+
+<div id="categories" style="float:left">
+  <%= form_for @restaurant do |f| %>
+    <p>
+      <%= f.label :category_ids, "Search" %>
+      <br />
+      <%= f.select :category_ids,
+  Category.all.map { |cat| [cat.name, cat.id] },
+  { include_blank: true },
+  { multiple: true, class: 'chzn-select' } %>
+    </p>
+  <% end %>
+  <%= link_to 'Back', :back %>
+</div>
+<script id="restaurant_fill" type="text/html">
+
+{{#categories}}
+  <h1>{{name}}</h1>
+  {{#restaurants}}
+    <h3><a href="/restaurants/{{id}}">{{name}}</a></h3>
+    <img src="{{photo.thumbnail.url}}"></img>
+  {{/restaurants}}
+  {{^restaurants}}
+    <h3> No Restaurants for {{name}}</h3>
+  {{/restaurants}}
+{{/categories}}
+
+</script>
+<div style="clear:left" id="restaurants_by_cat">
+</div>
+
+

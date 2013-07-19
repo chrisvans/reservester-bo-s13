@@ -5,9 +5,12 @@
 jQuery ->
   $('#reservation_date_time').datetimepicker
     dateFormat: 'yy-mm-dd'
-    timeFormat: 'hh-mm'
+    timeFormat: 'hh:mm'
     stepMinute: '5'
     onSelect: (dateText, inst)=> 
         renderReservedDate(dateText)
         dateData = dateText
+
+
+
 

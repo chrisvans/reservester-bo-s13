@@ -7,6 +7,7 @@ class RestaurantsController < ApplicationController
     if owner_signed_in?
       redirect_to '/dashboard'
     else
+      @categories = Category.all
       @restaurants = Restaurant.all
     end
   end
@@ -39,6 +40,7 @@ class RestaurantsController < ApplicationController
   end
 
   def update
+    params[:restaurant][:category_ids] ||= []
     @restaurant = Restaurant.find(params[:id])
 
     if @restaurant.update_attributes(params[:restaurant])

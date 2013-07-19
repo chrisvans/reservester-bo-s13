@@ -1,0 +1,15 @@
+<div class="page-header">
+  <h1><%=t '.title', :default => @category.name + " Category Restaurants" %></h1>
+</div>
+
+<ul class="thumbnails">
+  <% @restaurants.each do |restaurant| %>
+    <li class="span4">
+      <%= link_to restaurant do %>
+        <%= image_tag restaurant.photo.thumbnail.url if restaurant.photo? %>
+        <h3><%= restaurant.name %><h3>
+      <%- end %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "Back", :back %>
