@@ -55,7 +55,7 @@ GEM
       railties (>= 3.2.6, < 5)
       warden (~> 1.2.3)
     erubis (2.7.0)
-    excon (0.23.0)
+    excon (0.25.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.2.0)
@@ -63,9 +63,9 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
-    fog (1.12.1)
+    fog (1.13.0)
       builder
-      excon (~> 0.23.0)
+      excon (~> 0.25.0)
       formatador (~> 0.2.0)
       mime-types
       multi_json (~> 1.0)
@@ -94,7 +94,6 @@ GEM
     mini_magick (3.6.0)
       subexec (~> 0.2.1)
     multi_json (1.7.7)
-    mysql2 (0.3.13)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.6.8)
@@ -182,7 +181,6 @@ DEPENDENCIES
   jquery-rails
   less-rails
   mini_magick
-  mysql2
   pg
   rails (= 3.2.13)
   rmagick
