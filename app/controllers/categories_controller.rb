@@ -1,8 +1,11 @@
 class CategoriesController < ApplicationController
 	def index
-		@categories = Category.order(:name)
+		@categories = Category.all
 		respond_to do |format|
 			format.html
-			format.json { render json: @categories.where("name like ?", "%#{params[:q]}%") }
-			end		
+			format.json { render json: Category.where("name like ?", "%#{params[:q]}%") }
+		end
+	end
 end
+
+

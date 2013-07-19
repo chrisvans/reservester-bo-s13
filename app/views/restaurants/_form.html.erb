@@ -43,14 +43,14 @@
 
 
     
+<div class="field">
+  <%= f.label :category_tokens, "Categories" %></br >
+  <%= f.text_field :category_tokens %>
+</div>
 
-   <div class="field"     <%= f.label :category_ids, "Categories" %><br />
+<br>
+<br>
 
-     <%= f.collection_select :category_ids, Category.order(:name), :id, :name, {},
-
-     {multiple: true} %>
-
-   </div>
 
    
 
