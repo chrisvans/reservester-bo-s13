@@ -18,3 +18,4 @@
 # Ignore AWS Keys.
 
 /config/initializers/app_environment_variables.rb
+/config/initializers/secrets_aws_gmail.rb

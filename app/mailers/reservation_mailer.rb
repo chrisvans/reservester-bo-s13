@@ -5,7 +5,7 @@ class ReservationMailer < ActionMailer::Base
   default :from => "reservester@gmail.com"
 
   def reservation_notice(reservation_id)
-    @user_reservation = Reservation.find(reservation_id)
+    @user_reservation = Reservation.find_by_id(reservation_id)
   	@user = @user_reservation.restaurant.user
   	@restaurant = @user_reservation.restaurant
 
@@ -13,11 +13,11 @@ class ReservationMailer < ActionMailer::Base
   end
 
   def reservation_accepted(reservation_id)
-    @user_reservation = Reservation.unscoped.find(reservation_id)
+    @user_reservation = Reservation.unscoped.find_by_id(reservation_id)
   	@user = @user_reservation.restaurant.user
   	@restaurant = @user_reservation.restaurant
 
-  	mail(:to => "<#{@user_reservation.email}>", :subject => "Reservation Accepted")
+  	mail(:to => "#{@user_reservation.email} <#{@user_reservation.email}>", :subject => "Reservation Accepted")
   end
 
 end
