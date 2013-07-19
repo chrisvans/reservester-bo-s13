@@ -20,7 +20,7 @@
 
 var marker, i;
 
-for (i = 0; var < restaurant_location.length; i++) {
+for (i = 0; i < restaurant_location.length; i++) {
 
   var marker = new google.maps.Marker({
       position: new google.maps.LatLng(restaurant_location[i][1], restaurant_location[i][2]),
