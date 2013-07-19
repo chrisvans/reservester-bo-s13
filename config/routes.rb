@@ -1,5 +1,6 @@
 Reservester::Application.routes.draw do
  
+ 
   resources :categories
 
 

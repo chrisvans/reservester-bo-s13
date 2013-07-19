@@ -34,6 +34,9 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 
   gem 'uglifier', '>= 1.0.3'
+
+  gem 'chosen-rails'
+  'jquery-tokeninput-rails'
 end
 
 gem 'carrierwave'

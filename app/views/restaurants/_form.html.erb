@@ -41,10 +41,22 @@
   </div>
 
 
-  
-  
 
-  
+    
+
+   <div class="field"     <%= f.label :category_ids, "Categories" %><br />
+
+     <%= f.collection_select :category_ids, Category.order(:name), :id, :name, {},
+
+     {multiple: true} %>
+
+   </div>
+
+   
+
+
+
+
 
 
   <%= f.file_field :photo %>
@@ -52,4 +64,9 @@
   <div class="control-group">
     <%= f.submit :class => 'btn' %>
   </div>
+
 <% end %>
+
+
+
+

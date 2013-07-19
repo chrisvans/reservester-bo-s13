@@ -1,4 +1,4 @@
-class RestaurantsController < ApplicationController
+  class RestaurantsController < ApplicationController
 
   before_filter :authenticate_owner!, :except => [:index, :show]
   before_filter :require_restaurent_owner_match!, :only => [:edit, :update, :destroy]
