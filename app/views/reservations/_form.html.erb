@@ -1,5 +1,5 @@
-<% if current_owner %>
-<% information = [current_owner, @restaurant, @reservation] %>
+<% if current_user.try(:is_owner?) %>
+<% information = [current_user, @restaurant, @reservation] %>
 <% else %>
 <% information = [@restaurant, @reservation] %>
 <% end %>
@@ -34,7 +34,7 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :message%>
+    <%= f.label :message %>
     <div class="controls">
       <%= f.text_field :message %>
     </div>

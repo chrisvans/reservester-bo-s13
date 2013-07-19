@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :owner do
+  factory :user do
     username "Yolo Man"
     sequence(:email) do |n| 
       "swagdude#{n}@omgmail.com"
@@ -21,6 +21,6 @@ FactoryGirl.define do
     sequence(:name) do |n| 
       "J. Pace and Son Location ##{n}" 
     end
-    association :owner
+    association :user
   end
 end

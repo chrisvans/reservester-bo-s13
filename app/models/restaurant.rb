@@ -7,7 +7,7 @@ class Restaurant < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode
 
-  belongs_to :owner
+  belongs_to :user
   has_many :reservations, :dependent => :destroy
   has_and_belongs_to_many :categories
   accepts_nested_attributes_for :categories

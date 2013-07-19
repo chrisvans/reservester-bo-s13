@@ -16,7 +16,7 @@
       <th style="width:200px;">Categories</th>
       <th><%= model_class.human_attribute_name(:phone) %></th>
       <th><%= model_class.human_attribute_name(:photo) %></th>
-        <% if owner_signed_in? %>
+        <% if current_user.try(:is_owner?) %>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
         <% end %>
       <th>
@@ -41,7 +41,7 @@
         </td>
         <td><%= @restaurant.phone %></td>
         <td><%= image_tag @restaurant.photo_url(:masthead) %></td>
-          <% if owner_signed_in? %>
+          <% if current_user.try(:is_owner?) %>
         <td>
           <%= link_to "Edit Restaurant",
                       edit_restaurant_path, :class => 'btn btn-mini' %>
@@ -65,7 +65,7 @@
   </tbody>
 </table>
 
-<%- if current_owner == @restaurant.owner %>
+<%- if current_user == @restaurant.user %>
   <h2>Reservations</h2>
   <table class="table table-striped">
     <tr>
@@ -81,9 +81,9 @@
         <td><%= reservation.email %></td>
         <td><%= reservation.date_time %></td>
         <td><%= reservation.message %></td>
-        <td><%= link_to 'Marked as Confirmed', owner_restaurant_reservation_path(current_owner, @restaurant, :id=>reservation.id), :method => :delete, :confirm => 'Mark this reservation confirmed?' %></td>
+        <td><%= link_to 'Marked as Confirmed', user_restaurant_reservation_path(current_user, @restaurant, :id=>reservation.id), :method => :delete, :confirm => 'Mark this reservation confirmed?' %></td>
       </tr>
-           <td><%= link_to 'Edit', edit_owner_restaurant_reservation_path(current_owner, @restaurant, :id=>reservation.id), :class => 'btn' %></td>
+           <td><%= link_to 'Edit', edit_user_restaurant_reservation_path(current_user, @restaurant, :id=>reservation.id), :class => 'btn' %></td>
     <%- end %>
   </table>
 <%- else %>

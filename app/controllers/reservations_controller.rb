@@ -1,6 +1,6 @@
 class ReservationsController < ApplicationController
 
-  before_filter :authenticate_owner!, :only => [ :edit, :destroy ]
+  before_filter :authenticate_user!, :only => [ :edit, :destroy ]
 
 	def new
 		@reservation = Restaurant.find(params[:restaurant_id]).reservations.new
@@ -13,7 +13,6 @@ class ReservationsController < ApplicationController
     @reservation = @restaurant.reservations.build params[:reservation]
 
     if @reservation.save
-      @worker_information = @reservation.id
       ReservationMailer.reservation_notice(@reservation.id).deliver
       redirect_to @restaurant, notice: 'Reservation was successfully created.'
     else

@@ -3,9 +3,9 @@
 
 # 	def self.perform(worker_information)
 # 		reservation = Reservation.find(worker_information)
-# 		owner = reservation.restaurant.owner
+# 		user = reservation.restaurant.user
 # 		restaurant = reservation.restaurant
-# 		mail_information = [owner, reservation, restaurant]
+# 		mail_information = [user, reservation, restaurant]
 
 # 		ReservationMailer.reservation_notice(mail_information).deliver
 #     end

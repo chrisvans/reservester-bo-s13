@@ -1,10 +1,10 @@
 class RestaurantsController < ApplicationController
   
-  before_filter :authenticate_owner!, :except => [:index, :show]
+  before_filter :authenticate_user!, :except => [:index, :show]
 #  before_filter :require_restaurant_owner_match!, :only => [:edit, :update, :destroy]
 
   def index
-    if owner_signed_in?
+    if current_user.try(:is_owner?)
       redirect_to '/dashboard'
     else
       @categories = Category.all
@@ -20,17 +20,17 @@ class RestaurantsController < ApplicationController
   end
 
   def new
-    @owner = Owner.find(params[:owner_id])
+    @user = User.find(params[:user_id])
     @restaurant = Restaurant.new
   end
 
   def edit
-    @restaurant = current_owner.restaurants.find(params[:id])
+    @restaurant = current_user.restaurants.find(params[:id])
   end
 
   def create
-    @owner = Owner.find(params[:owner_id])
-    @restaurant = @owner.restaurants.build(params[:restaurant])
+    @user = User.find(params[:user_id])
+    @restaurant = @user.restaurants.build(params[:restaurant])
 
     if @restaurant.save
       redirect_to @restaurant, notice: 'Restaurant was successfully created.'
