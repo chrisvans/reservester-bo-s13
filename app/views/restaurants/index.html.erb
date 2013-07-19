@@ -6,8 +6,8 @@ src="http://maps.google.com/maps/api/js?sensor=false">
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-
-<div style="float:left">
+<h2><%= link_to 'Search by Category', categories_path %></h2>
+<!-- <div style="float:left">
   <h3> Restaurant Categories </h3>
   <ul>
     <% @categories.each do |category| %>
@@ -18,7 +18,7 @@ src="http://maps.google.com/maps/api/js?sensor=false">
       </li>
     <% end %>
   </ul>
-</div>
+</div> -->
 <br>
 <div style="float:left">
   <h3> All Restaurants </h3>
