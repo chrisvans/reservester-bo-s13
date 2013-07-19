@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
 
   def get_restaurants_by_cat
     @categories_chosen = Category.find(JSON.parse(params[:cats]))
-
+    
     respond_to do |format|
       format.json { render :json => @categories_chosen.to_json(:include => :restaurants) }
     end

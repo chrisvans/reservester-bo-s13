@@ -21,9 +21,9 @@
 //= require chosen-jquery
 //= require_tree .
 
-$(function() {
-  $("#restaurant_category_tokens").tokenInput("/categories.json", {
-    crossDomain: false,
-    theme: "facebook"
-  });
-});
+// $(function() {
+//   $("#restaurant_category_tokens").tokenInput("/categories.json", {
+//     crossDomain: false,
+//     theme: "facebook"
+//   });
+// });

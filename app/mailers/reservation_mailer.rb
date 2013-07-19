@@ -1,6 +1,6 @@
 class ReservationMailer < ActionMailer::Base
 
-  include Resque::Mailer
+  # include Resque::Mailer
 
   default :from => "reservester@gmail.com"
 
