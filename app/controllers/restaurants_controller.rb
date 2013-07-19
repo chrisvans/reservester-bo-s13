@@ -5,6 +5,7 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
+    @categories = Category.where("name like ?", "%#{params[:q]}%")
   end
 
   def show

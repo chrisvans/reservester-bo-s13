@@ -1,1 +1,9 @@
 <h1>Restaurant Category: <%= @category.name %></h1>
+
+<table>
+	<% @category.restaurants.each do |restau| %>
+		<tr>			
+			<td><%= link_to restau.name, restaurant_path(restau) %></td>
+		</tr>
+	<% end %>
+</table>

@@ -11,7 +11,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  #def get_all_categories
-  #	@categories = Category.all
-  #end
+#  def get_all_categories
+# # @categories = Category.all 
+#  	@categories = Category.where("name like ?", "%#{params[:q]}%")
+#  end
 end

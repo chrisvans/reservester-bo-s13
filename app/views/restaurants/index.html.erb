@@ -18,3 +18,13 @@
 <%- if current_owner %>
 	<%= link_to "Add new restaurant", new_owner_restaurant_path(current_owner) %>
 <%-end %>
+<br>
+<h1>Restaurants by categories</h1>
+
+<table>
+	<% @categories.each do |cat| %>
+		<tr>			
+			<td><%= link_to cat.name, category_path(cat) %></td>
+		</tr>
+	<% end %>
+</table>

@@ -12,13 +12,19 @@
 
 	<p><%= link_to 'Restaurants', restaurants_path %></p>
 	<%- if current_owner %>
-		<p><%= current_owner.name %></p>
+		<p>Owner: <%= current_owner.name %></p>
 		<p><%= link_to 'dashboard', dashboard_path %></p>
 		<p><%= link_to 'logout', destroy_owner_session_path, :method => :delete %></p>
 	<%- else %>
 		<p><%= link_to 'login', new_owner_session_path %></p>
 		<p><%= link_to 'sign up', new_owner_registration_path %></p>
 	<%- end %>
+
+	<p>Restaurants by category: </p>
+
+	<% @categories.each do |cat| %>
+		<%= link_to cat.name, category_path(cat) %><br />
+	<% end %>
 
 	<div class="container">
 		<%= yield %>
