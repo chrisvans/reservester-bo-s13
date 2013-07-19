@@ -1,0 +1,10 @@
+<% unless @restaurants.empty? %>
+<h4><%= "#{@restaurants.count}" %> Restaurants Found</h4>
+<ul>
+<% @restaurants.each do |r| %>
+	<li><%= link_to "#{r.name}", restaurant_path(r) %></li>
+<% end %>
+</ul>
+<% else %>
+<h4>No Restaurants Found</h4>
+<% end %>
