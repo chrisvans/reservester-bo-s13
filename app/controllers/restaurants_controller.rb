@@ -9,7 +9,12 @@ class RestaurantsController < ApplicationController
     else
       @categories = Category.all
       @restaurants = Restaurant.all
+      respond_to do |format|
+        format.html
+        format.json { render :json => @restaurants }
+      end
     end
+
   end
 
   def show
