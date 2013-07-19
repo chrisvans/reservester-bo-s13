@@ -9,6 +9,11 @@ before_filter :require_current_restaurant!, :only => [:show, :edit, :update, :de
 
 	def index
 		@restaurant = Restaurant.order("created_at DESC")
+		
+		respond_to do |format|
+			format.html
+			format.json { render :json => @restaurant }
+		end
 	end
 
 
