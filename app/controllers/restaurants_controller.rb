@@ -13,6 +13,7 @@ before_filter :require_current_restaurant!, :only => [:show, :edit, :update, :de
 		respond_to do |format|
 			format.html
 			format.json { render :json => @restaurant }
+			format.js
 		end
 	end
 
