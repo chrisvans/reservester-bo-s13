@@ -15,14 +15,17 @@
   <% end %>
 </div>
 <script id="restaurant_fill" type="text/html">
-<% @categories = Category.where(:id => [5, 2]) %>
-<% @restaurants = @categories.map(&:restaurants).flatten.uniq %>
-<% for category in @categories %>
-<%= category.name %><br />
-<% end %>
-<% for restaurant in @restaurants %>
-<%= restaurant.name %><br />
-<% end %>
+
+{{#categories}}
+  <h1>{{name}}</h1>
+  {{#restaurants}}
+    <h3><a href="/restaurants/{{id}}">{{name}}</a></h3>
+    <img src="{{photo.thumbnail.url}}"></img>
+  {{/restaurants}}
+  {{^restaurants}}
+    <h3> No Restaurants for {{name}}</h3>
+  {{/restaurants}}
+{{/categories}}
 
 </script>
 <div style="clear:left" id="restaurants_by_cat">

@@ -11,13 +11,7 @@ class CategoriesController < ApplicationController
   end
 
   def get_restaurants_by_cat
-    cat_ids = []
-    params[:cats].split(",").each do |id|
-      cat_ids.append(id.to_i)
-    end
-    params[:cats] = cat_ids
-    @categories_chosen = Category.find(params[:cats])
-    puts params[:cats] 
+    @categories_chosen = Category.find(JSON.parse(params[:cats]))
 
     respond_to do |format|
       format.json { render :json => @categories_chosen.to_json(:include => :restaurants) }
