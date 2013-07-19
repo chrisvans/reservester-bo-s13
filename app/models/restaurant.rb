@@ -15,7 +15,7 @@
 #
 
 class Restaurant < ActiveRecord::Base
-  attr_accessible :address, :description, :name, :phone, :image, :owner, :menu, :category_ids
+  attr_accessible :address, :address2, :city, :state, :zipcode, :description, :name, :phone, :image, :owner, :menu, :category_ids
 
   validates :name, :owner, :presence => true
 
