@@ -15,10 +15,10 @@ end
 
 group :development, :test do
   #gem 'mysql2'
-  gem 'pg'
   gem 'simplecov', :require => false, :group => :test
   gem 'factory_girl_rails'
   gem 'annotate'
+  gem 'mysql2psql'
 end
 
 # Gems used only for assets and not required

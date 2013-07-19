@@ -1,17 +1,19 @@
 
 development:
   adapter: postgresql
+  encoding: unicode
   database: reservester_development
   username: root
-  password: password
+  password: 
   pool: 5
   timeout: 5000
 
 test:
   adapter: postgresql
+  encoding: unicode
   database: reservester_test
   username: root
-  password: password
+  password: 
   pool: 5
   timeout: 5000
 

@@ -20,11 +20,6 @@
 		<p><%= link_to 'sign up', new_owner_registration_path %></p>
 	<%- end %>
 
-	<p>Restaurants by category: </p>
-
-	<% @categories.each do |cat| %>
-		<%= link_to cat.name, category_path(cat) %><br />
-	<% end %>
 
 	<div class="container">
 		<%= yield %>
