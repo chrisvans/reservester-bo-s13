@@ -21,8 +21,10 @@ group :production do
  end
 
 gem 'mini_magick'
-gem "rmagick"
-gem "carrierwave"
+gem 'rmagick'
+gem 'carrierwave'
+
+gem 'heroku'
 
 
 # Gems used only for assets and not required
