@@ -7,6 +7,15 @@ class RestaurantsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:restaurants)
   end
 
+  test "should get index (json)" do
+    restaurant = FactoryGirl.create :restaurant
+    get :index, :format => :json
+    assert_response :success
+    response = ActiveSupport::JSON.decode @response.body
+    assert_equal 1, response.count
+    assert_equal restaurant.name, response.first["name"]
+  end
+
   test "should get new" do
     owner = create_and_sign_in_owner
 
