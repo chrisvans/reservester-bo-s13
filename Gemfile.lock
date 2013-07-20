@@ -22,8 +22,6 @@ GEM
       activesupport (= 3.2.13)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
-    activerecord-postgresql-adapter (0.0.1)
-      pg
     activeresource (3.2.13)
       activemodel (= 3.2.13)
       activesupport (= 3.2.13)
@@ -97,17 +95,13 @@ GEM
       subexec (~> 0.2.1)
     mini_portile (0.5.1)
     multi_json (1.7.7)
-    mysql (2.8.1)
-    mysql2psql (0.1.0)
-      mysql (= 2.8.1)
-      pg (= 0.9.0)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.6.8)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
-    pg (0.9.0)
+    pg (0.15.1)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -179,7 +173,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-postgresql-adapter (~> 0.0.1)
   annotate
   carrierwave
   chosen-rails
@@ -190,7 +183,6 @@ DEPENDENCIES
   jquery-rails
   less-rails
   mini_magick
-  mysql2psql
   pg
   rails (= 3.2.13)
   rmagick

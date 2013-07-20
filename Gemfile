@@ -11,7 +11,7 @@ gem 'twitter-bootstrap-rails'
 
 #group :production do
   gem 'pg'
-  gem "activerecord-postgresql-adapter", "~> 0.0.1"
+#  gem "activerecord-postgresql-adapter", "~> 0.0.1"
 #end
 
 group :development, :test do
@@ -19,7 +19,7 @@ group :development, :test do
   gem 'simplecov', :require => false, :group => :test
   gem 'factory_girl_rails'
   gem 'annotate'
-  gem 'mysql2psql'
+#  gem 'mysql2psql'
 end
 
 # Gems used only for assets and not required

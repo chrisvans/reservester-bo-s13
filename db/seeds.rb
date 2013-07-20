@@ -6,8 +6,35 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-restaurant_categories = ["African","Chinese", "Mexican", "Japanese", "Thai", "Cafe", 
-	"Mediterranean", "Middle_Eastern" ]
+restaurant_categories = [
+	"American",
+	"African",
+	"Asian",
+	"Barbeque",
+	"Bakery & Deli",
+	"Chinese",
+	"Pubs",
+	"Coffehouses",
+	"Continental",
+	"Desserts",
+	"Distilleries",
+	"French",
+	"German",
+	"Greek",
+	"Indian",
+	"Italian",
+	"Japanese",
+	"Mediterranean",
+	"Mexican",
+	"Middle Eastern",
+	"Seafood",
+	"Southern Cuisine",
+	"Steakhouses",
+	"Thai",
+	"Vegetarian",
+	"Vietnamise",
+	"Wine Bars"
+]
 
 Category.delete_all
 
