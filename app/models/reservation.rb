@@ -6,5 +6,6 @@ class Reservation < ActiveRecord::Base
   validates_presence_of :email, :date_time
 
   belongs_to :restaurant
+  has_many :stars
 
 end

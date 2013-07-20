@@ -4,6 +4,6 @@ class AddUserIdToRestaurants < ActiveRecord::Migration
     end
 
     def down
-      remove_column :restaurants, :owner_id
+      remove_column :restaurants, :user_id
     end
 end
