@@ -34,16 +34,16 @@ class RestaurantsController < ApplicationController
 	end
 
 	def create
-		@restaurant = current_owner.restaurants.build(params[:restaurant])
+		@current_restaurant = current_owner.restaurants.build(params[:restaurant])
 		respond_to do |format|
-			if @restaurant.save
+			if @current_restaurant.save
     			format.html  { redirect_to(restaurants_path,
     							:notice => 'Restaurant was successfully created.') }
-    			format.json  { render :json => current_restaurant,
+    			format.json  { render :json => @current_restaurant,
     							:status => :created, :location => current_restaurant }
       		else
         		format.html { render :action => 'new' }
-        		format.json { render :json => current_restaurant.errors,
+        		format.json { render :json => @current_restaurant.errors,
                       			:status => :unprocessable_entity }
     		end
     	end
