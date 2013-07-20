@@ -4,6 +4,7 @@ class ReservationsController < ApplicationController
 	
 	
 	def create
+		puts "entered reservations create"
 		current_restaurant = Restaurant.find params[:restaurant_id]
 		@reservation = current_restaurant.reservations.build(params[:reservation])
 		respond_to do |format|
