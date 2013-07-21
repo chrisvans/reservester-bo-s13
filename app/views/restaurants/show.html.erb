@@ -1,49 +1,57 @@
 <%- model_class = Restaurant -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => @restaurant.name %></h1>
-</div>
 
 <div class="row-fluid">
   <div class="span8">
+    <div class="details row-fluid">
+      <div class="detailsimg span4">
+        <%= image_tag @restaurant.image.masthead.url if @restaurant.image? %>
+      </div>
+      <div class="info span8">
+        <h4><%=t '.title', :default => @restaurant.name %></h4>
+        <hr>
+        <div class="span4 offset1">
+          <dl>
+            <dt> <strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+            <dd><%= @restaurant.description %></dd>
+        
+            <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
+            <dd><%= @restaurant.address %></dd>
 
-    <dl >
-    
-      <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-      <dd><%= @restaurant.description %></dd>
-      
-      <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
-      <dd><%= @restaurant.address %></dd>
+            <dt><strong><%= model_class.human_attribute_name(:address2) %>:</strong></dt>
+            <dd><%= @restaurant.address2 %></dd>
 
-      <dt><strong><%= model_class.human_attribute_name(:address2) %>:</strong></dt>
-      <dd><%= @restaurant.address2 %></dd>
+            <dt><strong><%= model_class.human_attribute_name(:city) %>:</strong></dt>
+            <dd><%= @restaurant.city %></dd>
+          </dl>
+        </div>
+        <div class="span4">
+          <dl>
+            <dt><strong><%= model_class.human_attribute_name(:state) %>:</strong></dt>
+            <dd><%= @restaurant.state %></dd>
 
-      <dt><strong><%= model_class.human_attribute_name(:city) %>:</strong></dt>
-      <dd><%= @restaurant.city %></dd>
+            <dt><strong><%= model_class.human_attribute_name(:zipcode) %>:</strong></dt>
+            <dd><%= @restaurant.zipcode %></dd>
+            
+            <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
+            <dd><%= @restaurant.phone %></dd>
+            
+            <dt><strong>Owner:</strong></dt>
+            <dd><%= @restaurant.owner.name  %></dd>
+            
+            <dt><strong>Menu:</strong></dt>
+            <dd><%= link_to "Menu", @restaurant.menu_url if @restaurant.menu? %>
+          </dl>
+        </div>
+        <div class="span12">          
+          <%= @restaurant.description %>
+        </div>
+      </div>
+    </div>
+  </div>  
 
-      <dt><strong><%= model_class.human_attribute_name(:state) %>:</strong></dt>
-      <dd><%= @restaurant.state %></dd>
-
-      <dt><strong><%= model_class.human_attribute_name(:zipcode) %>:</strong></dt>
-      <dd><%= @restaurant.zipcode %></dd>
-      
-      <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
-      <dd><%= @restaurant.phone %></dd>
-      
-      <dt><strong>Owner:</strong></dt>
-      <dd><%= @restaurant.owner.name  %></dd>
-      
-      <dt><strong>Menu:</strong></dt>
-      <dd><%= link_to "Menu", @restaurant.menu_url if @restaurant.menu? %>
-    </dl>
-
-  </div> <!-- /span8 -->
-
-  <div class="span4">
-    <%= image_tag @restaurant.image.masthead.url if @restaurant.image? %>
+  <div class="span4 coolborder">
+     <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @restaurant.address %>&zoom=15&size=306x230&sensor=false&markers=color:blue|label:R|<%=@restaurant.address %>" />
   </div>
-
-    <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @restaurant.address %>&zoom=15&size=1200x400&sensor=false&markers=color:blue|label:R|<%=@restaurant.address %>">
-
 </div><!-- /row-fluid -->
 
 <%- if current_owner == @restaurant.owner %>
@@ -60,16 +68,15 @@
         <td><%= reservation.email %></td>
         <td><%= reservation.booking_time %></td>
         <td><%= reservation.message %></td>
+        <td><%= link_to 'Mark as Confirmed', reservation_path(reservation), :method => :delete, :confirm => 'Confirm this reservation?' %></td>
       </tr>
     <%- end %>
+</table>    
 <%- else %>
   <h2>New Reservation</h2>
   <%= render 'reservations/form' , :reservation => @reservation %>
 <%- end %>
-
-test
-
-
+<hr>
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
               restaurants_path, :class => 'btn'  %>
