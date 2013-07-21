@@ -8,16 +8,7 @@
     </div>
   </div>
 
-    <div class="control-group">
-    
-    <% Category.all.each do |category| %>
-      <%= check_box_tag "restaurant[category_ids][]", category.id, @restaurant.categories.include?(category) %>
-      <%= category.name %> <br>
-    <% end %>
-  </div>
-
   
-
   <div class="control-group">
     <div class="controls">
 
