@@ -17,7 +17,7 @@
 //= require_tree .
 //= require parsley
 //= require jquery-ui-timepicker-addon
-
+//= require chosen-jquery
 $(function () {
     $( "#bookingTime" ).datetimepicker({
     	dateFormat: "yy-mm-dd",
@@ -26,4 +26,7 @@ $(function () {
     	hourMin: 8,
     	hourMax: 22
     });
+    $('#restaurant_category_ids').chosen();
   }); 
+
+
