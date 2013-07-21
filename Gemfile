@@ -12,6 +12,7 @@ gem 'twitter-bootstrap-rails'
 #group :production do
   gem 'pg'
 #  gem "activerecord-postgresql-adapter", "~> 0.0.1"
+  gem 'faker'
 #end
 
 group :development, :test do
