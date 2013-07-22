@@ -40,6 +40,13 @@
             
             <dt><strong>Menu:</strong></dt>
             <dd><%= link_to "Menu", @restaurant.menu_url if @restaurant.menu? %>
+            <dt><strong>Categories</strong></dt>
+            <dd>
+              <% for category in @restaurant.categories %>
+                <li><%= category.name %></li>
+              <% end %>
+            </dd>
+              
           </dl>
         </div>
         <div class="span12">          
