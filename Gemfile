@@ -43,6 +43,7 @@ gem 'jquery-timepicker-addon-rails'
 gem 'factory_girl_rails'
 gem 'sendgrid'
 gem 'figaro'
+gem 'jquery_notify_bar'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

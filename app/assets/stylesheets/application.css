@@ -13,4 +13,5 @@
  *= require jquery-ui-bootstrap
  *= require jquery-ui-timepicker-addon
  *= require chosen
+ *= require jquery.notify_bar
  */

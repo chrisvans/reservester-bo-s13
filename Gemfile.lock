@@ -90,6 +90,7 @@ GEM
     jquery-ui-bootstrap-rails-asset (0.0.3)
       bootstrap-sass-rails
       railties (>= 3.1.0)
+    jquery_notify_bar (1.0.0)
     json (1.8.0)
     less (2.3.2)
       commonjs (~> 0.2.6)
@@ -184,6 +185,7 @@ DEPENDENCIES
   jquery-rails (~> 2.3.0)
   jquery-timepicker-addon-rails
   jquery-ui-bootstrap-rails-asset
+  jquery_notify_bar
   less-rails
   pg
   rails (= 3.2.13)
