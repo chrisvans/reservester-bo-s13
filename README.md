@@ -1,5 +1,5 @@
 # Reservester
-* * * 
+
 Reservester is a restaurant reservation system created by students at Startup Institute Boston.  
 
 ## Progress
