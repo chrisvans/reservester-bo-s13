@@ -18,6 +18,9 @@
 //= require parsley
 //= require jquery-ui-timepicker-addon
 //= require chosen-jquery
+//= require jquery.notify_bar
+
+
 $(function () {
     $( "#bookingTime" ).datetimepicker({
     	dateFormat: "yy-mm-dd",
