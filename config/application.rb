@@ -68,5 +68,6 @@ module Reservester
 
     # Tell Rails not to bootstrap your application during asset compilation
     config.assets.initialize_on_precompile = false
+    #config.assets.precompile += %w( *.js *.css )
   end
 end
