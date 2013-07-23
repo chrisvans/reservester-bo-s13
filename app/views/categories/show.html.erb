@@ -1,1 +1,9 @@
-This is the category show page
+<h1>Restaurant Category: <%= @category.name %></h1>
+
+<table>
+	<% @category.restaurants.each do |restaurant| %>
+	<tr>
+		<td> <%= link_to restaurant.name, restaurant_path(restaurant) %></td>
+	</td>
+	<% end %>
+</table>
