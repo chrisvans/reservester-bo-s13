@@ -7,57 +7,45 @@
         <%= image_tag @restaurant.image.masthead.url if @restaurant.image? %>
       </div>
       <div class="info span8">
-        <h4><%=t '.title', :default => @restaurant.name %></h4>
+        <h3><%=t '.title', :default => @restaurant.name %></h3>
         <hr>
-        <div class="span4 offset1">
-          <dl>
-            <dt> <strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-            <dd><%= @restaurant.description %></dd>
-        
+        <div class="span4">
+          <dl-horizontal>
+            
             <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
-            <dd><%= @restaurant.address %></dd>
+            <dd><%= @restaurant.address %> <%= @restaurant.address2 %> <br><%= @restaurant.city %> <%= @restaurant.state %> <%= @restaurant.zipcode %></dd>
 
-            <dt><strong><%= model_class.human_attribute_name(:address2) %>:</strong></dt>
-            <dd><%= @restaurant.address2 %></dd>
+              <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
+            <dd><%= @restaurant.phone %></dd>
 
-            <dt><strong><%= model_class.human_attribute_name(:city) %>:</strong></dt>
-            <dd><%= @restaurant.city %></dd>
           </dl>
         </div>
         <div class="span4">
-          <dl>
-            <dt><strong><%= model_class.human_attribute_name(:state) %>:</strong></dt>
-            <dd><%= @restaurant.state %></dd>
-
-            <dt><strong><%= model_class.human_attribute_name(:zipcode) %>:</strong></dt>
-            <dd><%= @restaurant.zipcode %></dd>
-            
-            <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
-            <dd><%= @restaurant.phone %></dd>
-            
+          <dl-horizontal>
             <dt><strong>Owner:</strong></dt>
-            <dd><%= @restaurant.owner.name  %></dd>
+              <dd><%= @restaurant.owner.name  %></dd>
             
             <dt><strong>Menu:</strong></dt>
-            <dd><%= link_to "Menu", @restaurant.menu_url if @restaurant.menu? %>
+              <dd><%= link_to "Menu", @restaurant.menu_url if @restaurant.menu? %>
             <dt><strong>Categories</strong></dt>
-            <dd>
-              <% for category in @restaurant.categories %>
+              <dd>
+               <% for category in @restaurant.categories %>
                 <li><%= category.name %></li>
-              <% end %>
-            </dd>
+               <% end %>
+              </dd>
               
           </dl>
         </div>
-        <div class="span12">          
+
+      </div>
+              <div class="span12">          
           <%= @restaurant.description %>
         </div>
-      </div>
     </div>
   </div>  
 
-  <div class="span4 coolborder">
-     <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @restaurant.address %>&zoom=15&size=306x230&sensor=false&markers=color:blue|label:R|<%=@restaurant.address %>" />
+  <div class="span4">
+     <img src="http://maps.googleapis.com/maps/api/staticmap?center=<%= @restaurant.address %><%= @restaurant.city %> <%= @restaurant.state %>&zoom=15&size=306x230&sensor=false&markers=color:blue|label:R|<%=@restaurant.address %>" />
   </div>
 </div><!-- /row-fluid -->
 
