@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_filter :require_restaurant_owner_match!, :except => :create
+  #before_filter :require_restaurant_owner_match!, :except => :create
   
  
   def create
@@ -15,9 +15,13 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
-  	@reservation = Reservation.find params[:id]
-  	@reservation.destroy
 
-  	redirect_to @reservation.restaurant
+    @reservation = Reservation.find(params[:id])
+    @reservation.destroy
+  	#@restaurant.reservation.destroy
+
+
+  	#redirect_to restaurant_reservations_path(restaurant_id)
+    redirect_to :back
   end
 end #end class
