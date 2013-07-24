@@ -2,10 +2,12 @@ class RestaurantsController < ApplicationController
 
 	before_filter :authenticate_owner, :only => [:new, :create, :edit, :update, :destroy]
 	# TODO: Add current_restaurant helper method
+	respond_to :html, :json
 
   def index
 		@restaurants = Restaurant.all
 		@categories = Category.all
+		respond_with(@restaurants)
 	end
 
 	def new
@@ -14,6 +16,7 @@ class RestaurantsController < ApplicationController
 
 	def show
 		@restaurant = Restaurant.find(params[:id])
+		respond_with(@restaurant)
 	end
 
 	def create
