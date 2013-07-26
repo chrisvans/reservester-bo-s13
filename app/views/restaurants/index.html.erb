@@ -1,6 +1,6 @@
 <%- model_class = Restaurant -%>
 
-<div id=""></div>
+<div id="map-canvas"></div>
 
 
 <div class="page-header">
@@ -30,7 +30,7 @@
   </thead>
   <tbody>
     <% @restaurant.each do |restaurant| %>
-      <tr>
+      <tr data-restaurant="<%= restaurant.id %>">
         <td><%= link_to("Show", {:action => 'show', :id => restaurant.id}) %></td>
         <td><%= restaurant.name %></td>
         <td><%= restaurant.description %></td>
@@ -56,6 +56,17 @@
     <% end %>
   </tbody>
 </table>
+
+<script type="text/javascript">
+  var restaurant_location = [
+      <% @restaurant.each_with_index do |restaurant, index| %>
+        ['<%= restaurant.name %>', 
+        <%= restaurant.latitude %>,
+        <%= restaurant.longitude %>,
+        <%= index +1 %>],
+      <% end %>
+    ];
+</script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDznLVuaEKF1kcsn85b34RQAjEnUgVxCSU&sensor=false">
     </script>
